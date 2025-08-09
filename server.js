@@ -1,17 +1,50 @@
 ﻿// server.js
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
-const pool = require("./db/pool"); // use the shared pool
+const pool = require("./db/pool"); // shared MySQL pool (multipleStatements=true)
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
-const MIGRATE_TOKEN = process.env.MIGRATE_TOKEN || ""; // set in Render
-const BASE_DOMAIN = process.env.BASE_DOMAIN || "tidyzenic.com";
+const MIGRATE_TOKEN = process.env.MIGRATE_TOKEN || "";
+const BASE_DOMAIN  = process.env.BASE_DOMAIN || "tidyzenic.com";
 
 app.set("trust proxy", 1);
+app.disable("x-powered-by");
 app.use(express.json());
 
-// Health
+// security headers
+app.use((req, res, next) => {
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("X-XSS-Protection", "0");
+  next();
+});
+
+// single static with cache headers
+app.use(
+  express.static(path.join(__dirname, "public"), {
+    setHeaders: (res, filePath) => {
+      const isImmutable =
+        filePath.endsWith(".css") ||
+        filePath.endsWith(".js") ||
+        filePath.endsWith(".png") ||
+        filePath.endsWith(".jpg") ||
+        filePath.endsWith(".jpeg") ||
+        filePath.endsWith(".webp") ||
+        filePath.endsWith(".svg") ||
+        filePath.endsWith(".ico");
+      res.setHeader(
+        "Cache-Control",
+        isImmutable ? "public, max-age=31536000, immutable" : "public, max-age=300"
+      );
+    },
+  })
+);
+
+
+// --- Health
 app.get("/healthz", (_req, res) => res.send("ok"));
 app.get("/db-health", async (_req, res) => {
   try {
@@ -23,7 +56,7 @@ app.get("/db-health", async (_req, res) => {
   }
 });
 
-// Migration schema
+// --- Migration schema (same as before)
 const schemaSQL = `
 CREATE TABLE IF NOT EXISTS tenants (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -70,12 +103,12 @@ CREATE TABLE IF NOT EXISTS _schema_lock (
 ) ENGINE=InnoDB;
 `;
 
-// Dry-run (connect + execute then rollback)
+// --- Dry-run migration (no changes)
 app.post("/migrate-dryrun", async (req, res) => {
   try {
-    if (!MIGRATE_TOKEN || req.get("x-migrate-token") !== MIGRATE_TOKEN) {
+    if (!MIGRATE_TOKEN || req.get("x-migrate-token") !== MIGRATE_TOKEN)
       return res.status(401).json({ error: "unauthorized" });
-    }
+
     await pool.query("SELECT 1");
     const conn = await pool.getConnection();
     try {
@@ -93,12 +126,11 @@ app.post("/migrate-dryrun", async (req, res) => {
   }
 });
 
-// Migrate once (idempotent)
+// --- One-time migration (idempotent)
 app.post("/migrate-once", async (req, res) => {
   try {
-    if (!MIGRATE_TOKEN || req.get("x-migrate-token") !== MIGRATE_TOKEN) {
+    if (!MIGRATE_TOKEN || req.get("x-migrate-token") !== MIGRATE_TOKEN)
       return res.status(401).json({ error: "unauthorized" });
-    }
 
     await pool.query(`
       CREATE TABLE IF NOT EXISTS _schema_lock (
@@ -110,7 +142,7 @@ app.post("/migrate-once", async (req, res) => {
     const [rows] = await pool.query("SELECT 1 FROM _schema_lock WHERE id=1");
     if (rows.length) return res.json({ status: "skipped", reason: "already migrated" });
 
-    await pool.query(schemaSQL); // works because multipleStatements=true in pool
+    await pool.query(schemaSQL);
     await pool.query("INSERT INTO _schema_lock (id, migrated_at) VALUES (1, NOW())");
     res.json({ status: "ok" });
   } catch (e) {
@@ -119,7 +151,7 @@ app.post("/migrate-once", async (req, res) => {
   }
 });
 
-// Tenant resolution middleware
+// --- Tenant resolution (kept)
 async function resolveTenant(req, res, next) {
   try {
     const host = (req.headers.host || "").toLowerCase().split(":")[0];
@@ -153,7 +185,24 @@ async function resolveTenant(req, res, next) {
   }
 }
 
-// Example tenant route
+// --- Public APIs for homepage dynamic sections (DB wiring later)
+app.get("/api/blog", async (_req, res) => {
+  res.json([
+    { title: "AI Scheduling Arrives", excerpt: "Boost productivity with smart auto-assign.", url: "/blog/ai-scheduling" },
+    { title: "Inventory Best Practices", excerpt: "Avoid stockouts & overstock.", url: "/blog/inventory-best-practices" },
+    { title: "Client Retention Playbook", excerpt: "Turn one-timers into loyal fans.", url: "/blog/client-retention" }
+  ]);
+});
+
+app.get("/api/reviews", async (_req, res) => {
+  res.json([
+    { author: "Jane D.", text: "TidyZenic streamlined our entire operation.", rating: 5 },
+    { author: "Mark R.", text: "Easy to set up custom domains & branding.", rating: 4 },
+    { author: "Lisa P.", text: "AI booking is a game-changer for our staff.", rating: 5 }
+  ]);
+});
+
+// --- Example tenant route
 app.get("/tenant/info", resolveTenant, (req, res) => {
   res.json({
     id: req.tenant.id,
@@ -164,17 +213,19 @@ app.get("/tenant/info", resolveTenant, (req, res) => {
   });
 });
 
-// Root
-app.get("/", (_req, res) => res.send("TidyZenic SaaS (Node) is running. 👋"));
+// --- Serve index.html for root (and allow simple static site behavior)
+app.get("/", (_req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
-// 404 + error handlers
+// --- 404 + error handlers
 app.use((req, res) => res.status(404).json({ error: "Not Found", path: req.path }));
 app.use((err, _req, res, _next) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ error: "Internal Server Error" });
 });
 
-// Shutdown
+// --- Shutdown
 const shutdown = async () => { try { await pool.end(); } catch {} process.exit(0); };
 process.on("SIGTERM", shutdown);
 process.on("SIGINT", shutdown);
