@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>TidyZenic — AI-Powered Service Business Suite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="TidyZenic is a modern, AI-powered platform for bookings, staffing, inventory, client management, and marketing." />
+  <link rel="canonical" href="https://tidyzenic.com/" />
+  <meta name="theme-color" content="#111827" />
+
+  <meta property="og:title" content="TidyZenic — AI-Powered Service Business Suite" />
+  <meta property="og:description" content="Bookings, staffing, inventory, CRM, and marketing—beautifully integrated." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tidyzenic.com/" />
+
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+  <!-- Header (loaded dynamically) -->
+  <div id="app-header" class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-100"></div>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-700 via-brand-600 to-indigo-600"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28 text-white">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
+          Run your service business on one powerful platform.
+        </h1>
+        <p class="mt-5 text-lg sm:text-xl text-white/90">
+          AI-assisted scheduling, staff ops, inventory, CRM, and campaigns—secure, scalable, and white-label ready.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#blog" class="inline-flex items-center px-5 py-3 rounded-xl bg-white text-gray-900 font-semibold shadow hover:shadow-md transition">
+            Explore Updates
+          </a>
+          <a href="#reviews" class="inline-flex items-center px-5 py-3 rounded-xl ring-1 ring-white/50 text-white font-semibold hover:bg-white/10 transition">
+            See Reviews
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust / quick badges (optional visuals) -->
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">White-Label</div>
+      <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">Sub & Custom Domains</div>
+      <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">Role-Based Access</div>
+      <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">Multi-Tenant</div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-bold">Latest from the Blog</h2>
+        <a href="/blog" class="text-brand-700 hover:text-brand-900 font-medium">View all →</a>
+      </div>
+
+      <!-- Skeleton while loading -->
+      <div id="blog-skeleton" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
+        <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
+        <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
+      </div>
+
+      <!-- Actual cards -->
+      <div id="blog-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold">What our clients say</h2>
+
+      <!-- Skeleton -->
+      <div id="reviews-skeleton" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
+        <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
+        <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
+      </div>
+
+      <div id="reviews-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- Footer (loaded dynamically) -->
+  <div id="app-footer" class="bg-gray-900 text-white"></div>
+
+  <!-- No-JS notice -->
+  <noscript>
+    <div class="max-w-7xl mx-auto px-6 py-6 text-red-700">
+      JavaScript is disabled—dynamic blog and reviews won’t load.
+    </div>
+  </noscript>
+
+  <!-- JSON-LD basic org schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"TidyZenic",
+    "url":"https://tidyzenic.com",
+    "logo":"https://tidyzenic.com/logo.png",
+    "sameAs":[]
+  }
+  </script>
+
+  <!-- Main JS (will load header/footer + dynamic content) -->
+  <script defer src="/js/main.js"></script>
+</body>
+</html>
