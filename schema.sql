@@ -1,5 +1,6 @@
-﻿/*!40101 SET NAMES utf8mb4 */;
-/*!40101 SET time_zone = '+00:00' */;
+﻿-- Set encoding and timezone in a compatible way
+SET NAMES 'utf8mb4';
+SET time_zone = '+00:00';
 
 CREATE TABLE IF NOT EXISTS tenants (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
