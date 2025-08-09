@@ -5,7 +5,7 @@ const mysql = require("mysql2/promise");
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
-const MIGRATE_TOKEN = process.env.MIGRATE_TOKEN || ""; // Set in Render dashboard
+const MIGRATE_TOKEN = process.env.MIGRATE_TOKEN || ""; // Set this in Render dashboard
 const BASE_DOMAIN = process.env.BASE_DOMAIN || "tidyzenic.com";
 
 app.set("trust proxy", 1);
@@ -82,6 +82,36 @@ CREATE TABLE IF NOT EXISTS _schema_lock (
   migrated_at DATETIME
 ) ENGINE=InnoDB;
 `;
+
+// ---------------- Migration dry-run ----------------
+app.post("/migrate-dryrun", async (req, res) => {
+  try {
+    if (!MIGRATE_TOKEN || req.get("x-migrate-token") !== MIGRATE_TOKEN) {
+      return res.status(401).json({ error: "unauthorized" });
+    }
+
+    // Test connection
+    await pool.query("SELECT 1 AS ok");
+
+    // Test schema creation in a transaction but rollback
+    const conn = await pool.getConnection();
+    try {
+      await conn.beginTransaction();
+      const statements = schemaSQL.split(";").map(s => s.trim()).filter(Boolean);
+      for (const stmt of statements) {
+        await conn.query(stmt);
+      }
+      await conn.rollback(); // rollback changes
+    } finally {
+      conn.release();
+    }
+
+    res.json({ status: "dry-run ok", message: "Schema statements executed and rolled back" });
+  } catch (e) {
+    console.error("Dry-run migration error:", e);
+    res.status(500).json({ error: e.message });
+  }
+});
 
 // ---------------- Migration route ----------------
 app.post("/migrate-once", async (req, res) => {
