@@ -120,6 +120,10 @@ app.post("/migrate-once", async (req, res) => {
       return res.status(401).json({ error: "unauthorized" });
     }
 
+    // Log DB connection info
+    const [dbInfo] = await pool.query("SELECT DATABASE() AS current_db");
+    console.log("Connected to database:", dbInfo[0].current_db);
+
     // Guard: only run once
     await pool.query(`
       CREATE TABLE IF NOT EXISTS _schema_lock (
@@ -127,19 +131,38 @@ app.post("/migrate-once", async (req, res) => {
         migrated_at DATETIME
       ) ENGINE=InnoDB;
     `);
-    const [rows] = await pool.query("SELECT * FROM _schema_lock WHERE id=1");
+
+    const [rows] = await pool.query("SELECT * FROM _schema_lock");
+    console.log("_schema_lock contents before migration:", rows);
+
     if (rows.length) {
-      return res.json({ status: "skipped", reason: "already migrated" });
+      return res.json({
+        status: "skipped",
+        reason: "already migrated",
+        rows,
+      });
     }
 
+    console.log("Running schema migration...");
     await pool.query(schemaSQL);
-    await pool.query("INSERT INTO _schema_lock (id, migrated_at) VALUES (1, NOW())");
+
+    try {
+      await pool.query("INSERT INTO _schema_lock (id, migrated_at) VALUES (1, NOW())");
+    } catch (insertErr) {
+      console.error("Insert into _schema_lock failed:", insertErr.message);
+      return res.status(500).json({
+        error: "Insert into _schema_lock failed",
+        details: insertErr.message,
+      });
+    }
+
     res.json({ status: "ok" });
   } catch (e) {
     console.error("Migration error:", e);
     res.status(500).json({ error: e.message });
   }
 });
+
 
 // ---------------- Tenant resolution middleware ----------------
 async function resolveTenant(req, res, next) {
