@@ -1,79 +1,34 @@
-    <!-- Header Component -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-sm border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="/" class="text-2xl font-extrabold text-gray-900 tracking-tight transition hover:text-brand-700">TidyZenic</a>
+<header class="bg-white shadow">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2">
+      <img src="/logo.svg" alt="TidyZenic Logo" class="h-8 w-auto">
+      <span class="text-xl font-bold text-gray-900">TidyZenic</span>
+    </a>
 
-            <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center space-x-8">
-                <a href="#features" class="text-gray-600 font-semibold transition relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-brand-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">Features</a>
-                <a href="#blog" class="text-gray-600 font-semibold transition relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-brand-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">Blog</a>
-                <a href="#reviews" class="text-gray-600 font-semibold transition relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-brand-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">Reviews</a>
-                <a href="#cta" class="inline-flex items-center px-6 py-3 rounded-2xl bg-brand-600 text-white font-semibold shadow-lg hover:bg-brand-700 hover:shadow-xl transition transform hover:-translate-y-1">
-                    Start Free Trial
-                </a>
-            </nav>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+      <a href="#features" class="hover:text-brand-700 transition">Features</a>
+      <a href="#blog" class="hover:text-brand-700 transition">Blog</a>
+      <a href="#reviews" class="hover:text-brand-700 transition">Reviews</a>
+      <a href="#cta" class="hover:text-brand-700 transition">Get Started</a>
+    </nav>
 
-            <!-- Mobile/Tablet Navigation -->
-            <div class="lg:hidden">
-                <!-- Hamburger Icon -->
-                <button id="menu-toggle" class="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-            </div>
-        </div>
+    <!-- Mobile Menu Button -->
+    <button id="mobile-nav-toggle" class="md:hidden p-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-white/95 backdrop-blur-md lg:hidden p-6 transition-transform transform translate-x-full">
-            <div class="flex justify-end">
-                <button id="menu-close" class="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <nav class="mt-8 flex flex-col items-center space-y-6">
-                <a href="#features" class="text-2xl font-bold text-gray-800 hover:text-brand-700 transition">Features</a>
-                <a href="#blog" class="text-2xl font-bold text-gray-800 hover:text-brand-700 transition">Blog</a>
-                <a href="#reviews" class="text-2xl font-bold text-gray-800 hover:text-brand-700 transition">Reviews</a>
-                <a href="#cta" class="inline-flex items-center px-8 py-4 mt-8 rounded-2xl bg-brand-600 text-white font-semibold shadow-lg hover:bg-brand-700 hover:shadow-xl transition transform hover:-translate-y-1">
-                    Start Free Trial
-                </a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Scripts for mobile menu functionality -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.getElementById('menu-toggle');
-            const menuClose = document.getElementById('menu-close');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const navLinks = mobileMenu.querySelectorAll('a');
-
-            const openMenu = () => {
-                mobileMenu.classList.remove('hidden');
-                setTimeout(() => {
-                    mobileMenu.classList.remove('translate-x-full');
-                }, 10);
-                document.body.style.overflow = 'hidden';
-            };
-
-            const closeMenu = () => {
-                mobileMenu.classList.add('translate-x-full');
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                }, 300); // Duration of the transition
-                document.body.style.overflow = 'auto';
-            };
-
-            if (menuToggle) menuToggle.addEventListener('click', openMenu);
-            if (menuClose) menuClose.addEventListener('click', closeMenu);
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-        });
-    </script>
+  <!-- Mobile Nav Drawer -->
+  <div id="mobile-nav" class="hidden md:hidden border-t border-gray-200 bg-white">
+    <nav class="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-gray-600">
+      <a href="#features" class="hover:text-brand-700 transition">Features</a>
+      <a href="#blog" class="hover:text-brand-700 transition">Blog</a>
+      <a href="#reviews" class="hover:text-brand-700 transition">Reviews</a>
+      <a href="#cta" class="hover:text-brand-700 transition">Get Started</a>
+    </nav>
+  </div>
+</header>

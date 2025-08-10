@@ -1,402 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>TidyZenic — AI-Powered Service Business Suite</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="TidyZenic is a modern, AI-powered platform for bookings, staffing, inventory, client management, and marketing." />
-    <link rel="canonical" href="https://tidyzenic.com/" />
-    <meta name="theme-color" content="#111827" />
+  <meta charset="utf-8" />
+  <title>TidyZenic — AI-Powered Service Business Suite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="TidyZenic is a modern, AI-powered platform for bookings, staffing, inventory, client management, and marketing." />
+  <link rel="canonical" href="https://tidyzenic.com/" />
+  <meta name="theme-color" content="#111827" />
 
-    <meta property="og:title" content="TidyZenic — AI-Powered Service Business Suite" />
-    <meta property="og:description" content="Bookings, staffing, inventory, CRM, and marketing—beautifully integrated." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tidyzenic.com/" />
+  <meta property="og:title" content="TidyZenic — AI-Powered Service Business Suite" />
+  <meta property="og:description" content="Bookings, staffing, inventory, CRM, and marketing—beautifully integrated." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tidyzenic.com/" />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom colors for the brand */
-        :root {
-            --brand-700: #4338ca;
-            --brand-600: #4f46e5;
-            --indigo-600: #4f46e5;
-            --brand-400: #818cf8;
-        }
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom colors for the brand */
+    :root {
+      --brand-700: #4338ca;
+      --brand-600: #4f46e5;
+      --indigo-600: #4f46e5;
+      --brand-400: #818cf8;
+    }
 
-        .bg-gradient-to-br.from-brand-700 {
-            background-image: linear-gradient(to bottom right, var(--brand-700), var(--brand-600), var(--indigo-600));
-        }
+    .bg-gradient-to-br.from-brand-700 {
+      background-image: linear-gradient(to bottom right, var(--brand-700), var(--brand-600), var(--indigo-600));
+    }
 
-        .text-brand-700 {
-            color: var(--brand-700);
-        }
+    .text-brand-700 {
+      color: var(--brand-700);
+    }
 
-        .hover\:text-brand-900:hover {
-            color: #3730a3;
-        }
+    .hover\:text-brand-900:hover {
+      color: #3730a3;
+    }
 
-        .bg-brand-600 {
-            background-color: var(--brand-600);
-        }
+    .bg-brand-600 {
+      background-color: var(--brand-600);
+    }
 
-        .hover\:bg-brand-700:hover {
-            background-color: var(--brand-700);
-        }
-    </style>
+    .hover\:bg-brand-700:hover {
+      background-color: var(--brand-700);
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased font-sans">
-    
-    <!-- Hero -->
-    <section class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-brand-700 via-brand-600 to-indigo-600"></div>
-        <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28 text-white">
-            <div class="max-w-3xl">
-                <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
-                    Run your service business on one powerful platform.
-                </h1>
-                <p class="mt-5 text-lg sm:text-xl text-white/90">
-                    AI-assisted scheduling, staff ops, inventory, CRM, and campaigns—all beautifully integrated. Start your **7-day free trial** today.
-                </p>
-                <div class="mt-8 flex flex-wrap gap-3">
-                    <a href="#cta" class="inline-flex items-center px-5 py-3 rounded-xl bg-white text-gray-900 font-semibold shadow hover:shadow-md transition">
-                        Start Free Trial
-                    </a>
-                    <a href="#reviews" class="inline-flex items-center px-5 py-3 rounded-xl ring-1 ring-white/50 text-white font-semibold hover:bg-white/10 transition">
-                        See Reviews
-                    </a>
-                </div>
-            </div>
+
+  <!-- Header placeholder (external) -->
+  <div id="app-header"></div>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-700 via-brand-600 to-indigo-600"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28 text-white">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
+          Run your service business on one powerful platform.
+        </h1>
+        <p class="mt-5 text-lg sm:text-xl text-white/90">
+          AI-assisted scheduling, staff ops, inventory, CRM, and campaigns—all beautifully integrated. Start your <strong>7-day free trial</strong> today.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#cta" class="inline-flex items-center px-5 py-3 rounded-xl bg-white text-gray-900 font-semibold shadow hover:shadow-md transition">
+            Start Free Trial
+          </a>
+          <a href="#reviews" class="inline-flex items-center px-5 py-3 rounded-xl ring-1 ring-white/50 text-white font-semibold hover:bg-white/10 transition">
+            See Reviews
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Key Features Section -->
-    <section id="features" class="bg-white">
-        <div class="max-w-7xl mx-auto px-6 py-16">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-2xl sm:text-3xl font-bold">The platform that grows with you.</h2>
-                <p class="mt-4 text-lg text-gray-600">
-                    TidyZenic is built to scale, offering the powerful features you need to manage and expand your business.
-                </p>
-            </div>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.674c.414 0 .621.493.332.775l-2.337 2.253a.5.5 0 01-.664 0l-2.337-2.253a.5.5 0 01.332-.775zM12 18v3m8.5-12.5a.5.5 0 00-.353-.146H5.853a.5.5 0 00-.353.146l-4.5 4.5a.5.5 0 000 .707l4.5 4.5a.5.5 0 00.353.146h12.3a.5.5 0 00.353-.146l4.5-4.5a.5.5 0 000-.707l-4.5-4.5z" />
-                        </svg>
-                    </div>
-                    <div class="mt-4 font-bold text-lg">White-Label Ready</div>
-                    <div class="mt-2 text-sm text-gray-500">Launch your brand with a customizable platform.</div>
-                </div>
-                <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 10a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 15l-3.375-3.375M16.5 19.5v-3.375m0 0l3.375-3.375m-3.375 3.375h3.375m0 0l3.375-3.375M12 6.75a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5z" />
-                        </svg>
-                    </div>
-                    <div class="mt-4 font-bold text-lg">Custom Domains</div>
-                    <div class="mt-2 text-sm text-gray-500">Branding that looks and feels like your own.</div>
-                </div>
-                <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4zM12 11l-3 3-3-3" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4zM16 11l-3 3-3-3" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14h-2M15 14h-2M19 14a7 7 0 10-14 0h14z" />
-                        </svg>
-                    </div>
-                    <div class="mt-4 font-bold text-lg">Role-Based Access</div>
-                    <div class="mt-2 text-sm text-gray-500">Give your team the right permissions for every task.</div>
-                </div>
-                <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M3 18h18M3 6h18" />
-                        </svg>
-                    </div>
-                    <div class="mt-4 font-bold text-lg">Multi-Tenant</div>
-                    <div class="mt-2 text-sm text-gray-500">Run multiple businesses from a single, powerful instance.</div>
-                </div>
-            </div>
+  <!-- Key Features Section -->
+  <section id="features" class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold">The platform that grows with you.</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          TidyZenic is built to scale, offering the powerful features you need to manage and expand your business.
+        </p>
+      </div>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
+          <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.674c.414 0 .621.493.332.775l-2.337 2.253a.5.5 0 01-.664 0l-2.337-2.253a.5.5 0 01.332-.775zM12 18v3m8.5-12.5a.5.5 0 00-.353-.146H5.853a.5.5 0 00-.353.146l-4.5 4.5a.5.5 0 000 .707l4.5 4.5a.5.5 0 00.353.146h12.3a.5.5 0 00.353-.146l4.5-4.5a.5.5 0 000-.707l-4.5-4.5z" />
+            </svg>
+          </div>
+          <div class="mt-4 font-bold text-lg">White-Label Ready</div>
+          <div class="mt-2 text-sm text-gray-500">Launch your brand with a customizable platform.</div>
         </div>
-    </section>
-
-    <!-- Analytics & Performance Section -->
-    <section class="bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6 py-16">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-2xl sm:text-3xl font-bold">Uncover Your Growth with AI-Powered Analytics</h2>
-                <p class="mt-4 text-lg text-gray-600">
-                    Our platform gives you real-time insights into your business performance, helping you make data-driven decisions that drive revenue and boost efficiency.
-                </p>
-            </div>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
-                    <h3 class="text-xl font-bold text-gray-900">Revenue Growth</h3>
-                    <div class="mt-4 text-sm text-gray-500">Last 6 months</div>
-                    <canvas id="revenueChart" class="mt-6 w-full h-40"></canvas>
-                    <div class="mt-8 flex justify-between items-center text-center">
-                        <div>
-                            <div class="text-2xl font-bold text-gray-900">+$2,450</div>
-                            <div class="text-sm text-gray-500">Revenue</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl font-bold text-green-500">24%</div>
-                            <div class="text-sm text-gray-500">YTD Growth</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl font-bold text-gray-900">80%</div>
-                            <div class="text-sm text-gray-500">AI Efficiency</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 grid grid-cols-1 gap-6">
-                    <div class="bg-gray-50 p-6 rounded-2xl flex items-center justify-between shadow-sm hover:shadow-md transition">
-                        <div>
-                            <div class="text-lg font-bold">Total Bookings</div>
-                            <div class="text-2xl font-bold text-brand-600 mt-1">1,245</div>
-                        </div>
-                        <div class="text-gray-400">
-                            <!-- Calendar Icon for Total Bookings -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 p-6 rounded-2xl flex items-center justify-between shadow-sm hover:shadow-md transition">
-                        <div>
-                            <div class="text-lg font-bold">Active Staff</div>
-                            <div class="text-2xl font-bold text-brand-600 mt-1">42</div>
-                        </div>
-                        <div class="text-gray-400">
-                            <!-- Group of People Icon for Active Staff -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h-1a1 1 0 01-1-1V6a1 1 0 011-1h1a1 1 0 011 1v13a1 1 0 01-1 1zm0 0l-5-5-5 5" />
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16M4 12h16" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
+          <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 10a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 15l-3.375-3.375M16.5 19.5v-3.375m0 0l3.375-3.375m-3.375 3.375h3.375m0 0l3.375-3.375M12 6.75a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5z" />
+            </svg>
+          </div>
+          <div class="mt-4 font-bold text-lg">Custom Domains</div>
+          <div class="mt-2 text-sm text-gray-500">Branding that looks and feels like your own.</div>
         </div>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog" class="bg-white">
-        <div class="max-w-7xl mx-auto px-6 py-16">
-            <div class="flex items-end justify-between gap-4">
-                <h2 class="text-2xl sm:text-3xl font-bold">Latest from the Blog</h2>
-                <a href="/blog" class="text-brand-700 hover:text-brand-900 font-medium">View all →</a>
-            </div>
-
-            <!-- Skeleton while loading -->
-            <div id="blog-skeleton" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
-                <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
-                <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
-                <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
-            </div>
-
-            <!-- Actual cards -->
-            <div id="blog-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
+          <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4zM12 11l-3 3-3-3" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4zM16 11l-3 3-3-3" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14h-2M15 14h-2M19 14a7 7 0 10-14 0h14z" />
+            </svg>
+          </div>
+          <div class="mt-4 font-bold text-lg">Role-Based Access</div>
+          <div class="mt-2 text-sm text-gray-500">Give your team the right permissions for every task.</div>
         </div>
-    </section>
-
-    <!-- Reviews -->
-    <section id="reviews" class="bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6 py-16">
-            <h2 class="text-2xl sm:text-3xl font-bold">What our clients say</h2>
-
-            <!-- Skeleton -->
-            <div id="reviews-skeleton" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
-                <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
-                <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
-            </div>
-
-            <div id="reviews-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
+          <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M3 18h18M3 6h18" />
+            </svg>
+          </div>
+          <div class="mt-4 font-bold text-lg">Multi-Tenant</div>
+          <div class="mt-2 text-sm text-gray-500">Run multiple businesses from a single, powerful instance.</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Call to Action -->
-    <section id="cta" class="bg-brand-600 text-white">
-        <div class="max-w-7xl mx-auto px-6 py-20 text-center">
-            <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Ready to boost your business?</h2>
-            <p class="mt-4 text-lg text-white/80">Start your 7-day free trial and experience the power of AI-assisted management today.</p>
-            <div class="mt-8">
-                <a href="#" class="inline-flex items-center px-8 py-4 rounded-xl bg-white text-brand-700 font-semibold shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
-                    Start Free Trial
-                </a>
+  <!-- Analytics & Performance Section -->
+  <section class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold">Uncover Your Growth with AI-Powered Analytics</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Our platform gives you real-time insights into your business performance, helping you make data-driven decisions that drive revenue and boost efficiency.
+        </p>
+      </div>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+          <h3 class="text-xl font-bold text-gray-900">Revenue Growth</h3>
+          <div class="mt-4 text-sm text-gray-500">Last 6 months</div>
+          <canvas id="revenueChart" class="mt-6 w-full h-40"></canvas>
+          <div class="mt-8 flex justify-between items-center text-center">
+            <div>
+              <div class="text-2xl font-bold text-gray-900">+$2,450</div>
+              <div class="text-sm text-gray-500">Revenue</div>
             </div>
+            <div>
+              <div class="text-2xl font-bold text-green-500">24%</div>
+              <div class="text-sm text-gray-500">YTD Growth</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-gray-900">80%</div>
+              <div class="text-sm text-gray-500">AI Efficiency</div>
+            </div>
+          </div>
         </div>
-    </section>
+        <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 grid grid-cols-1 gap-6">
+          <div class="bg-gray-50 p-6 rounded-2xl flex items-center justify-between shadow-sm hover:shadow-md transition">
+            <div>
+              <div class="text-lg font-bold">Total Bookings</div>
+              <div class="text-2xl font-bold text-brand-600 mt-1">1,245</div>
+            </div>
+            <div class="text-gray-400">
+              <!-- Calendar Icon for Total Bookings -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-2xl flex items-center justify-between shadow-sm hover:shadow-md transition">
+            <div>
+              <div class="text-lg font-bold">Active Staff</div>
+              <div class="text-2xl font-bold text-brand-600 mt-1">42</div>
+            </div>
+            <div class="text-gray-400">
+              <!-- Group of People Icon for Active Staff -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h-1a1 1 0 01-1-1V6a1 1 0 011-1h1a1 1 0 011 1v13a1 1 0 01-1 1zm0 0l-5-5-5 5" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16M4 12h16" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Placeholder data for the blog posts
-            const blogPosts = [
-                {
-                    title: "Introducing Smart Scheduling",
-                    summary: "Our new AI-powered scheduling assistant helps you optimize bookings and staff assignments effortlessly.",
-                    link: "/blog/smart-scheduling",
-                    image: "https://placehold.co/400x200/4f46e5/ffffff?text=AI+Scheduling"
-                },
-                {
-                    title: "TidyZenic now supports multi-tenant architecture",
-                    summary: "Launch your own white-label platform with ease using our new multi-tenant features.",
-                    link: "/blog/multi-tenant",
-                    image: "https://placehold.co/400x200/4f46e5/ffffff?text=Multi-tenant"
-                },
-                {
-                    title: "Boost your business with integrated CRM",
-                    summary: "Learn how TidyZenic's powerful CRM tools can help you build stronger client relationships.",
-                    link: "/blog/integrated-crm",
-                    image: "https://placehold.co/400x200/4f46e5/ffffff?text=Integrated+CRM"
-                },
-                {
-                    title: "Maximize Efficiency with Inventory Management",
-                    summary: "A deep dive into how TidyZenic helps you track supplies and automate re-ordering.",
-                    link: "/blog/inventory-management",
-                    image: "https://placehold.co/400x200/4f46e5/ffffff?text=Inventory+Management"
-                }
-            ];
+  <!-- Blog -->
+  <section id="blog" class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-bold">Latest from the Blog</h2>
+        <a href="/blog" class="text-brand-700 hover:text-brand-900 font-medium">View all →</a>
+      </div>
 
-            // Placeholder data for the client reviews
-            const reviews = [
-                {
-                    text: "TidyZenic has transformed my cleaning business. The AI scheduling is a game-changer and has saved me countless hours.",
-                    author: "Jane Doe",
-                    company: "Spotless Services"
-                },
-                {
-                    text: "The white-label solution allowed me to launch my own platform in a fraction of the time. The support team is fantastic!",
-                    author: "John Smith",
-                    company: "Prime Plumbing"
-                },
-                {
-                    text: "Seamless client management and marketing tools all in one place. My business has never been more organized.",
-                    author: "Emily Chen",
-                    company: "Garden Gurus"
-                }
-            ];
+      <!-- Skeleton while loading -->
+      <div id="blog-skeleton" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
+        <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
+        <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
+        <div class="animate-pulse rounded-2xl bg-gray-100 h-44"></div>
+      </div>
 
-            // Function to render blog posts
-            function renderBlogPosts() {
-                const blogGrid = document.getElementById('blog-grid');
-                const blogSkeleton = document.getElementById('blog-skeleton');
-                blogGrid.innerHTML = blogPosts.map(post => `
-                    <a href="${post.link}" class="block rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition bg-white group">
-                        <img src="${post.image}" alt="${post.title}" class="w-full h-44 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-brand-700 transition">${post.title}</h3>
-                            <p class="mt-2 text-sm text-gray-500">${post.summary}</p>
-                        </div>
-                    </a>
-                `).join('');
-                blogSkeleton.style.display = 'none'; // Hide skeleton after content is loaded
-            }
+      <!-- Actual cards -->
+      <div id="blog-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </div>
+  </section>
 
-            // Function to render reviews
-            function renderReviews() {
-                const reviewsGrid = document.getElementById('reviews-grid');
-                const reviewsSkeleton = document.getElementById('reviews-skeleton');
-                reviewsGrid.innerHTML = reviews.map(review => `
-                    <div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
-                        <p class="text-gray-600">"${review.text}"</p>
-                        <div class="mt-4 text-sm font-semibold text-gray-900">
-                            ${review.author}, <span class="text-gray-500 font-normal">${review.company}</span>
-                        </div>
-                    </div>
-                `).join('');
-                reviewsSkeleton.style.display = 'none'; // Hide skeleton after content is loaded
-            }
+  <!-- Reviews -->
+  <section id="reviews" class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold">What our clients say</h2>
 
-            // Function to draw the chart on the canvas
-            function drawChart() {
-                const canvas = document.getElementById('revenueChart');
-                const ctx = canvas.getContext('2d');
-                const data = [10, 25, 20, 35, 30, 50];
-                const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+      <!-- Skeleton -->
+      <div id="reviews-skeleton" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
+        <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
+        <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
+      </div>
 
-                const width = canvas.width;
-                const height = canvas.height;
-                const padding = 20;
-                const points = data.length;
-                const maxVal = Math.max(...data);
+      <div id="reviews-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
 
-                // Clear canvas
-                ctx.clearRect(0, 0, width, height);
+  <!-- Call to Action -->
+  <section id="cta" class="bg-brand-600 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Ready to boost your business?</h2>
+      <p class="mt-4 text-lg text-white/80">Start your 7-day free trial and experience the power of AI-assisted management today.</p>
+      <div class="mt-8">
+        <a href="#" class="inline-flex items-center px-8 py-4 rounded-xl bg-white text-brand-700 font-semibold shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+          Start Free Trial
+        </a>
+      </div>
+    </div>
+  </section>
 
-                // Create a gradient for the filled area
-                const areaGradient = ctx.createLinearGradient(0, 0, 0, height);
-                areaGradient.addColorStop(0, 'rgba(79, 70, 229, 0.4)');
-                areaGradient.addColorStop(1, 'rgba(79, 70, 229, 0)');
+  <!-- Footer placeholder (external) -->
+  <div id="app-footer"></div>
 
-                // Create a gradient for the line
-                const lineGradient = ctx.createLinearGradient(0, 0, width, 0);
-                lineGradient.addColorStop(0, 'rgba(79, 70, 229, 1)');
-                lineGradient.addColorStop(1, 'rgba(129, 140, 248, 1)');
+  <!-- Scripts -->
+  <script>
+    // Load external header/footer from the same directory (works on subpaths)
+    async function loadPartials() {
+      try {
+        const [headerHTML, footerHTML] = await Promise.all([
+          fetch('./header.html').then(r => r.text()),
+          fetch('./footer.html').then(r => r.text())
+        ]);
+        const headerEl = document.getElementById('app-header');
+        const footerEl = document.getElementById('app-footer');
+        if (headerEl) headerEl.innerHTML = headerHTML;
+        if (footerEl) footerEl.innerHTML = footerHTML;
 
-                // Get coordinates for each data point
-                const coords = data.map((d, i) => ({
-                    x: padding + (i / (points - 1)) * (width - 2 * padding),
-                    y: height - padding - (d / maxVal) * (height - 2 * padding)
-                }));
+        // Mobile nav wiring if present in header.html
+        const toggle = document.querySelector('#mobile-nav-toggle');
+        const drawer = document.querySelector('#mobile-nav');
+        if (toggle && drawer) {
+          toggle.addEventListener('click', () => drawer.classList.toggle('hidden'));
+          drawer.querySelectorAll('a').forEach(a =>
+            a.addEventListener('click', () => drawer.classList.add('hidden'))
+          );
+        }
+      } catch (err) {
+        console.error('Error loading header/footer:', err);
+      }
+    }
 
-                // Draw the filled area
-                ctx.beginPath();
-                ctx.moveTo(coords[0].x, height - padding);
-                coords.forEach(c => ctx.lineTo(c.x, c.y));
-                ctx.lineTo(coords[coords.length - 1].x, height - padding);
-                ctx.closePath();
-                ctx.fillStyle = areaGradient;
-                ctx.fill();
+    document.addEventListener('DOMContentLoaded', () => {
+      loadPartials();
 
-                // Draw the line graph
-                ctx.beginPath();
-                ctx.moveTo(coords[0].x, coords[0].y);
-                for (let i = 1; i < points; i++) {
-                    ctx.lineTo(coords[i].x, coords[i].y);
-                }
-                ctx.strokeStyle = lineGradient;
-                ctx.lineWidth = 3;
-                ctx.lineCap = 'round';
-                ctx.lineJoin = 'round';
-                ctx.stroke();
+      // Placeholder data for the blog posts
+      const blogPosts = [
+        {
+          title: "Introducing Smart Scheduling",
+          summary: "Our new AI-powered scheduling assistant helps you optimize bookings and staff assignments effortlessly.",
+          link: "/blog/smart-scheduling",
+          image: "https://placehold.co/400x200/4f46e5/ffffff?text=AI+Scheduling"
+        },
+        {
+          title: "TidyZenic now supports multi-tenant architecture",
+          summary: "Launch your own white-label platform with ease using our new multi-tenant features.",
+          link: "/blog/multi-tenant",
+          image: "https://placehold.co/400x200/4f46e5/ffffff?text=Multi-tenant"
+        },
+        {
+          title: "Boost your business with integrated CRM",
+          summary: "Learn how TidyZenic's powerful CRM tools can help you build stronger client relationships.",
+          link: "/blog/integrated-crm",
+          image: "https://placehold.co/400x200/4f46e5/ffffff?text=Integrated+CRM"
+        },
+        {
+          title: "Maximize Efficiency with Inventory Management",
+          summary: "A deep dive into how TidyZenic helps you track supplies and automate re-ordering.",
+          link: "/blog/inventory-management",
+          image: "https://placehold.co/400x200/4f46e5/ffffff?text=Inventory+Management"
+        }
+      ];
 
-                // Draw the circles at each point
-                coords.forEach(c => {
-                    ctx.beginPath();
-                    ctx.arc(c.x, c.y, 4, 0, 2 * Math.PI);
-                    ctx.fillStyle = 'white';
-                    ctx.strokeStyle = '#4f46e5';
-                    ctx.lineWidth = 2;
-                    ctx.fill();
-                    ctx.stroke();
-                });
-            }
+      // Placeholder data for the client reviews
+      const reviews = [
+        {
+          text: "TidyZenic has transformed my cleaning business. The AI scheduling is a game-changer and has saved me countless hours.",
+          author: "Jane Doe",
+          company: "Spotless Services"
+        },
+        {
+          text: "The white-label solution allowed me to launch my own platform in a fraction of the time. The support team is fantastic!",
+          author: "John Smith",
+          company: "Prime Plumbing"
+        },
+        {
+          text: "Seamless client management and marketing tools all in one place. My business has never been more organized.",
+          author: "Emily Chen",
+          company: "Garden Gurus"
+        }
+      ];
 
-            // Call the functions to load the dynamic content
-            renderBlogPosts();
-            renderReviews();
+      // Function to render blog posts
+      function renderBlogPosts() {
+        const blogGrid = document.getElementById('blog-grid');
+        const blogSkeleton = document.getElementById('blog-skeleton');
+        blogGrid.innerHTML = blogPosts.map(post => `
+          <a href="${post.link}" class="block rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition bg-white group">
+            <img src="${post.image}" alt="${post.title}" class="w-full h-44 object-cover">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-brand-700 transition">${post.title}</h3>
+              <p class="mt-2 text-sm text-gray-500">${post.summary}</p>
+            </div>
+          </a>
+        `).join('');
+        blogSkeleton.style.display = 'none'; // Hide skeleton after content is loaded
+      }
 
-            // Wait for the canvas to be ready before drawing
-            const chartCanvas = document.getElementById('revenueChart');
-            if (chartCanvas) {
-                const resizeObserver = new ResizeObserver(entries => {
-                    for (let entry of entries) {
-                        const { width, height } = entry.contentRect;
-                        chartCanvas.width = width;
-                        chartCanvas.height = height;
-                        drawChart();
-                    }
-                });
-                resizeObserver.observe(chartCanvas);
-            }
+      // Function to render reviews
+      function renderReviews() {
+        const reviewsGrid = document.getElementById('reviews-grid');
+        const reviewsSkeleton = document.getElementById('reviews-skeleton');
+        reviewsGrid.innerHTML = reviews.map(review => `
+          <div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
+            <p class="text-gray-600">"${review.text}"</p>
+            <div class="mt-4 text-sm font-semibold text-gray-900">
+              ${review.author}, <span class="text-gray-500 font-normal">${review.company}</span>
+            </div>
+          </div>
+        `).join('');
+        reviewsSkeleton.style.display = 'none'; // Hide skeleton after content is loaded
+      }
+
+      // Function to draw the chart on the canvas
+      function drawChart() {
+        const canvas = document.getElementById('revenueChart');
+        const ctx = canvas.getContext('2d');
+        const data = [10, 25, 20, 35, 30, 50];
+        const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+
+        const width = canvas.width;
+        const height = canvas.height;
+        const padding = 20;
+        const points = data.length;
+        const maxVal = Math.max(...data);
+
+        // Clear canvas
+        ctx.clearRect(0, 0, width, height);
+
+        // Create a gradient for the filled area
+        const areaGradient = ctx.createLinearGradient(0, 0, 0, height);
+        areaGradient.addColorStop(0, 'rgba(79, 70, 229, 0.4)');
+        areaGradient.addColorStop(1, 'rgba(79, 70, 229, 0)');
+
+        // Create a gradient for the line
+        const lineGradient = ctx.createLinearGradient(0, 0, width, 0);
+        lineGradient.addColorStop(0, 'rgba(79, 70, 229, 1)');
+        lineGradient.addColorStop(1, 'rgba(129, 140, 248, 1)');
+
+        // Get coordinates for each data point
+        const coords = data.map((d, i) => ({
+          x: padding + (i / (points - 1)) * (width - 2 * padding),
+          y: height - padding - (d / maxVal) * (height - 2 * padding)
+        }));
+
+        // Draw the filled area
+        ctx.beginPath();
+        ctx.moveTo(coords[0].x, height - padding);
+        coords.forEach(c => ctx.lineTo(c.x, c.y));
+        ctx.lineTo(coords[coords.length - 1].x, height - padding);
+        ctx.closePath();
+        ctx.fillStyle = areaGradient;
+        ctx.fill();
+
+        // Draw the line graph
+        ctx.beginPath();
+        ctx.moveTo(coords[0].x, coords[0].y);
+        for (let i = 1; i < points; i++) {
+          ctx.lineTo(coords[i].x, coords[i].y);
+        }
+        ctx.strokeStyle = lineGradient;
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+
+        // Draw the circles at each point
+        coords.forEach(c => {
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, 4, 0, 2 * Math.PI);
+          ctx.fillStyle = 'white';
+          ctx.strokeStyle = '#4f46e5';
+          ctx.lineWidth = 2;
+          ctx.fill();
+          ctx.stroke();
         });
-    </script>
+      }
+
+      // Call the functions to load the dynamic content
+      renderBlogPosts();
+      renderReviews();
+
+      // Wait for the canvas to be ready before drawing
+      const chartCanvas = document.getElementById('revenueChart');
+      if (chartCanvas) {
+        const resizeObserver = new ResizeObserver(entries => {
+          for (let entry of entries) {
+            const { width, height } = entry.contentRect;
+            chartCanvas.width = width;
+            chartCanvas.height = height;
+            drawChart();
+          }
+        });
+        resizeObserver.observe(chartCanvas);
+      }
+    });
+  </script>
 </body>
 </html>
