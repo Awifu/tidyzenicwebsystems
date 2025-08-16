@@ -15,7 +15,7 @@
     </button>
 
     <!-- Nav -->
-    <nav id="main-nav" class="hidden lg:flex">
+    <nav id="main-nav" class="mobile-nav hidden lg:flex">
       <ul class="nav-menu">
         <li class="nav-item has-submenu relative">
           <button id="features-toggle" class="submenu-toggle flex items-center gap-1">
@@ -52,14 +52,30 @@
     padding-top: 4.5rem; /* Prevent content hiding under header */
   }
 
-  /* Nav Styles */
-  .nav-menu {
-    display: flex;
+  /* Mobile Nav Animation */
+  .mobile-nav {
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
     flex-direction: column;
-    gap: 1rem;
   }
+
+  .mobile-nav.open {
+    max-height: 500px; /* enough for menu */
+    opacity: 1;
+  }
+
+  /* Desktop Nav */
   @media (min-width: 1024px) {
-    .nav-menu { flex-direction: row; gap: 2rem; }
+    .mobile-nav {
+      max-height: none;
+      opacity: 1;
+      overflow: visible;
+      display: flex !important;
+      flex-direction: row;
+      gap: 2rem;
+    }
   }
 
   /* Submenu */
@@ -81,9 +97,9 @@
   const featuresToggle = document.getElementById('features-toggle');
   const featuresSubmenu = document.getElementById('features-submenu');
 
-  // Main nav toggle (mobile/tablet only)
+  // Smooth slide nav toggle
   toggleBtn.addEventListener('click', () => {
-    nav.classList.toggle('hidden');
+    nav.classList.toggle('open');
   });
 
   // Features submenu toggle
