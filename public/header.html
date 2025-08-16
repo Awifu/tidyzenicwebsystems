@@ -1,34 +1,42 @@
-<header class="bg-white shadow">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2">
-      <img src="/logo.svg" alt="TidyZenic Logo" class="h-8 w-auto">
-      <span class="text-xl font-bold text-gray-900">TidyZenic</span>
-    </a>
+<header class="bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/">
+          <img src="./src/images/Tidyzenic.png" alt="TidyZenic" class="h-10 w-auto">
+        </a>
+      </div>
 
-    <!-- Desktop Nav -->
-    <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
-      <a href="#features" class="hover:text-brand-700 transition">Features</a>
-      <a href="#blog" class="hover:text-brand-700 transition">Blog</a>
-      <a href="#reviews" class="hover:text-brand-700 transition">Reviews</a>
-      <a href="#cta" class="hover:text-brand-700 transition">Get Started</a>
-    </nav>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="#features" class="text-gray-700 hover:text-brand-600 font-medium">Features</a>
+        <a href="#blog" class="text-gray-700 hover:text-brand-600 font-medium">Blog</a>
+        <a href="#reviews" class="text-gray-700 hover:text-brand-600 font-medium">Reviews</a>
+        <a href="#cta" class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition">Start Trial</a>
+      </nav>
 
-    <!-- Mobile Menu Button -->
-    <button id="mobile-nav-toggle" class="md:hidden p-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
+      <!-- Mobile Hamburger -->
+      <div class="flex items-center md:hidden">
+        <button id="mobile-nav-toggle" aria-label="Open Menu" class="text-gray-700 hover:text-brand-600 focus:outline-none">
+          <!-- Hamburger Icon -->
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Mobile Nav Drawer -->
-  <div id="mobile-nav" class="hidden md:hidden border-t border-gray-200 bg-white">
-    <nav class="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-gray-600">
-      <a href="#features" class="hover:text-brand-700 transition">Features</a>
-      <a href="#blog" class="hover:text-brand-700 transition">Blog</a>
-      <a href="#reviews" class="hover:text-brand-700 transition">Reviews</a>
-      <a href="#cta" class="hover:text-brand-700 transition">Get Started</a>
-    </nav>
+  <div id="mobile-nav" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="px-4 pt-4 pb-6 space-y-4">
+      <a href="#features" class="block text-gray-700 hover:text-brand-600 font-medium">Features</a>
+      <a href="#blog" class="block text-gray-700 hover:text-brand-600 font-medium">Blog</a>
+      <a href="#reviews" class="block text-gray-700 hover:text-brand-600 font-medium">Reviews</a>
+      <a href="#cta" class="block px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition text-center">Start Trial</a>
+    </div>
   </div>
 </header>
