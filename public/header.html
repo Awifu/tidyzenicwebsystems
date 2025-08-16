@@ -9,66 +9,79 @@
       </a>
     </div>
 
-    <!-- Hamburger (mobile & tablet only) -->
-    <button id="menu-toggle" 
-            class="block lg:hidden text-gray-700 focus:outline-none" 
-            aria-label="Toggle menu">
-      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
+    <!-- Hamburger (only mobile/tablet) -->
+    <button id="menu-toggle" class="hamburger lg-hidden" aria-label="Toggle menu">
+      ☰
     </button>
 
     <!-- Navigation -->
-    <nav id="main-nav" class="hidden w-full lg:flex lg:w-auto lg:items-center">
-      <ul class="nav-menu flex flex-col lg:flex-row gap-4 lg:gap-6 font-medium text-gray-700 mt-4 lg:mt-0">
-        
+    <nav id="main-nav" class="nav hidden lg-flex">
+      <ul class="nav-menu">
         <!-- Features with submenu -->
-        <li class="relative nav-item has-submenu">
-          <button id="features-toggle" 
-                  class="flex items-center justify-between w-full lg:w-auto hover:text-blue-600">
-            Features
-            <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd"
-                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
-                clip-rule="evenodd" />
-            </svg>
+        <li class="nav-item has-submenu">
+          <button id="features-toggle" class="submenu-toggle">
+            Features ▼
           </button>
-
-          <!-- Submenu -->
-          <ul id="features-submenu"
-              class="submenu hidden lg:absolute top-full left-0 bg-white shadow-lg border border-gray-200 mt-2 rounded-md w-56 z-50">
-            <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-50">Staff Management</a></li>
-            <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-50">Smart Scheduling</a></li>
-            <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-50">Price Estimate Tool</a></li>
-            <li><a href="/booking-form" class="block px-4 py-2 hover:bg-gray-50">Booking Form</a></li>
-            <li><a href="/advanced-marketing" class="block px-4 py-2 hover:bg-gray-50">Advanced Marketing</a></li>
+          <ul id="features-submenu" class="submenu hidden">
+            <li><a href="/staff-management">Staff Management</a></li>
+            <li><a href="/smart-scheduling">Smart Scheduling</a></li>
+            <li><a href="/price-estimate-tool">Price Estimate Tool</a></li>
+            <li><a href="/booking-form">Booking Form</a></li>
+            <li><a href="/advanced-marketing">Advanced Marketing</a></li>
           </ul>
         </li>
 
-        <!-- Other links -->
-        <li class="nav-item"><a href="/pricing" class="hover:text-blue-600">Pricing</a></li>
-        <li class="nav-item"><a href="/blog" class="hover:text-blue-600">Blog</a></li>
+        <li class="nav-item"><a href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a href="/blog">Blog</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- JS toggle for mobile nav + submenu -->
+<style>
+  /* Force styles if Tailwind is missing */
+  .hidden { display: none; }
+  .block { display: block; }
+  .lg-flex { display: flex; }
+  .lg-hidden { display: block; }
+  @media (min-width: 1024px) {
+    .lg-flex { display: flex !important; }
+    .lg-hidden { display: none !important; }
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  @media (min-width: 1024px) {
+    .nav-menu {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  .submenu { background: #fff; border: 1px solid #ddd; padding: 0.5rem; }
+  .submenu li { margin: 0.25rem 0; }
+  .submenu-toggle { background: none; border: none; cursor: pointer; font-weight: 600; }
+</style>
+
 <script>
   const toggleBtn = document.getElementById('menu-toggle');
   const nav = document.getElementById('main-nav');
   const featuresToggle = document.getElementById('features-toggle');
   const featuresSubmenu = document.getElementById('features-submenu');
 
-  // Main nav toggle
+  // Main nav toggle (mobile/tablet)
   toggleBtn.addEventListener('click', () => {
     nav.classList.toggle('hidden');
+    nav.classList.toggle('block');
   });
 
   // Features submenu toggle
   featuresToggle.addEventListener('click', (e) => {
     e.preventDefault();
     featuresSubmenu.classList.toggle('hidden');
+    featuresSubmenu.classList.toggle('block');
   });
 </script>
