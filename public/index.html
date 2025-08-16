@@ -28,14 +28,11 @@
     
    <!-- Hero -->
 <section class="relative overflow-hidden">
-  <!-- Background image with gradient overlay -->
-  <div class="absolute inset-0">
-    <img src="/image/background.png" alt="TidyZenic background" class="w-full h-full object-cover">
-    <div class="absolute inset-0 bg-gradient-to-br from-brand-700/90 via-brand-600/80 to-indigo-600/80"></div>
-  </div>
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-brand-700 via-brand-600 to-indigo-600"></div>
 
-  <!-- Content -->
-  <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28 text-white">
+  <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28 grid lg:grid-cols-2 items-center gap-12 text-white">
+    <!-- Left content -->
     <div class="max-w-3xl">
       <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
         Run your service business on one powerful platform.
@@ -48,12 +45,18 @@
         <a href="/pricing" 
            class="inline-flex items-center px-5 py-3 rounded-xl bg-white text-brand-700 font-semibold shadow hover:shadow-md transition hover:-translate-y-0.5">
           Start your 7-day free trial
-        </a> 
+        </a>
         <a href="#reviews" 
            class="inline-flex items-center px-5 py-3 rounded-xl ring-1 ring-white/50 text-white font-semibold hover:bg-white/10 transition">
           See Reviews
         </a>
       </div>
+    </div>
+
+    <!-- Right image -->
+    <div class="relative">
+      <img src="/images/smiling-man.png" alt="Happy customer using TidyZenic" 
+           class="w-full max-w-md mx-auto rounded-3xl shadow-2xl" />
     </div>
   </div>
 </section>
