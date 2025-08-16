@@ -19,12 +19,13 @@
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased font-sans">
-  
+
   <!-- Header (loaded dynamically) -->
   <div id="header-placeholder"></div>
 
   <!-- Main Content -->
-  <main>
+  <main class="pt-20"> <!-- ✅ added padding so content clears sticky header -->
+    
     <!-- Hero -->
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-brand-700 via-brand-600 to-indigo-600"></div>
@@ -49,63 +50,68 @@
       </div>
     </section>
 
-<!-- Key Features Section -->
-        <section id="features" class="bg-white">
-            <div class="max-w-7xl mx-auto px-6 py-16">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-2xl sm:text-3xl font-bold">The platform that grows with you.</h2>
-                    <p class="mt-4 text-lg text-gray-600">
-                        TidyZenic is built to scale, offering the powerful features you need to manage and expand your business.
-                    </p>
-                </div>
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                    <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
-                        <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
-                            <!-- New Icon for Smart Scheduling -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15h2m-2-4h2m-2-4h2" />
-                            </svg>
-                        </div>
-                        <div class="mt-4 font-bold text-lg">Smart Scheduling</div>
-                        <div class="mt-2 text-sm text-gray-500">Automate bookings and dispatch staff with AI-powered efficiency.</div>
-                    </div>
-                    <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
-                        <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
-                            <!-- New Icon for Staff Management -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.318A4.252 4.252 0 0015 6.5c0 1.242-.907 2.251-2.023 2.45a3.84 3.84 0 01-1.22-.056A4.252 4.252 0 009 6.5a4.252 4.252 0 003-2.182zM12 9.5c-4.664 0-8.5 2.15-8.5 4.75S7.336 19 12 19s8.5-2.15 8.5-4.75S16.664 9.5 12 9.5z" />
-                            </svg>
-                        </div>
-                        <div class="mt-4 font-bold text-lg">Staff Management</div>
-                        <div class="mt-2 text-sm text-gray-500">Simplify payroll, track performance, and manage teams with ease.</div>
-                    </div>
-                    <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
-                        <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
-                            <!-- New Icon for Inventory Management -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7L13 2 6 7l7 5 7-5z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12l-7 5-7-5" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 17l-7 5-7-5" />
-                            </svg>
-                        </div>
-                        <div class="mt-4 font-bold text-lg">Inventory Management</div>
-                        <div class="mt-2 text-sm text-gray-500">Track supplies, set low stock alerts, and automate re-ordering.</div>
-                    </div>
-                    <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
-                        <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
-                            <!-- New Icon for Advanced Marketing -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 10l5 5m7-10l5 5-5 5" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19v-4m0-4v-4m0-4v-4" />
-                            </svg>
-                        </div>
-                        <div class="mt-4 font-bold text-lg">Advanced Marketing</div>
-                        <div class="mt-2 text-sm text-gray-500">Launch campaigns, manage leads, and connect with clients via SMS and email.</div>
-                    </div>
-                </div>
+    <!-- Features -->
+    <section id="features" class="bg-white">
+      <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-2xl sm:text-3xl font-bold">The platform that grows with you.</h2>
+          <p class="mt-4 text-lg text-gray-600">
+            TidyZenic is built to scale, offering the powerful features you need to manage and expand your business.
+          </p>
+        </div>
+
+        <!-- Feature cards -->
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+          <!-- Smart Scheduling -->
+          <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15h2m-2-4h2m-2-4h2" />
+              </svg>
             </div>
-        </section>
+            <div class="mt-4 font-bold text-lg">Smart Scheduling</div>
+            <div class="mt-2 text-sm text-gray-500">Automate bookings and dispatch staff with AI-powered efficiency.</div>
+          </div>
+
+          <!-- Staff Management -->
+          <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.318A4.252 4.252 0 0015 6.5c0 1.242-.907 2.251-2.023 2.45a3.84 3.84 0 01-1.22-.056A4.252 4.252 0 009 6.5a4.252 4.252 0 003-2.182zM12 9.5c-4.664 0-8.5 2.15-8.5 4.75S7.336 19 12 19s8.5-2.15 8.5-4.75S16.664 9.5 12 9.5z" />
+              </svg>
+            </div>
+            <div class="mt-4 font-bold text-lg">Staff Management</div>
+            <div class="mt-2 text-sm text-gray-500">Simplify payroll, track performance, and manage teams with ease.</div>
+          </div>
+
+          <!-- Inventory Management -->
+          <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7L13 2 6 7l7 5 7-5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12l-7 5-7-5" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 17l-7 5-7-5" />
+              </svg>
+            </div>
+            <div class="mt-4 font-bold text-lg">Inventory Management</div>
+            <div class="mt-2 text-sm text-gray-500">Track supplies, set low stock alerts, and automate re-ordering.</div>
+          </div>
+
+          <!-- Advanced Marketing -->
+          <div class="p-6 rounded-3xl border border-gray-100 bg-gray-50 flex flex-col items-center shadow-sm hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 10l5 5m7-10l5 5-5 5" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19v-4m0-4v-4m0-4v-4" />
+              </svg>
+            </div>
+            <div class="mt-4 font-bold text-lg">Advanced Marketing</div>
+            <div class="mt-2 text-sm text-gray-500">Launch campaigns, manage leads, and connect with clients via SMS and email.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Analytics -->
     <section class="bg-gray-50">
