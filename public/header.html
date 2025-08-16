@@ -1,68 +1,90 @@
 <!-- public/header.html -->
-<header class="bg-white border-b border-gray-200 fixed top-0 left-0 w-full z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+<header class="main-header bg-white border-b border-gray-200">
+  <div class="container mx-auto flex items-center justify-between px-4 py-3">
     
     <!-- Logo -->
-    <a href="/" class="flex items-center">
-      <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-12 w-auto">
-    </a>
+    <div class="logo">
+      <a href="/">
+        <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-12 w-auto">
+      </a>
+    </div>
 
     <!-- Hamburger (mobile/tablet only) -->
-    <button id="menu-toggle" class="block text-2xl lg:hidden focus:outline-none" aria-label="Toggle menu">
+    <button id="menu-toggle" class="lg-hidden" aria-label="Toggle menu">
       ☰
     </button>
 
     <!-- Navigation -->
-    <nav id="main-nav" class="hidden lg:flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-8 font-medium text-gray-700 mt-4 lg:mt-0">
-      <div class="relative">
-        <button id="features-toggle" class="flex items-center hover:text-indigo-600">
-          Features
-          <span class="ml-1">▼</span>
-        </button>
-        <ul id="features-submenu" class="hidden absolute lg:absolute bg-white shadow-lg border border-gray-200 mt-2 rounded-md w-56">
-          <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-50">Staff Management</a></li>
-          <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-50">Smart Scheduling</a></li>
-          <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-50">Price Estimate Tool</a></li>
-          <li><a href="/booking-form" class="block px-4 py-2 hover:bg-gray-50">Booking Form</a></li>
-          <li><a href="/advanced-marketing" class="block px-4 py-2 hover:bg-gray-50">Advanced Marketing</a></li>
-        </ul>
-      </div>
+    <nav id="main-nav" class="hidden lg-flex">
+      <ul class="nav-menu">
+        <!-- Features with submenu -->
+        <li class="nav-item has-submenu">
+          <button id="features-toggle" class="submenu-toggle">
+            Features ▼
+          </button>
+          <ul id="features-submenu" class="submenu hidden">
+            <li><a href="/staff-management">Staff Management</a></li>
+            <li><a href="/smart-scheduling">Smart Scheduling</a></li>
+            <li><a href="/price-estimate-tool">Price Estimate Tool</a></li>
+            <li><a href="/booking-form">Booking Form</a></li>
+            <li><a href="/advanced-marketing">Advanced Marketing</a></li>
+          </ul>
+        </li>
 
-      <a href="/pricing" class="hover:text-indigo-600">Pricing</a>
-      <a href="/blog" class="hover:text-indigo-600">Blog</a>
+        <li class="nav-item"><a href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a href="/blog">Blog</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
 <style>
-  /* fallback utilities (if Tailwind not applied) */
+  /* Tailwind-like fallbacks */
   .hidden { display: none; }
+  .lg-hidden { display: block; }
+
   @media (min-width: 1024px) {
-    #menu-toggle { display: none; }   /* hide hamburger on desktop */
-    #main-nav   { display: flex !important; } /* nav always visible on desktop */
+    .lg-flex { display: flex !important; }   /* ✅ ensures nav is visible on desktop */
+    .lg-hidden { display: none !important; } /* ✅ hide hamburger on desktop */
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  @media (min-width: 1024px) {
+    .nav-menu { flex-direction: row; gap: 2rem; }
+  }
+
+  .submenu {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+  }
+  .submenu li { margin: 0.25rem 0; }
+  .submenu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
   }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.getElementById('menu-toggle');
-    const nav = document.getElementById('main-nav');
-    const featuresToggle = document.getElementById('features-toggle');
-    const featuresSubmenu = document.getElementById('features-submenu');
+  const toggleBtn = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+  const featuresToggle = document.getElementById('features-toggle');
+  const featuresSubmenu = document.getElementById('features-submenu');
 
-    // Hamburger menu toggle (mobile/tablet only)
-    if (toggleBtn && nav) {
-      toggleBtn.addEventListener('click', () => {
-        nav.classList.toggle('hidden');
-      });
-    }
+  // Main nav toggle (mobile/tablet only)
+  toggleBtn.addEventListener('click', () => {
+    nav.classList.toggle('hidden');
+  });
 
-    // Features submenu toggle
-    if (featuresToggle && featuresSubmenu) {
-      featuresToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        featuresSubmenu.classList.toggle('hidden');
-      });
-    }
+  // Features submenu toggle (always on click)
+  featuresToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    featuresSubmenu.classList.toggle('hidden');
   });
 </script>
