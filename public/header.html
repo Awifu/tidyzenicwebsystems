@@ -15,7 +15,7 @@
     </button>
 
     <!-- Navigation -->
-    <nav id="main-nav" class="hidden lg-flex">
+    <nav id="main-nav" class="hidden lg:flex">
       <ul class="nav-menu">
         <!-- Features with submenu -->
         <li class="nav-item has-submenu">
@@ -39,10 +39,10 @@
 </header>
 
 <style>
-  /* Tailwind fallbacks */
+  /* Fallback utility classes if Tailwind is missing */
   .hidden { display: none; }
-  .lg-flex { display: flex; }
   .lg-hidden { display: block; }
+
   @media (min-width: 1024px) {
     .lg-flex { display: flex !important; }
     .lg-hidden { display: none !important; }
@@ -79,12 +79,12 @@
 
   // Main nav toggle (mobile/tablet only)
   toggleBtn.addEventListener('click', () => {
-    nav.classList.toggle('hidden');  // only toggle hidden
+    nav.classList.toggle('hidden');
   });
 
   // Features submenu toggle
   featuresToggle.addEventListener('click', (e) => {
     e.preventDefault();
-    featuresSubmenu.classList.toggle('hidden'); // only toggle hidden
+    featuresSubmenu.classList.toggle('hidden');
   });
 </script>
