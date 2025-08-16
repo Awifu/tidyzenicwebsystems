@@ -1,15 +1,15 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
   content: [
-    "./public/**/*.html",
-    "./public/js/**/*.js",
-    "./src/**/*.{js,jsx,ts,tsx}"
+    "./index.html",        // root index.html
+    "./public/**/*.html",  // all html in /public
+    "./public/js/**/*.js"  // all js in /public/js
   ],
   theme: {
     extend: {
       colors: {
         brand: {
-          50:  "#f5f7ff",
+          50: "#f5f7ff",
           100: "#eaeefe",
           200: "#cfd9fd",
           300: "#a7bbfb",
@@ -24,4 +24,4 @@ module.exports = {
     }
   },
   plugins: [],
-}
+};
