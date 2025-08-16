@@ -194,18 +194,28 @@
       </div>
     </section>
 
-    <!-- Reviews -->
-    <section id="reviews" class="bg-gray-50">
-      <div class="max-w-7xl mx-auto px-6 py-16">
-        <h2 class="text-2xl sm:text-3xl font-bold">What our clients say</h2>
-        <div id="reviews-skeleton" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
-          <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
-          <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
-        </div>
-        <div id="reviews-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-      </div>
-    </section>
+<!-- Reviews -->
+<section id="reviews" class="bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-2xl sm:text-3xl font-bold">What our clients say</h2>
+      <a href="/reviews" class="text-brand-700 hover:text-brand-900 font-medium">
+        View all →
+      </a>
+    </div>
+
+    <!-- Skeleton loading state -->
+    <div id="reviews-skeleton" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
+      <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
+      <div class="animate-pulse rounded-2xl bg-gray-200 h-40"></div>
+    </div>
+
+    <!-- Actual reviews will load here -->
+    <div id="reviews-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
 
     <!-- CTA -->
     <section id="cta" class="bg-brand-600 text-white">
