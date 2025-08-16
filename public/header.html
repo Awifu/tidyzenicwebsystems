@@ -1,27 +1,27 @@
 <header class="bg-white border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-20"> <!-- taller header -->
+    <div class="flex justify-between h-24"> <!-- taller header -->
       
       <!-- Logo -->
       <div class="flex-shrink-0 flex items-center">
         <a href="/">
-          <img src="/images/Tidyzenic.png" alt="TidyZenic" class="h-14 md:h-16 w-auto"> <!-- bigger logo -->
+          <img src="/images/Tidyzenic.png" alt="TidyZenic" class="h-20 md:h-24 w-auto"> <!-- BIG logo -->
         </a>
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex space-x-8 items-center">
+      <nav class="hidden md:flex space-x-10 items-center text-lg"> <!-- larger spacing + font -->
         <a href="#features" class="text-gray-700 hover:text-brand-600 font-medium">Features</a>
         <a href="#blog" class="text-gray-700 hover:text-brand-600 font-medium">Blog</a>
         <a href="#reviews" class="text-gray-700 hover:text-brand-600 font-medium">Reviews</a>
-        <a href="#cta" class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition">Start Trial</a>
+        <a href="#cta" class="px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition">Start Trial</a>
       </nav>
 
       <!-- Mobile Hamburger -->
       <div class="flex items-center md:hidden">
         <button id="mobile-nav-toggle" aria-label="Open Menu" class="text-gray-700 hover:text-brand-600 focus:outline-none">
           <!-- Hamburger Icon -->
-          <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -32,11 +32,11 @@
 
   <!-- Mobile Nav Drawer -->
   <div id="mobile-nav" class="hidden md:hidden bg-white border-t border-gray-200">
-    <div class="px-4 pt-4 pb-6 space-y-4">
+    <div class="px-4 pt-6 pb-8 space-y-6 text-lg"> <!-- bigger text and spacing -->
       <a href="#features" class="block text-gray-700 hover:text-brand-600 font-medium">Features</a>
       <a href="#blog" class="block text-gray-700 hover:text-brand-600 font-medium">Blog</a>
       <a href="#reviews" class="block text-gray-700 hover:text-brand-600 font-medium">Reviews</a>
-      <a href="#cta" class="block px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition text-center">Start Trial</a>
+      <a href="#cta" class="block px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition text-center">Start Trial</a>
     </div>
   </div>
 </header>
