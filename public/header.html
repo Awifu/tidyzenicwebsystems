@@ -15,8 +15,8 @@
     </button>
 
     <!-- Nav -->
-    <nav id="main-nav" class="hidden lg:flex">
-      <ul class="nav-menu flex flex-col lg:flex-row gap-4 lg:gap-8">
+    <nav id="main-nav" class="hidden lg:flex flex-col lg:flex-row gap-4 lg:gap-8">
+      <ul class="nav-menu">
         <li class="nav-item has-submenu relative">
           <button id="features-toggle" class="submenu-toggle flex items-center gap-1">
             Features <span>▼</span>
@@ -50,28 +50,38 @@
     padding-top: 4.5rem; /* Prevents overlap */
   }
 
-  /* Mobile Nav (default hidden) */
+  /* Mobile Nav (collapsed by default) */
   #main-nav {
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
   }
   #main-nav.open {
-    display: block !important;
-    max-height: 500px;
-    opacity: 1;
+    display: flex; /* Open as flex on mobile */
   }
 
   /* Desktop Override */
   @media (min-width: 1024px) {
     #main-nav {
       display: flex !important;
-      max-height: none !important;
-      opacity: 1 !important;
-      overflow: visible !important;
+      flex-direction: row;
+      gap: 2rem;
     }
     #menu-toggle {
       display: none !important; /* Hide hamburger on desktop */
     }
+  }
+
+  /* Submenu */
+  .submenu {
+    border: 1px solid #e5e7eb;
+  }
+  .submenu li { margin: 0; }
+  .submenu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
   }
 </style>
 
