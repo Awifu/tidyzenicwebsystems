@@ -1,23 +1,18 @@
-<!-- public/header.html -->
 <header class="main-header bg-white border-b border-gray-200">
   <div class="container mx-auto flex items-center justify-between px-4 py-3">
-    
-    <!-- Logo -->
+
     <div class="logo">
       <a href="/">
         <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-12 w-auto">
       </a>
     </div>
 
-    <!-- Hamburger (mobile/tablet only) -->
     <button id="menu-toggle" class="lg-hidden" aria-label="Toggle menu">
       ☰
     </button>
 
-    <!-- Navigation -->
     <nav id="main-nav" class="hidden lg-flex">
       <ul class="nav-menu">
-        <!-- Features with submenu -->
         <li class="nav-item has-submenu">
           <button id="features-toggle" class="submenu-toggle">
             Features ▼
@@ -44,10 +39,24 @@
   .lg-hidden { display: block; }
 
   @media (min-width: 1024px) {
-    .lg-flex { display: flex !important; }   /* ✅ ensures nav is visible on desktop */
-    .lg-hidden { display: none !important; } /* ✅ hide hamburger on desktop */
+    .lg-flex { display: flex !important; }
+    .lg-hidden { display: none !important; }
   }
 
+  /* ------------------------------------
+  🚀 Header Sticky Styles
+  ------------------------------------
+  */
+  .main-header {
+    position: sticky;
+    top: 0;
+    z-index: 100; /* Ensures the header stays on top of other content */
+  }
+
+  /* ------------------------------------
+  📦 Existing Nav Styles
+  ------------------------------------
+  */
   .nav-menu {
     display: flex;
     flex-direction: column;
