@@ -1,9 +1,10 @@
-// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./index.html",        // root index.html
-    "./public/**/*.html",  // all html in /public
-    "./public/js/**/*.js"  // all js in /public/js
+    "./public/index.html",   // 👈 main HTML file
+    "./public/**/*.html",    // any other HTML inside /public
+    "./public/js/**/*.js",   // JS files using Tailwind classes
+    "./src/**/*.js"          // if you add React/JS modules later
   ],
   theme: {
     extend: {
@@ -23,5 +24,5 @@ module.exports = {
       }
     }
   },
-  plugins: [],
+  plugins: []
 };
