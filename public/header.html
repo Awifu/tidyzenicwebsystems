@@ -1,45 +1,57 @@
-<header class="bg-white border-b border-gray-100 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<header class="bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+    
+    <!-- Logo -->
+    <a href="/" class="flex items-center">
+      <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-8 w-auto">
+    </a>
 
-
-    <!-- Desktop Nav -->
-    <nav class="hidden md:flex items-center gap-6">
-      <a href="#features" class="text-gray-700 hover:text-brand-700 transition">Features</a>
-      <a href="#blog" class="text-gray-700 hover:text-brand-700 transition">Blog</a>
-      <a href="#reviews" class="text-gray-700 hover:text-brand-700 transition">Reviews</a>
-      <a href="#cta" class="px-4 py-2 rounded-lg bg-brand-600 text-white font-medium shadow hover:bg-brand-700 transition">
-        Start Free
-      </a>
+    <!-- Navigation -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+      <a href="#features" class="hover:text-brand-600 transition">Features</a>
+      <a href="#analytics" class="hover:text-brand-600 transition">Analytics</a>
+      <a href="#blog" class="hover:text-brand-600 transition">Blog</a>
+      <a href="#reviews" class="hover:text-brand-600 transition">Reviews</a>
     </nav>
 
+    <!-- CTA Button -->
+    <div class="hidden md:flex">
+      <a href="#cta" class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition shadow">
+        Start Free Trial
+      </a>
+    </div>
+
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Toggle menu">
-      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
+    <button id="mobile-menu-button" class="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
     </button>
   </div>
 
-  <!-- Mobile Nav -->
+  <!-- Mobile Menu (hidden by default) -->
   <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
-    <nav class="px-6 py-4 flex flex-col gap-3">
-      <a href="#features" class="text-gray-700 hover:text-brand-700 transition">Features</a>
-      <a href="#blog" class="text-gray-700 hover:text-brand-700 transition">Blog</a>
-      <a href="#reviews" class="text-gray-700 hover:text-brand-700 transition">Reviews</a>
-      <a href="#cta" class="px-4 py-2 rounded-lg bg-brand-600 text-white font-medium shadow hover:bg-brand-700 transition">
-        Start Free
+    <nav class="px-6 py-4 space-y-3 text-sm font-medium text-gray-700">
+      <a href="#features" class="block hover:text-brand-600 transition">Features</a>
+      <a href="#analytics" class="block hover:text-brand-600 transition">Analytics</a>
+      <a href="#blog" class="block hover:text-brand-600 transition">Blog</a>
+      <a href="#reviews" class="block hover:text-brand-600 transition">Reviews</a>
+      <a href="#cta" class="block px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition text-center">
+        Start Free Trial
       </a>
     </nav>
   </div>
 
   <script>
+    // Mobile menu toggle
     document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("mobile-menu-button");
+      const button = document.getElementById("mobile-menu-button");
       const menu = document.getElementById("mobile-menu");
-      btn.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-      });
+      if (button && menu) {
+        button.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      }
     });
   </script>
 </header>

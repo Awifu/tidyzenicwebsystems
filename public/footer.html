@@ -1,44 +1,62 @@
 <footer class="bg-gray-900 text-gray-400">
-  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-    <!-- Logo & About -->
+  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+    
+    <!-- Logo + Tagline -->
     <div>
-      <a href="/" class="flex items-center gap-2 text-white font-bold text-lg">
-        <img src="/images/logo-light.svg" alt="TidyZenic" class="h-8 w-auto">
-        TidyZenic
+      <a href="/" class="flex items-center mb-4">
+        <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-8 w-auto">
       </a>
-      <p class="mt-4 text-sm text-gray-400">
-        AI-powered tools to manage bookings, staff, inventory, CRM, and marketing—all in one place.
+      <p class="text-sm text-gray-400">
+        AI-powered suite to simplify scheduling, staff ops, and growth.
       </p>
     </div>
 
     <!-- Links -->
     <div>
-      <h3 class="text-white font-semibold">Company</h3>
-      <ul class="mt-4 space-y-2">
+      <h4 class="text-white font-semibold mb-3">Product</h4>
+      <ul class="space-y-2 text-sm">
         <li><a href="#features" class="hover:text-white transition">Features</a></li>
+        <li><a href="#analytics" class="hover:text-white transition">Analytics</a></li>
         <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
         <li><a href="#reviews" class="hover:text-white transition">Reviews</a></li>
-        <li><a href="#cta" class="hover:text-white transition">Start Free Trial</a></li>
       </ul>
     </div>
 
-    <!-- Contact -->
     <div>
-      <h3 class="text-white font-semibold">Get in Touch</h3>
-      <ul class="mt-4 space-y-2">
-        <li>Email: <a href="mailto:support@tidyzenic.com" class="hover:text-white transition">support@tidyzenic.com</a></li>
-        <li>Twitter: <a href="https://twitter.com/tidyzenic" target="_blank" class="hover:text-white transition">@tidyzenic</a></li>
+      <h4 class="text-white font-semibold mb-3">Company</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/about" class="hover:text-white transition">About</a></li>
+        <li><a href="/careers" class="hover:text-white transition">Careers</a></li>
+        <li><a href="/contact" class="hover:text-white transition">Contact</a></li>
+        <li><a href="/support" class="hover:text-white transition">Support</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-white font-semibold mb-3">Follow Us</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="https://twitter.com" target="_blank" class="hover:text-white transition">Twitter</a></li>
+        <li><a href="https://linkedin.com" target="_blank" class="hover:text-white transition">LinkedIn</a></li>
+        <li><a href="https://facebook.com" target="_blank" class="hover:text-white transition">Facebook</a></li>
       </ul>
     </div>
   </div>
 
-  <div class="border-t border-gray-800 text-center py-6 text-sm text-gray-500">
-    © <span id="year"></span> TidyZenic. All rights reserved.
+  <!-- Bottom Bar -->
+  <div class="border-t border-gray-800 mt-8">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
+      <p>© <span id="year"></span> TidyZenic. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 sm:mt-0">
+        <a href="/privacy" class="hover:text-white transition">Privacy</a>
+        <a href="/terms" class="hover:text-white transition">Terms</a>
+      </div>
+    </div>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("year").textContent = new Date().getFullYear();
+      const yearSpan = document.getElementById("year");
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
     });
   </script>
 </footer>
