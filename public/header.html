@@ -9,50 +9,66 @@
       </a>
     </div>
 
-    <!-- Hamburger (mobile & tablet only) -->
-    <button id="menu-toggle" class="block lg:hidden text-gray-700 focus:outline-none" aria-label="Toggle menu">
+    <!-- Hamburger (mobile/tablet only) -->
+    <button id="menu-toggle" class="lg-hidden" aria-label="Toggle menu">
       ☰
     </button>
 
     <!-- Navigation -->
-    <nav id="main-nav" class="hidden lg:flex w-full lg:w-auto lg:items-center mt-4 lg:mt-0">
-      <ul class="nav-menu flex flex-col lg:flex-row gap-4 lg:gap-6 font-medium text-gray-700">
-        
+    <nav id="main-nav" class="hidden lg-flex">
+      <ul class="nav-menu">
         <!-- Features with submenu -->
-        <li class="relative nav-item has-submenu">
-          <button id="features-toggle" 
-                  class="flex items-center justify-between w-full lg:w-auto hover:text-blue-600">
-            Features
-            <span class="ml-1">▼</span>
+        <li class="nav-item has-submenu">
+          <button id="features-toggle" class="submenu-toggle">
+            Features ▼
           </button>
-          <ul id="features-submenu" class="submenu hidden absolute lg:static bg-white border border-gray-200 mt-2 lg:mt-0 rounded-md w-56 lg:w-auto">
-            <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-50">Staff Management</a></li>
-            <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-50">Smart Scheduling</a></li>
-            <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-50">Price Estimate Tool</a></li>
-            <li><a href="/booking-form" class="block px-4 py-2 hover:bg-gray-50">Booking Form</a></li>
-            <li><a href="/advanced-marketing" class="block px-4 py-2 hover:bg-gray-50">Advanced Marketing</a></li>
+          <ul id="features-submenu" class="submenu hidden">
+            <li><a href="/staff-management">Staff Management</a></li>
+            <li><a href="/smart-scheduling">Smart Scheduling</a></li>
+            <li><a href="/price-estimate-tool">Price Estimate Tool</a></li>
+            <li><a href="/booking-form">Booking Form</a></li>
+            <li><a href="/advanced-marketing">Advanced Marketing</a></li>
           </ul>
         </li>
 
-        <!-- Other links -->
-        <li class="nav-item"><a href="/pricing" class="hover:text-blue-600">Pricing</a></li>
-        <li class="nav-item"><a href="/blog" class="hover:text-blue-600">Blog</a></li>
+        <li class="nav-item"><a href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a href="/blog">Blog</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <style>
-  /* Fallbacks if Tailwind is missing */
+  /* Tailwind fallbacks */
   .hidden { display: none; }
-  .block { display: block; }
   .lg-flex { display: flex; }
+  .lg-hidden { display: block; }
   @media (min-width: 1024px) {
-    #menu-toggle { display: none !important; } /* hide hamburger on desktop */
-    #main-nav { display: flex !important; }   /* always show nav on desktop */
-    #features-submenu { position: absolute; } /* dropdown style */
+    .lg-flex { display: flex !important; }
+    .lg-hidden { display: none !important; }
   }
-  .submenu li { margin: 0; }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  @media (min-width: 1024px) {
+    .nav-menu { flex-direction: row; gap: 2rem; }
+  }
+
+  .submenu {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+  }
+  .submenu li { margin: 0.25rem 0; }
+  .submenu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+  }
 </style>
 
 <script>
@@ -63,12 +79,12 @@
 
   // Main nav toggle (mobile/tablet only)
   toggleBtn.addEventListener('click', () => {
-    nav.classList.toggle('hidden');
+    nav.classList.toggle('hidden');  // only toggle hidden
   });
 
-  // Features submenu toggle (mobile & desktop both)
+  // Features submenu toggle
   featuresToggle.addEventListener('click', (e) => {
     e.preventDefault();
-    featuresSubmenu.classList.toggle('hidden');
+    featuresSubmenu.classList.toggle('hidden'); // only toggle hidden
   });
 </script>
