@@ -1,7 +1,22 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40" fill="none">
-  <rect width="120" height="40" rx="8" fill="#4F46E5"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" 
-        font-family="Arial, sans-serif" font-size="16" fill="white">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" class="h-20 w-auto">
+  <defs>
+    <!-- Gradient brand colors -->
+    <linearGradient id="tz-premium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"></stop>
+      <stop offset="50%" stop-color="#4f46e5"></stop>
+      <stop offset="100%" stop-color="#4338ca"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: gradient orb with spark -->
+  <g transform="translate(20,20)">
+    <circle cx="40" cy="40" r="40" fill="url(#tz-premium)"></circle>
+    <path d="M40 10 L55 40 L40 70 L25 40 Z" fill="white" opacity="0.9"></path>
+    <circle cx="40" cy="40" r="10" fill="white"></circle>
+  </g>
+
+  <!-- Wordmark: continuous -->
+  <text x="120" y="75" font-size="48" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-weight="700" fill="url(#tz-premium)">
     TidyZenic
   </text>
 </svg>
