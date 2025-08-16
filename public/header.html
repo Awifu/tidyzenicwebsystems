@@ -1,9 +1,8 @@
 <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 text-brand-700 font-bold text-xl">
-      <img src="/images/logo-light.svg" alt="TidyZenic logo" class="h-8 w-auto">
-      <span class="hidden sm:inline">TidyZenic</span>
+    <a href="/" class="flex items-center">
+      <img src="/images/logo-light.svg" alt="TidyZenic" class="h-8 w-auto">
     </a>
 
     <!-- Desktop Nav -->
@@ -17,17 +16,10 @@
     </nav>
 
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-button"
-      class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-600">
-      <svg id="hamburger-icon" class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none"
-        viewBox="0 0 24 24" stroke="currentColor">
+    <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Toggle menu">
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <svg id="close-icon" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
-        viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
   </div>
@@ -48,13 +40,8 @@
     document.addEventListener("DOMContentLoaded", () => {
       const btn = document.getElementById("mobile-menu-button");
       const menu = document.getElementById("mobile-menu");
-      const hamburgerIcon = document.getElementById("hamburger-icon");
-      const closeIcon = document.getElementById("close-icon");
-
       btn.addEventListener("click", () => {
         menu.classList.toggle("hidden");
-        hamburgerIcon.classList.toggle("hidden");
-        closeIcon.classList.toggle("hidden");
       });
     });
   </script>
