@@ -1,1 +1,91 @@
-ddfdsf
+<header class="fixed top-0 left-0 right-0 bg-white border-b border-gray-100 shadow-sm z-50">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center">
+      <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-12 w-auto">
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-10 text-base font-medium text-gray-700">
+      <a href="#features" class="hover:text-brand-600 transition">Features</a>
+      <a href="#analytics" class="hover:text-brand-600 transition">Analytics</a>
+      <a href="#blog" class="hover:text-brand-600 transition">Blog</a>
+      <a href="#reviews" class="hover:text-brand-600 transition">Reviews</a>
+    </nav>
+
+    <!-- CTA Button (Desktop only) -->
+    <div class="hidden md:flex">
+      <a href="#cta" class="px-5 py-2.5 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition shadow-md">
+        Start Free Trial
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-button" class="relative md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none" aria-label="Toggle menu">
+      <div class="space-y-1.5">
+        <span class="block w-6 h-0.5 bg-current transition-transform duration-300 origin-center"></span>
+        <span class="block w-6 h-0.5 bg-current transition-opacity duration-300"></span>
+        <span class="block w-6 h-0.5 bg-current transition-transform duration-300 origin-center"></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu"
+       class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out md:hidden border-t border-gray-100 bg-white">
+    <nav class="px-6 py-4 space-y-4 text-base font-medium text-gray-700">
+      <a href="#features" class="block opacity-0 translate-y-2 transition duration-500">Features</a>
+      <a href="#analytics" class="block opacity-0 translate-y-2 transition duration-500">Analytics</a>
+      <a href="#blog" class="block opacity-0 translate-y-2 transition duration-500">Blog</a>
+      <a href="#reviews" class="block opacity-0 translate-y-2 transition duration-500">Reviews</a>
+      <a href="#cta" class="block px-5 py-2.5 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition text-center shadow opacity-0 translate-y-2 duration-500">
+        Start Free Trial
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    // Mobile menu toggle with slide + staggered fade-in + hamburger morph
+    document.addEventListener("DOMContentLoaded", () => {
+      const button = document.getElementById("mobile-menu-button");
+      const bars = button.querySelectorAll("span");
+      const menu = document.getElementById("mobile-menu");
+      const links = menu.querySelectorAll("a");
+
+      let open = false;
+
+      button.addEventListener("click", () => {
+        open = !open;
+        menu.classList.toggle("max-h-0");
+        menu.classList.toggle("max-h-screen");
+
+        if (open) {
+          // Morph hamburger to X
+          bars[0].classList.add("rotate-45", "translate-y-2");
+          bars[1].classList.add("opacity-0");
+          bars[2].classList.add("-rotate-45", "-translate-y-2");
+
+          // Stagger fade-in
+          links.forEach((link, i) => {
+            setTimeout(() => {
+              link.classList.remove("opacity-0", "translate-y-2");
+              link.classList.add("opacity-100", "translate-y-0");
+            }, i * 100);
+          });
+        } else {
+          // Morph X back to hamburger
+          bars[0].classList.remove("rotate-45", "translate-y-2");
+          bars[1].classList.remove("opacity-0");
+          bars[2].classList.remove("-rotate-45", "-translate-y-2");
+
+          // Hide instantly
+          links.forEach((link) => {
+            link.classList.add("opacity-0", "translate-y-2");
+            link.classList.remove("opacity-100", "translate-y-0");
+          });
+        }
+      });
+    });
+  </script>
+</header>
