@@ -114,13 +114,17 @@
 
   </div>
 
-  <div class="border-t border-gray-800 text-center py-6 text-sm text-gray-500">
+  <!-- Bottom Bar -->
+<div class="border-t border-gray-800 py-6">
+  <p class="text-center text-sm text-gray-500">
     © <span id="year"></span> TidyZenic. All rights reserved.
-  </div>
+  </p>
+</div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("year").textContent = new Date().getFullYear();
-    });
-  </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("year").textContent = new Date().getFullYear();
+  });
+</script>
+
 </footer>
