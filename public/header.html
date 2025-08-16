@@ -10,12 +10,12 @@
     </div>
 
     <!-- Mobile Menu Button (mobile & tablet only) -->
-    <button id="menu-toggle" class="block lg:hidden text-2xl" aria-label="Toggle menu">
+    <button id="menu-toggle" class="lg:hidden text-2xl" aria-label="Toggle menu">
       ☰
     </button>
 
     <!-- Nav -->
-    <nav id="main-nav" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:gap-8">
+    <nav id="main-nav" class="hidden lg:flex">
       <ul class="nav-menu flex flex-col lg:flex-row gap-4 lg:gap-8">
         <li class="nav-item has-submenu relative">
           <button id="features-toggle" class="submenu-toggle flex items-center gap-1">
@@ -29,9 +29,8 @@
             <li><a href="/advanced-marketing" class="block px-4 py-2 hover:bg-gray-100">Advanced Marketing</a></li>
           </ul>
         </li>
-
-        <li class="nav-item"><a href="/pricing" class="hover:text-brand-600">Pricing</a></li>
-        <li class="nav-item"><a href="/blog" class="hover:text-brand-600">Blog</a></li>
+        <li><a href="/pricing" class="hover:text-brand-600">Pricing</a></li>
+        <li><a href="/blog" class="hover:text-brand-600">Blog</a></li>
       </ul>
     </nav>
   </div>
@@ -47,27 +46,22 @@
     z-index: 100;
     background: #fff;
   }
-
   body {
-    padding-top: 4.5rem; /* Prevent content hiding under header */
+    padding-top: 4.5rem; /* Prevents overlap */
   }
 
-  /* Mobile Nav Animation */
-  @media (max-width: 1023px) {
-    #main-nav {
-      transition: max-height 0.4s ease, opacity 0.3s ease;
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-    }
-    #main-nav.open {
-      display: flex !important;
-      max-height: 500px;
-      opacity: 1;
-    }
+  /* Mobile Nav (default hidden) */
+  #main-nav {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+  }
+  #main-nav.open {
+    display: block !important;
+    max-height: 500px;
+    opacity: 1;
   }
 
-  /* Desktop Nav */
+  /* Desktop Override */
   @media (min-width: 1024px) {
     #main-nav {
       display: flex !important;
@@ -75,18 +69,9 @@
       opacity: 1 !important;
       overflow: visible !important;
     }
-  }
-
-  /* Submenu */
-  .submenu {
-    border: 1px solid #e5e7eb;
-  }
-  .submenu li { margin: 0; }
-  .submenu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
+    #menu-toggle {
+      display: none !important; /* Hide hamburger on desktop */
+    }
   }
 </style>
 
@@ -96,12 +81,12 @@
   const featuresToggle = document.getElementById('features-toggle');
   const featuresSubmenu = document.getElementById('features-submenu');
 
-  // Toggle mobile nav
+  // Mobile menu toggle
   toggleBtn.addEventListener('click', () => {
     nav.classList.toggle('open');
   });
 
-  // Toggle submenu
+  // Features submenu toggle
   featuresToggle.addEventListener('click', (e) => {
     e.preventDefault();
     featuresSubmenu.classList.toggle('hidden');
