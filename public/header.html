@@ -10,7 +10,9 @@
     </div>
 
     <!-- Hamburger (mobile & tablet only) -->
-    <button id="menu-toggle" class="lg:hidden text-gray-700 focus:outline-none" aria-label="Toggle menu">
+    <button id="menu-toggle" 
+            class="block lg:hidden text-gray-700 focus:outline-none" 
+            aria-label="Toggle menu">
       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M4 6h16M4 12h16M4 18h16" />
@@ -18,12 +20,13 @@
     </button>
 
     <!-- Navigation -->
-    <nav id="main-nav" class="hidden lg:block w-full lg:w-auto mt-4 lg:mt-0">
-      <ul class="nav-menu flex flex-col lg:flex-row gap-4 lg:gap-6 font-medium text-gray-700">
+    <nav id="main-nav" class="hidden w-full lg:flex lg:w-auto lg:items-center">
+      <ul class="nav-menu flex flex-col lg:flex-row gap-4 lg:gap-6 font-medium text-gray-700 mt-4 lg:mt-0">
         
         <!-- Features with submenu -->
         <li class="relative nav-item has-submenu">
-          <button id="features-toggle" class="flex items-center justify-between w-full lg:w-auto hover:text-blue-600">
+          <button id="features-toggle" 
+                  class="flex items-center justify-between w-full lg:w-auto hover:text-blue-600">
             Features
             <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd"
@@ -34,7 +37,7 @@
 
           <!-- Submenu -->
           <ul id="features-submenu"
-            class="submenu hidden lg:absolute top-full left-0 bg-white shadow-lg border border-gray-200 mt-2 rounded-md w-56 z-50">
+              class="submenu hidden lg:absolute top-full left-0 bg-white shadow-lg border border-gray-200 mt-2 rounded-md w-56 z-50">
             <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-50">Staff Management</a></li>
             <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-50">Smart Scheduling</a></li>
             <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-50">Price Estimate Tool</a></li>
@@ -58,16 +61,14 @@
   const featuresToggle = document.getElementById('features-toggle');
   const featuresSubmenu = document.getElementById('features-submenu');
 
-  // Main nav toggle (mobile & tablet only)
+  // Main nav toggle
   toggleBtn.addEventListener('click', () => {
     nav.classList.toggle('hidden');
-    nav.classList.toggle('block');
   });
 
-  // Features submenu toggle (always on click)
+  // Features submenu toggle
   featuresToggle.addEventListener('click', (e) => {
-    e.preventDefault(); // prevent accidental navigation
+    e.preventDefault();
     featuresSubmenu.classList.toggle('hidden');
-    featuresSubmenu.classList.toggle('block');
   });
 </script>
