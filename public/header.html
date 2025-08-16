@@ -1,62 +1,58 @@
-<header class="main-header bg-white border-b border-gray-200">
+<!-- HEADER -->
+<header class="main-header bg-white border-b border-gray-200 shadow-sm">
   <div class="container mx-auto flex items-center justify-between px-4 py-3">
 
+    <!-- Logo -->
     <div class="logo">
       <a href="/">
         <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-12 w-auto">
       </a>
     </div>
 
-    <button id="menu-toggle" class="lg-hidden" aria-label="Toggle menu">
+    <!-- Mobile Menu Button -->
+    <button id="menu-toggle" class="lg:hidden text-2xl" aria-label="Toggle menu">
       ☰
     </button>
 
-    <nav id="main-nav" class="hidden lg-flex">
+    <!-- Nav -->
+    <nav id="main-nav" class="hidden lg:flex">
       <ul class="nav-menu">
-        <li class="nav-item has-submenu">
-          <button id="features-toggle" class="submenu-toggle">
-            Features ▼
+        <li class="nav-item has-submenu relative">
+          <button id="features-toggle" class="submenu-toggle flex items-center gap-1">
+            Features <span>▼</span>
           </button>
-          <ul id="features-submenu" class="submenu hidden">
-            <li><a href="/staff-management">Staff Management</a></li>
-            <li><a href="/smart-scheduling">Smart Scheduling</a></li>
-            <li><a href="/price-estimate-tool">Price Estimate Tool</a></li>
-            <li><a href="/booking-form">Booking Form</a></li>
-            <li><a href="/advanced-marketing">Advanced Marketing</a></li>
+          <ul id="features-submenu" class="submenu hidden absolute mt-2 bg-white shadow-lg rounded-md w-48">
+            <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-100">Staff Management</a></li>
+            <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-100">Smart Scheduling</a></li>
+            <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-100">Price Estimate Tool</a></li>
+            <li><a href="/booking-form" class="block px-4 py-2 hover:bg-gray-100">Booking Form</a></li>
+            <li><a href="/advanced-marketing" class="block px-4 py-2 hover:bg-gray-100">Advanced Marketing</a></li>
           </ul>
         </li>
 
-        <li class="nav-item"><a href="/pricing">Pricing</a></li>
-        <li class="nav-item"><a href="/blog">Blog</a></li>
+        <li class="nav-item"><a href="/pricing" class="hover:text-brand-600">Pricing</a></li>
+        <li class="nav-item"><a href="/blog" class="hover:text-brand-600">Blog</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <style>
-  /* Tailwind-like fallbacks */
-  .hidden { display: none; }
-  .lg-hidden { display: block; }
-
-  @media (min-width: 1024px) {
-    .lg-flex { display: flex !important; }
-    .lg-hidden { display: none !important; }
-  }
-
-  /* ------------------------------------
-  🚀 Header Sticky Styles
-  ------------------------------------
-  */
+  /* Fixed Header */
   .main-header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100; /* Ensures the header stays on top of other content */
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #fff;
   }
 
-  /* ------------------------------------
-  📦 Existing Nav Styles
-  ------------------------------------
-  */
+  body {
+    padding-top: 4.5rem; /* Prevent content hiding under header */
+  }
+
+  /* Nav Styles */
   .nav-menu {
     display: flex;
     flex-direction: column;
@@ -66,12 +62,11 @@
     .nav-menu { flex-direction: row; gap: 2rem; }
   }
 
+  /* Submenu */
   .submenu {
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
   }
-  .submenu li { margin: 0.25rem 0; }
+  .submenu li { margin: 0; }
   .submenu-toggle {
     background: none;
     border: none;
@@ -91,7 +86,7 @@
     nav.classList.toggle('hidden');
   });
 
-  // Features submenu toggle (always on click)
+  // Features submenu toggle
   featuresToggle.addEventListener('click', (e) => {
     e.preventDefault();
     featuresSubmenu.classList.toggle('hidden');
