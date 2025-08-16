@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "TidyZenic Official SaaS Application by Awifu",
   "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "migrate": "node migrate.js",
-    "build:css": "tailwindcss -i ./src/styles.css -o ./public/css/styles.css --minify",
-    "dev:css": "tailwindcss -i ./src/styles.css -o ./public/css/styles.css --watch"
-  },
+"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js",
+  "migrate": "node migrate.js",
+  "build": "npm run build:css",
+  "build:css": "tailwindcss -i ./src/styles.css -o ./public/css/styles.css --minify",
+  "dev:css": "tailwindcss -i ./src/styles.css -o ./public/css/styles.css --watch"
+},
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Awifu/tidyzenicwebsystems.git"
