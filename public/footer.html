@@ -12,8 +12,8 @@
       </p>
     </div>
 
-    <!-- Navigation -->
-    <div class="grid grid-cols-2 gap-8">
+    <!-- Navigation (Product + Company in one row) -->
+    <div class="flex gap-16">
       <div>
         <h4 class="text-sm font-semibold text-white">Product</h4>
         <ul class="mt-4 space-y-2 text-sm">
@@ -40,54 +40,50 @@
       <p class="mt-4 text-sm text-gray-400">
         Start your 7-day free trial today and unlock AI-assisted business management.
       </p>
-      <a href="#cta" class="inline-block mt-6 px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow hover:bg-brand-700 transition">
+      
+      <!-- Separated button -->
+      <a href="#cta" class="inline-block mt-8 px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow hover:bg-brand-700 transition">
         Start Free Trial
       </a>
 
-      <!-- Social Icons -->
-      <div class="mt-8 flex gap-4">
-        <a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-brand-400 transition" aria-label="Twitter">
-          <!-- Twitter Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 ..."/>
-          </svg>
-        </a>
-        <a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-brand-400 transition" aria-label="LinkedIn">
-          <!-- LinkedIn Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M4.98 3.5C4.98 4.88 ..."/>
-          </svg>
-        </a>
-        <a href="https://github.com" target="_blank" class="text-gray-400 hover:text-brand-400 transition" aria-label="GitHub">
-          <!-- GitHub Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0C5.37 0 ..."/>
-          </svg>
-        </a>
+      <!-- Social Icons Row -->
+      <div class="mt-8 flex gap-6">
+        <!-- Facebook -->
         <a href="https://facebook.com" target="_blank" class="text-gray-400 hover:text-brand-400 transition" aria-label="Facebook">
-          <!-- Facebook Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M22.676 0H1.326 ..."/>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.676 0H1.326..."/></svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://tiktok.com" target="_blank" class="text-gray-400 hover:text-brand-400 transition" aria-label="TikTok">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c2.2..."/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" class="text-gray-400 hover:text-brand-400 transition" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.24..."/></svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-brand-400 transition" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5..."/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="https://youtube.com" target="_blank" class="text-gray-400 hover:text-brand-400 transition" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2..."/></svg>
         </a>
       </div>
     </div>
   </div>
 
- <!-- Bottom Bar -->
-<div class="border-t border-gray-800 mt-12">
-  <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
-    <p>&copy; <span id="year"></span> TidyZenic. All rights reserved.</p>
-    <div class="mt-4 sm:mt-0 flex gap-4">
-      <a href="/privacy" class="text-gray-400 hover:text-white transition">Privacy</a>
-      <a href="/terms" class="text-gray-400 hover:text-white transition">Terms</a>
+  <!-- Bottom Bar -->
+  <div class="border-t border-gray-800 mt-12">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
+      <p>&copy; <span id="year"></span> TidyZenic. All rights reserved.</p>
+      <div class="mt-4 sm:mt-0 flex gap-4">
+        <a href="/privacy" class="text-gray-400 hover:text-white transition">Privacy</a>
+        <a href="/terms" class="text-gray-400 hover:text-white transition">Terms</a>
+      </div>
     </div>
   </div>
-</div>
-
 
   <script>
-    // Auto-update year
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("year").textContent = new Date().getFullYear();
     });
