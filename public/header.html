@@ -9,7 +9,7 @@
       </a>
     </div>
 
-    <!-- Mobile Menu Button (only on mobile & tablet) -->
+    <!-- Mobile Menu Button (only mobile & tablet) -->
     <button id="menu-toggle" class="block lg:hidden text-2xl" aria-label="Toggle menu">
       ☰
     </button>
@@ -62,6 +62,7 @@
   }
 
   .mobile-nav.open {
+    display: flex;
     max-height: 500px; /* enough for menu */
     opacity: 1;
   }
@@ -69,8 +70,8 @@
   /* Desktop Nav */
   @media (min-width: 1024px) {
     .mobile-nav {
-      max-height: none;
-      opacity: 1;
+      max-height: none !important;
+      opacity: 1 !important;
       overflow: visible;
       display: flex !important;
       flex-direction: row;
@@ -97,7 +98,7 @@
   const featuresToggle = document.getElementById('features-toggle');
   const featuresSubmenu = document.getElementById('features-submenu');
 
-  // Smooth slide nav toggle
+  // Smooth slide nav toggle (mobile only)
   toggleBtn.addEventListener('click', () => {
     nav.classList.toggle('open');
   });
