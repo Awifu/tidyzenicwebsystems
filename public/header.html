@@ -15,7 +15,7 @@
     </button>
 
     <!-- Navigation -->
-    <nav id="main-nav" class="hidden lg:flex">
+    <nav id="main-nav" class="hidden lg-flex">
       <ul class="nav-menu">
         <!-- Features with submenu -->
         <li class="nav-item has-submenu">
@@ -39,13 +39,13 @@
 </header>
 
 <style>
-  /* Fallback utility classes if Tailwind is missing */
+  /* Tailwind-like fallbacks */
   .hidden { display: none; }
   .lg-hidden { display: block; }
 
   @media (min-width: 1024px) {
-    .lg-flex { display: flex !important; }
-    .lg-hidden { display: none !important; }
+    .lg-flex { display: flex !important; }   /* ✅ ensures nav is visible on desktop */
+    .lg-hidden { display: none !important; } /* ✅ hide hamburger on desktop */
   }
 
   .nav-menu {
@@ -82,7 +82,7 @@
     nav.classList.toggle('hidden');
   });
 
-  // Features submenu toggle
+  // Features submenu toggle (always on click)
   featuresToggle.addEventListener('click', (e) => {
     e.preventDefault();
     featuresSubmenu.classList.toggle('hidden');
