@@ -1,11 +1,11 @@
 <header class="bg-white border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
+    <div class="flex justify-between h-20"> <!-- taller header -->
       
       <!-- Logo -->
       <div class="flex-shrink-0 flex items-center">
         <a href="/">
-          <img src="/images/Tidyzenic.png" alt="TidyZenic" class="h-10 w-auto">
+          <img src="/images/Tidyzenic.png" alt="TidyZenic" class="h-14 md:h-16 w-auto"> <!-- bigger logo -->
         </a>
       </div>
 
@@ -21,7 +21,7 @@
       <div class="flex items-center md:hidden">
         <button id="mobile-nav-toggle" aria-label="Open Menu" class="text-gray-700 hover:text-brand-600 focus:outline-none">
           <!-- Hamburger Icon -->
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -40,3 +40,15 @@
     </div>
   </div>
 </header>
+
+<!-- Script to toggle mobile menu -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('mobile-nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+    });
+  });
+</script>
