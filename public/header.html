@@ -3,102 +3,82 @@
   <div class="container mx-auto flex items-center justify-between px-4 py-3">
 
     <!-- Logo -->
-    <div class="logo">
+    <div class="logo flex items-center gap-2">
       <a href="/">
         <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-12 w-auto">
       </a>
     </div>
 
     <!-- Mobile Menu Button -->
-    <button id="menu-toggle" class="lg:hidden text-2xl" aria-label="Toggle menu">
+    <button id="menu-toggle" class="lg:hidden text-3xl focus:outline-none" aria-label="Toggle menu">
       ☰
     </button>
 
-    <!-- Nav -->
-    <nav id="main-nav" class="hidden lg:flex">
-      <ul class="nav-menu flex gap-8 items-center font-medium text-gray-700">
-        
+    <!-- Navigation -->
+    <nav id="main-nav" class="hidden lg:flex flex-col lg:flex-row lg:items-center gap-6">
+      <ul class="nav-menu flex flex-col lg:flex-row lg:items-center gap-6">
+
         <!-- Features Dropdown -->
-        <li class="nav-item has-submenu relative group">
-          <button class="submenu-toggle flex items-center gap-1">
-            Features <span>▼</span>
+        <li class="nav-item relative group">
+          <button id="features-toggle" class="submenu-toggle flex items-center gap-2 font-semibold hover:text-brand-600">
+            <!-- Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            Features
           </button>
-          <ul class="submenu hidden lg:group-hover:block absolute mt-3 bg-white shadow-xl rounded-lg w-56 border border-gray-100 opacity-0 group-hover:opacity-100 transition duration-200">
-            <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-50">Staff Management</a></li>
-            <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-50">Smart Scheduling</a></li>
-            <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-50">Price Estimate Tool</a></li>
-            <li><a href="/booking-form" class="block px-4 py-2 hover:bg-gray-50">Booking Form</a></li>
-            <li><a href="/advanced-marketing" class="block px-4 py-2 hover:bg-gray-50">Advanced Marketing</a></li>
+          <!-- Dropdown -->
+          <ul id="features-submenu" class="submenu hidden lg:group-hover:block absolute lg:absolute mt-2 bg-white shadow-lg rounded-md w-56 z-50">
+            <li><a href="/staff-management" class="flex items-center px-4 py-2 hover:bg-gray-100">👨‍💼 Staff Management</a></li>
+            <li><a href="/smart-scheduling" class="flex items-center px-4 py-2 hover:bg-gray-100">📅 Smart Scheduling</a></li>
+            <li><a href="/price-estimate-tool" class="flex items-center px-4 py-2 hover:bg-gray-100">💰 Price Estimate</a></li>
+            <li><a href="/booking-form" class="flex items-center px-4 py-2 hover:bg-gray-100">📝 Booking Form</a></li>
+            <li><a href="/advanced-marketing" class="flex items-center px-4 py-2 hover:bg-gray-100">📢 Advanced Marketing</a></li>
           </ul>
         </li>
 
-        <!-- Other Nav Items -->
-        <li><a href="/pricing" class="hover:text-brand-600 relative after:block after:h-0.5 after:bg-brand-600 after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-200 after:origin-left">Pricing</a></li>
-        <li><a href="/blog" class="hover:text-brand-600 relative after:block after:h-0.5 after:bg-brand-600 after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-200 after:origin-left">Blog</a></li>
+        <!-- Other Links -->
+        <li><a href="/pricing" class="flex items-center gap-2 font-semibold hover:text-brand-600">
+          💵 Pricing
+        </a></li>
+        <li><a href="/blog" class="flex items-center gap-2 font-semibold hover:text-brand-600">
+          📰 Blog
+        </a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <style>
-  /* Fixed Header */
+  /* Header fixed */
   .main-header {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     background: #fff;
   }
   body { padding-top: 4.5rem; }
 
-  /* Mobile Nav */
-  #main-nav {
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    overflow: hidden;
-  }
+  /* Mobile dropdown open state */
   #main-nav.open {
     display: block !important;
-    max-height: 500px;
-    opacity: 1;
-  }
-  #main-nav ul {
-    flex-direction: column;
-    padding: 1rem 0;
-  }
-  #main-nav li {
-    padding: 0.5rem 0;
   }
 
-  /* Desktop Nav */
-  @media (min-width: 1024px) {
-    #main-nav {
-      display: flex !important;
-      max-height: none !important;
-      opacity: 1 !important;
-      overflow: visible !important;
-    }
-    #main-nav ul {
-      flex-direction: row;
-      padding: 0;
-    }
-    #main-nav li {
-      padding: 0;
-    }
-    #menu-toggle { display: none !important; }
-  }
-
-  /* Submenu */
+  /* Dropdown style */
   .submenu {
-    pointer-events: none;
+    border: 1px solid #e5e7eb;
   }
-  .group:hover .submenu {
-    pointer-events: auto;
+  .submenu li a {
+    font-size: 0.95rem;
   }
 </style>
 
 <script>
   const toggleBtn = document.getElementById('menu-toggle');
   const nav = document.getElementById('main-nav');
-  const featuresToggle = document.querySelector('.submenu-toggle');
+  const featuresToggle = document.getElementById('features-toggle');
   const featuresSubmenu = document.getElementById('features-submenu');
 
   // Mobile menu toggle
@@ -106,12 +86,11 @@
     nav.classList.toggle('open');
   });
 
-  // Features submenu toggle (mobile only)
+  // Dropdown toggle (mobile/tablet only)
   featuresToggle.addEventListener('click', (e) => {
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < 1024) { // only mobile/tablet
       e.preventDefault();
-      const submenu = featuresToggle.nextElementSibling;
-      submenu.classList.toggle('hidden');
+      featuresSubmenu.classList.toggle('hidden');
     }
   });
 </script>
