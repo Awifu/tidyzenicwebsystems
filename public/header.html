@@ -9,14 +9,14 @@
       </a>
     </div>
 
-    <!-- Mobile Menu Button (only mobile & tablet) -->
+    <!-- Mobile Menu Button (mobile & tablet only) -->
     <button id="menu-toggle" class="block lg:hidden text-2xl" aria-label="Toggle menu">
       ☰
     </button>
 
     <!-- Nav -->
-    <nav id="main-nav" class="mobile-nav hidden lg:flex">
-      <ul class="nav-menu">
+    <nav id="main-nav" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:gap-8">
+      <ul class="nav-menu flex flex-col lg:flex-row gap-4 lg:gap-8">
         <li class="nav-item has-submenu relative">
           <button id="features-toggle" class="submenu-toggle flex items-center gap-1">
             Features <span>▼</span>
@@ -53,29 +53,27 @@
   }
 
   /* Mobile Nav Animation */
-  .mobile-nav {
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    flex-direction: column;
-  }
-
-  .mobile-nav.open {
-    display: flex;
-    max-height: 500px; /* enough for menu */
-    opacity: 1;
+  @media (max-width: 1023px) {
+    #main-nav {
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+    }
+    #main-nav.open {
+      display: flex !important;
+      max-height: 500px;
+      opacity: 1;
+    }
   }
 
   /* Desktop Nav */
   @media (min-width: 1024px) {
-    .mobile-nav {
+    #main-nav {
+      display: flex !important;
       max-height: none !important;
       opacity: 1 !important;
-      overflow: visible;
-      display: flex !important;
-      flex-direction: row;
-      gap: 2rem;
+      overflow: visible !important;
     }
   }
 
@@ -98,12 +96,12 @@
   const featuresToggle = document.getElementById('features-toggle');
   const featuresSubmenu = document.getElementById('features-submenu');
 
-  // Smooth slide nav toggle (mobile only)
+  // Toggle mobile nav
   toggleBtn.addEventListener('click', () => {
     nav.classList.toggle('open');
   });
 
-  // Features submenu toggle
+  // Toggle submenu
   featuresToggle.addEventListener('click', (e) => {
     e.preventDefault();
     featuresSubmenu.classList.toggle('hidden');
