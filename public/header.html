@@ -1,4 +1,4 @@
-<!-- header.html -->
+<!-- public/header.html -->
 <header class="main-header bg-white border-b border-gray-200">
   <div class="container mx-auto flex items-center justify-between px-4 py-3">
     
@@ -9,7 +9,7 @@
       </a>
     </div>
 
-    <!-- Hamburger (mobile only) -->
+    <!-- Hamburger (mobile & tablet only) -->
     <button id="menu-toggle" class="lg:hidden text-gray-700 focus:outline-none" aria-label="Toggle menu">
       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -34,7 +34,7 @@
 
           <!-- Submenu -->
           <ul id="features-submenu"
-            class="submenu hidden lg:absolute lg:group-hover:block top-full left-0 bg-white shadow-lg border border-gray-200 mt-2 rounded-md w-56 z-50">
+            class="submenu hidden lg:absolute top-full left-0 bg-white shadow-lg border border-gray-200 mt-2 rounded-md w-56 z-50">
             <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-50">Staff Management</a></li>
             <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-50">Smart Scheduling</a></li>
             <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-50">Price Estimate Tool</a></li>
@@ -58,19 +58,16 @@
   const featuresToggle = document.getElementById('features-toggle');
   const featuresSubmenu = document.getElementById('features-submenu');
 
-  // Main nav toggle
+  // Main nav toggle (mobile & tablet only)
   toggleBtn.addEventListener('click', () => {
     nav.classList.toggle('hidden');
     nav.classList.toggle('block');
   });
 
-  // Features submenu toggle (mobile only)
+  // Features submenu toggle (always on click)
   featuresToggle.addEventListener('click', (e) => {
-    // Prevent desktop hover conflict
-    if (window.innerWidth < 1024) {
-      e.preventDefault();
-      featuresSubmenu.classList.toggle('hidden');
-      featuresSubmenu.classList.toggle('block');
-    }
+    e.preventDefault(); // prevent accidental navigation
+    featuresSubmenu.classList.toggle('hidden');
+    featuresSubmenu.classList.toggle('block');
   });
 </script>
