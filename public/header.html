@@ -1,35 +1,76 @@
-Here is the updated `header.html` with the new logo path and classes you provided.
-
-```html
-<header class="main-header">
-    <div class="container">
-        <div class="logo">
-            <a href="/">
-                <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-12 w-auto">
-            </a>
-        </div>
-
-        <nav class="main-nav">
-            <ul class="nav-menu">
-                <li class="nav-item has-submenu">
-                    <a href="#">Features</a>
-                    <ul class="submenu">
-                        <li><a href="/staff-management">Staff Management</a></li>
-                        <li><a href="/smart-scheduling">Smart Scheduling</a></li>
-                        <li><a href="/price-estimate-tool">Price Estimate Tool</a></li>
-                        <li><a href="/booking-form">Booking Form</a></li>
-                        <li><a href="/advanced-marketing">Advanced Marketing</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="/pricing">Pricing</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="/blog">Blog</a>
-                </li>
-            </ul>
-        </nav>
+<!-- header.html -->
+<header class="main-header bg-white border-b border-gray-200">
+  <div class="container mx-auto flex items-center justify-between px-4 py-3">
+    
+    <!-- Logo -->
+    <div class="logo">
+      <a href="/">
+        <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-12 w-auto">
+      </a>
     </div>
+
+    <!-- Hamburger (mobile only) -->
+    <button id="menu-toggle" class="lg:hidden text-gray-700 focus:outline-none" aria-label="Toggle menu">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="hidden lg:block w-full lg:w-auto mt-4 lg:mt-0">
+      <ul class="nav-menu flex flex-col lg:flex-row gap-4 lg:gap-6 font-medium text-gray-700">
+        
+        <!-- Features with submenu -->
+        <li class="relative nav-item has-submenu">
+          <button id="features-toggle" class="flex items-center justify-between w-full lg:w-auto hover:text-blue-600">
+            Features
+            <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <!-- Submenu -->
+          <ul id="features-submenu"
+            class="submenu hidden lg:absolute lg:group-hover:block top-full left-0 bg-white shadow-lg border border-gray-200 mt-2 rounded-md w-56 z-50">
+            <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-50">Staff Management</a></li>
+            <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-50">Smart Scheduling</a></li>
+            <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-50">Price Estimate Tool</a></li>
+            <li><a href="/booking-form" class="block px-4 py-2 hover:bg-gray-50">Booking Form</a></li>
+            <li><a href="/advanced-marketing" class="block px-4 py-2 hover:bg-gray-50">Advanced Marketing</a></li>
+          </ul>
+        </li>
+
+        <!-- Other links -->
+        <li class="nav-item"><a href="/pricing" class="hover:text-blue-600">Pricing</a></li>
+        <li class="nav-item"><a href="/blog" class="hover:text-blue-600">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
+
+<!-- JS toggle for mobile nav + submenu -->
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+  const featuresToggle = document.getElementById('features-toggle');
+  const featuresSubmenu = document.getElementById('features-submenu');
+
+  // Main nav toggle
+  toggleBtn.addEventListener('click', () => {
+    nav.classList.toggle('hidden');
+    nav.classList.toggle('block');
+  });
+
+  // Features submenu toggle (mobile only)
+  featuresToggle.addEventListener('click', (e) => {
+    // Prevent desktop hover conflict
+    if (window.innerWidth < 1024) {
+      e.preventDefault();
+      featuresSubmenu.classList.toggle('hidden');
+      featuresSubmenu.classList.toggle('block');
+    }
+  });
+</script>
