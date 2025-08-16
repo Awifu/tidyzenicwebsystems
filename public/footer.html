@@ -1,49 +1,44 @@
 <footer class="bg-gray-900 text-gray-400">
-  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
-    
-    <!-- About -->
+  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Logo & About -->
     <div>
-      <img src="/images/tidyzenic-logo.svg" alt="TidyZenic Logo" class="h-12 w-auto mb-4">
-      <p class="text-sm leading-relaxed">
-        TidyZenic is the all-in-one AI-powered suite for service businesses. 
-        Manage bookings, staffing, inventory, CRM, and marketing — all seamlessly integrated to help your business grow.
+      <a href="/" class="flex items-center gap-2 text-white font-bold text-lg">
+        <img src="/images/logo-light.svg" alt="TidyZenic" class="h-8 w-auto">
+        TidyZenic
+      </a>
+      <p class="mt-4 text-sm text-gray-400">
+        AI-powered tools to manage bookings, staff, inventory, CRM, and marketing—all in one place.
       </p>
     </div>
 
-    <!-- Quick Links -->
+    <!-- Links -->
     <div>
-      <h3 class="text-white text-sm font-semibold mb-4 uppercase tracking-wide">Quick Links</h3>
-      <ul class="space-y-2 text-sm">
+      <h3 class="text-white font-semibold">Company</h3>
+      <ul class="mt-4 space-y-2">
         <li><a href="#features" class="hover:text-white transition">Features</a></li>
         <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
         <li><a href="#reviews" class="hover:text-white transition">Reviews</a></li>
-        <li><a href="#cta" class="hover:text-white transition">Get Started</a></li>
+        <li><a href="#cta" class="hover:text-white transition">Start Free Trial</a></li>
       </ul>
     </div>
 
     <!-- Contact -->
     <div>
-      <h3 class="text-white text-sm font-semibold mb-4 uppercase tracking-wide">Contact</h3>
-      <ul class="space-y-2 text-sm">
-        <li>
-          Email: 
-          <a href="mailto:info@tidyzenic.com" class="hover:text-white transition">info@tidyzenic.com</a>
-        </li>
-        <li>
-          Phone: 
-          <a href="tel:+1234567890" class="hover:text-white transition">+1 (234) 567-890</a>
-        </li>
-        <li>Location: Remote-first</li>
+      <h3 class="text-white font-semibold">Get in Touch</h3>
+      <ul class="mt-4 space-y-2">
+        <li>Email: <a href="mailto:support@tidyzenic.com" class="hover:text-white transition">support@tidyzenic.com</a></li>
+        <li>Twitter: <a href="https://twitter.com/tidyzenic" target="_blank" class="hover:text-white transition">@tidyzenic</a></li>
       </ul>
     </div>
   </div>
 
-  <!-- Bottom -->
-  <div class="border-t border-gray-800 mt-8 pt-6 text-center text-xs text-gray-500">
+  <div class="border-t border-gray-800 text-center py-6 text-sm text-gray-500">
     © <span id="year"></span> TidyZenic. All rights reserved.
   </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("year").textContent = new Date().getFullYear();
+    });
   </script>
 </footer>
