@@ -15,13 +15,13 @@
     </button>
 
     <!-- Nav -->
-    <nav id="main-nav" class="hidden lg:flex flex-col lg:flex-row gap-4 lg:gap-8">
-      <ul class="nav-menu">
+    <nav id="main-nav" class="hidden lg:flex">
+      <ul class="nav-menu flex flex-col lg:flex-row lg:items-center gap-6">
         <li class="nav-item has-submenu relative">
-          <button id="features-toggle" class="submenu-toggle flex items-center gap-1">
+          <button id="features-toggle" class="submenu-toggle flex items-center gap-1 hover:text-brand-600">
             Features <span>▼</span>
           </button>
-          <ul id="features-submenu" class="submenu hidden absolute mt-2 bg-white shadow-lg rounded-md w-48">
+          <ul id="features-submenu" class="submenu hidden absolute lg:absolute mt-2 bg-white shadow-lg rounded-md w-56 z-50">
             <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-100">Staff Management</a></li>
             <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-100">Smart Scheduling</a></li>
             <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-100">Price Estimate Tool</a></li>
@@ -50,26 +50,33 @@
     padding-top: 4.5rem; /* Prevents overlap */
   }
 
-  /* Mobile Nav (collapsed by default) */
+  /* Mobile Nav (horizontal style) */
   #main-nav {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-20px);
+    opacity: 0;
   }
   #main-nav.open {
-    display: flex; /* Open as flex on mobile */
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
   }
 
-  /* Desktop Override */
-  @media (min-width: 1024px) {
-    #main-nav {
-      display: flex !important;
-      flex-direction: row;
-      gap: 2rem;
-    }
-    #menu-toggle {
-      display: none !important; /* Hide hamburger on desktop */
-    }
+  /* Nav Menu */
+  .nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-menu li a,
+  .submenu-toggle {
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    transition: color 0.2s ease;
+  }
+  .nav-menu li a:hover,
+  .submenu-toggle:hover {
+    color: #2563eb; /* brand blue */
   }
 
   /* Submenu */
@@ -82,6 +89,25 @@
     border: none;
     cursor: pointer;
     font-weight: 600;
+  }
+
+  /* Desktop Override */
+  @media (min-width: 1024px) {
+    #main-nav {
+      display: flex !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    #menu-toggle {
+      display: none !important;
+    }
+    .submenu {
+      position: absolute;
+      display: none;
+    }
+    .has-submenu:hover .submenu {
+      display: block;
+    }
   }
 </style>
 
@@ -96,9 +122,11 @@
     nav.classList.toggle('open');
   });
 
-  // Features submenu toggle
+  // Features submenu toggle (mobile only)
   featuresToggle.addEventListener('click', (e) => {
-    e.preventDefault();
-    featuresSubmenu.classList.toggle('hidden');
+    if (window.innerWidth < 1024) { 
+      e.preventDefault();
+      featuresSubmenu.classList.toggle('hidden');
+    }
   });
 </script>
