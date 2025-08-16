@@ -1,79 +1,69 @@
-<footer class="bg-gray-950 text-gray-400 border-t border-gray-800">
-  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
+<!-- footer.html -->
+<footer class="bg-gray-900 text-gray-300">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+      <!-- Logo & About -->
+      <div>
+        <a href="/" class="flex items-center space-x-2">
+          <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-10 w-auto">
+        </a>
+        <p class="mt-4 text-sm text-gray-400 leading-relaxed">
+          TidyZenic helps teams stay organized, automate workflows, and deliver results faster — all in one intuitive platform.
+        </p>
+      </div>
 
-    <!-- Brand -->
-    <div>
-      <a href="/" class="flex items-center space-x-2">
-        <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-10 w-auto">
-        <span class="text-xl font-bold text-white">TidyZenic</span>
-      </a>
-      <p class="mt-4 text-sm leading-relaxed text-gray-500">
-        AI-Powered Service Business Suite.  
-        Manage everything from one powerful platform.
-      </p>
+      <!-- Product -->
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Product</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Integrations</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">API</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Company</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Support</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Guides</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Status</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+        </ul>
+      </div>
+
     </div>
 
-    <!-- Product -->
-    <div>
-      <h4 class="text-sm font-semibold text-white uppercase tracking-wide">Product</h4>
-      <ul class="mt-4 space-y-2 text-sm">
-        <li><a href="#features" class="hover:text-white transition">Features</a></li>
-        <li><a href="#analytics" class="hover:text-white transition">Analytics</a></li>
-        <li><a href="#reviews" class="hover:text-white transition">Reviews</a></li>
-        <li><a href="#blog" class="hover:text-white transition">Blog</a></li>
-      </ul>
-    </div>
-
-    <!-- Company -->
-    <div>
-      <h4 class="text-sm font-semibold text-white uppercase tracking-wide">Company</h4>
-      <ul class="mt-4 space-y-2 text-sm">
-        <li><a href="#" class="hover:text-white transition">About Us</a></li>
-        <li><a href="#" class="hover:text-white transition">Careers</a></li>
-        <li><a href="#" class="hover:text-white transition">Contact</a></li>
-        <li><a href="#" class="hover:text-white transition">Support</a></li>
-      </ul>
-    </div>
-
-    <!-- CTA -->
-    <div>
-      <h4 class="text-sm font-semibold text-white uppercase tracking-wide">Get Started</h4>
-      <p class="mt-4 text-sm text-gray-500">
-        Start your free trial today and unlock AI-assisted business management.
-      </p>
-      <a href="#cta" 
-         class="inline-block mt-6 px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow hover:bg-brand-700 transition-transform transform hover:-translate-y-0.5">
-        Start Free Trial
-      </a>
-
+    <!-- Divider -->
+    <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
+      <p class="text-sm text-gray-500">&copy; 2025 TidyZenic. All rights reserved.</p>
+      
       <!-- Social Icons -->
-      <div class="mt-8 flex space-x-5">
-        <a href="https://facebook.com" target="_blank" class="text-gray-500 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://tiktok.com" target="_blank" class="text-gray-500 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
-        <a href="https://instagram.com" target="_blank" class="text-gray-500 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-        <a href="https://linkedin.com" target="_blank" class="text-gray-500 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://youtube.com" target="_blank" class="text-gray-500 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+      <div class="flex space-x-6 mt-4 md:mt-0">
+        <a href="#" class="hover:text-white transition-colors">
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.24 4.24 0 001.88-2.35c-.82.49-1.72.84-2.68 1.02A4.22 4.22 0 0015.5 4c-2.33 0-4.21 1.92-4.21 4.29 0 .34.04.66.11.97-3.5-.18-6.62-1.88-8.7-4.47a4.34 4.34 0 00-.57 2.16c0 1.48.74 2.78 1.88 3.54a4.2 4.2 0 01-1.9-.54v.06c0 2.06 1.44 3.78 3.35 4.17a4.23 4.23 0 01-1.9.07c.54 1.7 2.1 2.95 3.95 2.99A8.48 8.48 0 012 19.54a11.94 11.94 0 006.48 1.91c7.77 0 12.01-6.53 12.01-12.2 0-.19 0-.37-.01-.56A8.7 8.7 0 0024 5.1a8.23 8.23 0 01-2.36.65 4.24 4.24 0 001.85-2.34z"/></svg>
+        </a>
+        <a href="#" class="hover:text-white transition-colors">
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.47-9.96 9.96 0 4.42 3.6 8.1 8.23 8.88v-6.3h-2.48v-2.58h2.48V9.54c0-2.44 1.45-3.78 3.67-3.78 1.06 0 2.17.19 2.17.19v2.39h-1.22c-1.2 0-1.57.75-1.57 1.52v1.82h2.67l-.43 2.58h-2.24v6.3c4.63-.78 8.23-4.46 8.23-8.88 0-5.49-4.46-9.96-9.96-9.96z"/></svg>
+        </a>
+        <a href="#" class="hover:text-white transition-colors">
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.6 3H4.4A1.4 1.4 0 003 4.4v15.2A1.4 1.4 0 004.4 21h15.2a1.4 1.4 0 001.4-1.4V4.4A1.4 1.4 0 0019.6 3zm-8.1 14.4H9V10h2.5v7.4zm-1.2-8.5a1.45 1.45 0 11.01-2.9 1.45 1.45 0 01-.01 2.9zm9.3 8.5h-2.5v-3.6c0-.86-.02-1.96-1.2-1.96-1.2 0-1.38.93-1.38 1.9v3.66H12V10h2.4v1.2h.03c.34-.64 1.18-1.3 2.43-1.3 2.6 0 3.1 1.7 3.1 3.9v3.6z"/></svg>
+        </a>
       </div>
     </div>
   </div>
-
-  <!-- Bottom Bar -->
-  <div class="border-t border-gray-800 mt-12">
-    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
-      <p>&copy; <span id="year"></span> TidyZenic. All rights reserved.</p>
-      <div class="mt-4 sm:mt-0 flex gap-6">
-        <a href="/privacy" class="hover:text-white">Privacy</a>
-        <a href="/terms" class="hover:text-white">Terms</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("year").textContent = new Date().getFullYear();
-    });
-  </script>
 </footer>
-
-<!-- Font Awesome (for icons) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
