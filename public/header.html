@@ -37,7 +37,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #333;
+    background: #101828; /* Updated background */
     color: #fff;
     padding: 10px 20px;
     position: sticky;
@@ -75,11 +75,11 @@
     top: 100%;
     left: 0;
     background: #444;
-    display: flex;
     flex-direction: column;
     min-width: 180px;
     padding: 10px;
     border-radius: 6px;
+    display: none; /* hidden by default */
   }
   .submenu a {
     padding: 8px;
@@ -89,8 +89,8 @@
   .submenu a:hover {
     background: #555;
   }
-  .hidden {
-    display: none;
+  .submenu.show {
+    display: flex;
   }
 
   /* Hamburger */
@@ -114,7 +114,7 @@
       position: absolute;
       top: 60px;
       right: 20px;
-      background: #333;
+      background: #101828;
       flex-direction: column;
       width: 220px;
       display: none;
@@ -145,3 +145,29 @@
     transform: rotate(-45deg) translateY(-8px);
   }
 </style>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav");
+  const submenuToggle = document.querySelector(".submenu-toggle");
+  const submenu = document.getElementById("features-submenu");
+
+  // Hamburger toggle
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("show");
+    hamburger.classList.toggle("active");
+  });
+
+  // Submenu toggle (desktop + mobile)
+  submenuToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    submenu.classList.toggle("show");
+  });
+
+  // Close submenu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
+      submenu.classList.remove("show");
+    }
+  });
+</script>
