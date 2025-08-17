@@ -32,6 +32,11 @@
 </header>
 
 <style>
+  /* Ensure page content clears fixed header */
+  body {
+    padding-top: 60px; /* adjust if header height changes */
+  }
+
   /* Base header */
   .header {
     display: flex;
@@ -40,9 +45,11 @@
     background: #101828; /* dark brand background */
     color: #fff;
     padding: 10px 20px;
-    position: sticky;
+    position: fixed; /* ✅ stays always at top */
     top: 0;
-    z-index: 50;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* above all content */
   }
 
   .logo {
@@ -63,7 +70,7 @@
     transition: color 0.2s;
   }
   nav a:hover {
-    color: #3C52D9; /* 🔵 updated hover color */
+    color: #3C52D9; /* 🔵 hover color */
   }
 
   /* Submenu */
@@ -89,7 +96,7 @@
     transition: background 0.2s, color 0.2s;
   }
   .submenu a:hover {
-    background: #3C52D9; /* 🔵 updated hover color */
+    background: #3C52D9; /* 🔵 hover color */
     color: #fff;
   }
   .hidden {
@@ -149,3 +156,31 @@
     transform: rotate(-45deg) translateY(-8px);
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const nav = document.getElementById("nav");
+    const submenuToggle = document.querySelector(".submenu-toggle");
+    const submenu = document.getElementById("features-submenu");
+
+    // Toggle mobile nav
+    hamburger.addEventListener("click", () => {
+      nav.classList.toggle("show");
+      hamburger.classList.toggle("active");
+    });
+
+    // Toggle submenu on click (desktop + mobile)
+    submenuToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      submenu.classList.toggle("hidden");
+    });
+
+    // Close submenu if click outside
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".submenu-wrapper")) {
+        submenu.classList.add("hidden");
+      }
+    });
+  });
+</script>
