@@ -75,11 +75,11 @@
     top: 100%;
     left: 0;
     background: #444;
-    display: flex;
     flex-direction: column;
     min-width: 180px;
     padding: 10px;
     border-radius: 6px;
+    display: none; /* default hidden */
   }
   .submenu a {
     padding: 8px;
@@ -89,8 +89,8 @@
   .submenu a:hover {
     background: #555;
   }
-  .hidden {
-    display: none;
+  .submenu.show {
+    display: flex;
   }
 
   /* Hamburger */
@@ -145,3 +145,39 @@
     transform: rotate(-45deg) translateY(-8px);
   }
 </style>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav");
+  const submenuToggle = document.querySelector(".submenu-toggle");
+  const submenu = document.getElementById("features-submenu");
+  const navLinks = document.querySelectorAll("nav a");
+
+  // Hamburger toggle
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("show");
+    hamburger.classList.toggle("active");
+  });
+
+  // Submenu toggle
+  submenuToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    submenu.classList.toggle("show");
+  });
+
+  // Close submenu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
+      submenu.classList.remove("show");
+    }
+  });
+
+  // Close submenu when another nav link is clicked
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      submenu.classList.remove("show");
+      nav.classList.remove("show"); // also close mobile nav
+      hamburger.classList.remove("active");
+    });
+  });
+</script>
