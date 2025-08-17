@@ -1,242 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
   <title>About Us | TidyZenic</title>
-  <meta name="description" content="Discover the story of TidyZenic, founded by Awifu Muyomba. Learn how we empower service providers globally with AI-driven SaaS tools.">
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="canonical" href="https://tidyzenic.com/about">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Learn the story of TidyZenic, founded by Awifu Muyomba in Greece. Discover how we empower service providers worldwide with AI-driven SaaS tools." />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="canonical" href="https://tidyzenic.com/about" />
 
-  <!-- ✅ Organization Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "TidyZenic",
-    "url": "https://tidyzenic.com",
-    "logo": "https://tidyzenic.com/images/logo-light.svg",
-    "founder": {
-      "@type": "Person",
-      "name": "Awifu Muyomba",
-      "jobTitle": "Founder & CEO",
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Information Technology Graduate, Uganda"
-      },
-      "sameAs": [
-        "https://twitter.com/tidyzenic_official",
-        "https://linkedin.com/company/tidyzenic_official",
-        "https://facebook.com/tidyzenic_official",
-        "https://instagram.com/tidyzenic_official"
-      ]
-    },
-    "foundingDate": "2025",
-    "foundingLocation": {
-      "@type": "Place",
-      "name": "Greece"
-    },
-    "description": "TidyZenic is a SaaS company founded by Awifu Muyomba to empower service providers with AI-driven tools for scheduling, inventory management, marketing, and business growth.",
-    "sameAs": [
-      "https://twitter.com/tidyzenic_official",
-      "https://linkedin.com/company/tidyzenic_official",
-      "https://facebook.com/tidyzenic_official",
-      "https://instagram.com/tidyzenic_official"
-    ]
-  }
-  </script>
-
-  <!-- ✅ FAQ Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Who founded TidyZenic?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "TidyZenic was founded by Awifu Muyomba, an Information Technology graduate and experienced cleaning professional with over 5 years of industry experience."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Where is TidyZenic based?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "TidyZenic was founded in Greece and operates globally as a SaaS platform for service providers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does TidyZenic do?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "TidyZenic provides AI-powered SaaS tools to help service providers manage scheduling, staff, inventory, and marketing, enabling them to scale their businesses efficiently."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does TidyZenic help service providers?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "TidyZenic helps service providers automate scheduling, streamline operations, improve marketing reach, and manage staff and resources, allowing them to save time and increase profits."
-        }
-      }
-    ]
-  }
-  </script>
+  <style>
+    :root {
+      --brand-700: #4338ca;
+      --brand-600: #4f46e5;
+      --brand-400: #818cf8;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-900 antialiased font-sans">
 
-  <!-- Header placeholder -->
+  <!-- Header (dynamic) -->
   <div id="header-placeholder"></div>
 
-  <!-- Hero -->
-  <section class="relative bg-gradient-to-r from-indigo-900 to-indigo-600 text-white py-24 px-6 text-center">
-    <div class="max-w-4xl mx-auto relative z-10">
-      <h1 class="text-5xl font-extrabold mb-6">About <span class="text-indigo-300">TidyZenic</span></h1>
-      <p class="text-lg md:text-xl leading-relaxed">
-        Founded in <strong>Greece</strong> by <strong>Awifu Muyomba</strong> — a cleaning professional and Information Technology graduate — 
-        TidyZenic empowers service providers worldwide with AI-driven tools for growth, efficiency, and success.
-      </p>
-    </div>
-    <div class="absolute inset-0 bg-black/40"></div>
-  </section>
+  <main class="pt-20">
 
-  <!-- Story -->
-  <section class="max-w-7xl mx-auto py-20 px-6 grid md:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 class="text-3xl font-bold mb-6 text-gray-900">Our Founder’s Story</h2>
-      <p class="mb-4">
-        After over 5 years in the cleaning industry, Awifu witnessed the challenges service providers face — 
-        scheduling headaches, staffing issues, and managing resources effectively.
-      </p>
-      <p class="mb-4">
-        With 14+ years of international experience and a background in <strong>Information Technology</strong>, 
-        Awifu merged tech expertise with his passion for service. 
-        From these experiences, <strong>TidyZenic</strong> was born.
-      </p>
-      <p>
-        Through <strong>AI</strong>, relentless research, and continuous feedback, TidyZenic was crafted to help service providers thrive remotely 
-        and build sustainable businesses.
-      </p>
-    </div>
-    <div class="relative">
-      <img src="https://placehold.co/600x400/3C52D9/ffffff?text=Awifu+Muyomba" alt="Awifu Muyomba - Founder of TidyZenic" class="rounded-2xl shadow-xl transform hover:scale-105 transition">
-    </div>
-  </section>
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-brand-700 via-brand-600 to-indigo-600"></div>
+      <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28 text-white text-center">
+        <h1 class="text-4xl sm:text-6xl font-extrabold">About TidyZenic</h1>
+        <p class="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-white/90">
+          Founded in <strong>Greece</strong> by <strong>Awifu Muyomba</strong> — a cleaning professional and IT graduate — 
+          TidyZenic empowers service providers globally with AI-driven SaaS tools for growth, efficiency, and success.
+        </p>
+      </div>
+    </section>
 
-  <!-- Values -->
-  <section class="bg-white py-20 px-6">
-    <div class="max-w-6xl mx-auto text-center mb-14">
-      <h2 class="text-3xl font-bold text-gray-900">Our Mission & Values</h2>
-      <p class="text-lg text-gray-600 mt-3">Empowering service providers to succeed in the digital age.</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10">
-      <div class="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-3">🚀 Innovation</h3>
-        <p>We use AI and advanced technology to solve real-world challenges for service providers.</p>
+    <!-- Founder Story -->
+    <section class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Our Story</h2>
+        <p class="mb-4">
+          After 5 years in the cleaning industry, Awifu Muyomba experienced firsthand the challenges service providers face — from scheduling conflicts to client communication.
+        </p>
+        <p class="mb-4">
+          As an <strong>Information Technology graduate</strong> from Uganda, with 14 years of international experience abroad, Awifu combined his expertise in tech with his passion for service to create <strong>TidyZenic</strong>.
+        </p>
+        <p>
+          Built from scratch through research, coding, and continuous adaptation, TidyZenic is a platform that listens, evolves, and empowers businesses everywhere.
+        </p>
       </div>
-      <div class="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-3">🤝 Integrity</h3>
-        <p>Built with transparency and trust, TidyZenic empowers businesses ethically and reliably.</p>
-      </div>
-      <div class="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold mb-3">🌍 Community</h3>
-        <p>We grow by listening, adapting, and working hand-in-hand with providers worldwide.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section class="max-w-7xl mx-auto py-20 px-6">
-    <h2 class="text-3xl font-bold text-center mb-12">Meet the Team</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="https://placehold.co/400x400/101828/ffffff?text=Awifu+Muyomba" alt="Awifu Muyomba" class="w-full h-72 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold">Awifu Muyomba</h3>
-          <p class="text-gray-500">Founder & CEO</p>
+      <div class="flex justify-center">
+        <div class="w-[360px] h-[420px] overflow-hidden rounded-[9999px] shadow-xl ring-4 ring-brand-600/20">
+          <img src="https://placehold.co/400x500/4f46e5/ffffff?text=Awifu+Muyomba" 
+               alt="Awifu Muyomba - Founder of TidyZenic" 
+               class="w-full h-full object-cover" />
         </div>
       </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src="https://placehold.co/400x400/667085/ffffff?text=Join+Us" alt="Future Team Member" class="w-full h-72 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold">Your Name Here</h3>
-          <p class="text-gray-500">Join Our Team</p>
+    </section>
+
+    <!-- Values -->
+    <section class="bg-white">
+      <div class="max-w-7xl mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold text-center">Our Mission & Values</h2>
+        <p class="mt-4 max-w-2xl mx-auto text-center text-gray-600">Empowering service providers with tools to succeed in the digital age.</p>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <div class="p-8 bg-gray-50 rounded-3xl shadow hover:shadow-md transition text-center">
+            <h3 class="text-xl font-semibold mb-3">Innovation</h3>
+            <p>We harness AI and cutting-edge technology to solve real-world challenges.</p>
+          </div>
+          <div class="p-8 bg-gray-50 rounded-3xl shadow hover:shadow-md transition text-center">
+            <h3 class="text-xl font-semibold mb-3">Integrity</h3>
+            <p>Transparency and trust drive everything we build and deliver.</p>
+          </div>
+          <div class="p-8 bg-gray-50 rounded-3xl shadow hover:shadow-md transition text-center">
+            <h3 class="text-xl font-semibold mb-3">Community</h3>
+            <p>We listen, adapt, and grow together with the global service provider community.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="bg-gray-100 py-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
-      <div class="space-y-4">
-        <details class="group bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <summary class="cursor-pointer font-semibold text-lg flex justify-between items-center">
-            Who founded TidyZenic?
-            <span class="text-indigo-600 group-open:rotate-180 transition">▼</span>
-          </summary>
-          <p class="mt-3 text-gray-600">TidyZenic was founded by Awifu Muyomba, an IT graduate and experienced cleaning professional with over 5 years of hands-on industry experience.</p>
-        </details>
-        <details class="group bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <summary class="cursor-pointer font-semibold text-lg flex justify-between items-center">
-            Where is TidyZenic based?
-            <span class="text-indigo-600 group-open:rotate-180 transition">▼</span>
-          </summary>
-          <p class="mt-3 text-gray-600">TidyZenic was founded in Greece and operates globally as a SaaS platform for service providers.</p>
-        </details>
-        <details class="group bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <summary class="cursor-pointer font-semibold text-lg flex justify-between items-center">
-            What does TidyZenic do?
-            <span class="text-indigo-600 group-open:rotate-180 transition">▼</span>
-          </summary>
-          <p class="mt-3 text-gray-600">TidyZenic provides AI-powered SaaS tools for service providers to manage scheduling, staff, inventory, and marketing with efficiency.</p>
-        </details>
-        <details class="group bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <summary class="cursor-pointer font-semibold text-lg flex justify-between items-center">
-            How does TidyZenic help service providers?
-            <span class="text-indigo-600 group-open:rotate-180 transition">▼</span>
-          </summary>
-          <p class="mt-3 text-gray-600">By automating scheduling, streamlining operations, and optimizing marketing, TidyZenic helps providers save time and increase profitability.</p>
-        </details>
+    <!-- FAQ Accordion -->
+    <section class="bg-gray-50">
+      <div class="max-w-4xl mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <details class="bg-white p-6 rounded-2xl shadow group">
+            <summary class="cursor-pointer font-semibold text-lg">Who founded TidyZenic?</summary>
+            <p class="mt-3 text-gray-600">TidyZenic was founded by Awifu Muyomba, an IT graduate and experienced cleaning professional.</p>
+          </details>
+          <details class="bg-white p-6 rounded-2xl shadow group">
+            <summary class="cursor-pointer font-semibold text-lg">Where is TidyZenic based?</summary>
+            <p class="mt-3 text-gray-600">TidyZenic was founded in Greece and serves service providers worldwide.</p>
+          </details>
+          <details class="bg-white p-6 rounded-2xl shadow group">
+            <summary class="cursor-pointer font-semibold text-lg">What does TidyZenic do?</summary>
+            <p class="mt-3 text-gray-600">We provide AI-powered SaaS tools for scheduling, staff, inventory, and marketing.</p>
+          </details>
+          <details class="bg-white p-6 rounded-2xl shadow group">
+            <summary class="cursor-pointer font-semibold text-lg">How does TidyZenic help providers?</summary>
+            <p class="mt-3 text-gray-600">By automating operations and enabling growth, we help providers save time and increase profits.</p>
+          </details>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="bg-indigo-700 text-white py-20 text-center">
-    <h2 class="text-3xl font-bold mb-4">Be Part of Our Journey</h2>
-    <p class="mb-6 max-w-2xl mx-auto">
-      TidyZenic is more than software — it’s a movement to help service providers thrive.  
-      Explore our <a href="/pricing" class="underline font-semibold">pricing plans</a>,  
-      check out our <a href="/blog" class="underline font-semibold">blog</a>,  
-      or <a href="/contact" class="underline font-semibold">get in touch</a>.
-    </p>
-    <a href="/contact" class="bg-white text-indigo-700 px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">Contact Us</a>
-  </section>
-
-  <!-- Socials -->
-  <section class="py-16 bg-gray-100">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-2xl font-bold mb-8">Connect With Us</h2>
-      <div class="flex justify-center gap-8 text-lg">
-        <a href="https://twitter.com/tidyzenic_official" target="_blank" class="text-gray-600 hover:text-indigo-600">🐦 Twitter</a>
-        <a href="https://linkedin.com/company/tidyzenic_official" target="_blank" class="text-gray-600 hover:text-indigo-600">💼 LinkedIn</a>
-        <a href="https://facebook.com/tidyzenic_official" target="_blank" class="text-gray-600 hover:text-indigo-600">📘 Facebook</a>
-        <a href="https://instagram.com/tidyzenic_official" target="_blank" class="text-gray-600 hover:text-indigo-600">📸 Instagram</a>
+    <!-- Social Media -->
+    <section class="py-16 bg-white text-center">
+      <h2 class="text-2xl font-bold mb-6">Connect With Us</h2>
+      <div class="flex justify-center gap-8 text-gray-600">
+        <a href="https://twitter.com/tidyzenic_official" target="_blank" class="hover:text-brand-600">Twitter</a>
+        <a href="https://linkedin.com/company/tidyzenic_official" target="_blank" class="hover:text-brand-600">LinkedIn</a>
+        <a href="https://facebook.com/tidyzenic_official" target="_blank" class="hover:text-brand-600">Facebook</a>
+        <a href="https://instagram.com/tidyzenic_official" target="_blank" class="hover:text-brand-600">Instagram</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer placeholder -->
+    <!-- CTA -->
+    <section class="bg-brand-600 text-white">
+      <div class="max-w-5xl mx-auto px-6 py-20 text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Join the TidyZenic Journey</h2>
+        <p class="mt-4 text-lg text-white/80">Discover how AI-powered tools can transform your service business today.</p>
+        <div class="mt-8">
+          <a href="/pricing" class="inline-flex items-center px-8 py-4 rounded-xl bg-white text-brand-700 font-semibold shadow-lg hover:shadow-xl transition hover:-translate-y-1">
+            Start Free Trial
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (dynamic) -->
   <div id="footer-placeholder"></div>
 
-  <!-- ✅ Required for header/footer injection -->
+  <!-- App Script -->
   <script src="/js/app.js"></script>
 </body>
 </html>
