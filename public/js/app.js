@@ -22,6 +22,35 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadComponent("./footer.html", "footer-placeholder");
 
   /**
+   * Attach header interactions (after header is loaded)
+   */
+  function initHeader() {
+    const hamburger = document.getElementById("hamburger");
+    const nav = document.getElementById("nav");
+
+    if (hamburger && nav) {
+      hamburger.addEventListener("click", () => {
+        nav.classList.toggle("show");       // open/close menu
+        hamburger.classList.toggle("active"); // animate hamburger
+      });
+    }
+
+    const featuresToggle = document.querySelector(".submenu-toggle");
+    const featuresSubmenu = document.getElementById("features-submenu");
+    if (featuresToggle && featuresSubmenu) {
+      featuresToggle.addEventListener("click", (e) => {
+        if (window.innerWidth < 1024) {
+          e.preventDefault();
+          featuresSubmenu.classList.toggle("hidden");
+        }
+      });
+    }
+  }
+
+  // Ensure header is initialized after injection
+  initHeader();
+
+  /**
    * Blog posts (placeholder data, replace with API later)
    */
   const blogPosts = [

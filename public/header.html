@@ -1,13 +1,26 @@
 <!-- header.html -->
-<header>
-  <div class="logo">MySite</div>
+<header class="header">
+  <!-- Logo -->
+  <div class="logo">TidyZenic</div>
 
-  <!-- Nav -->
+  <!-- Navigation -->
   <nav id="nav">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/services">Services</a>
+
+    <!-- Features with dropdown -->
+    <div class="submenu-wrapper">
+      <a href="#" class="submenu-toggle">Features ▾</a>
+      <div id="features-submenu" class="submenu hidden">
+        <a href="/smart-scheduling">Smart Scheduling</a>
+        <a href="/staff-management">Staff Management</a>
+        <a href="/inventory-management">Inventory</a>
+        <a href="/advanced-marketing">Marketing</a>
+      </div>
+    </div>
+
+    <a href="/contact">Contact</a>
   </nav>
 
   <!-- Hamburger -->
@@ -20,15 +33,16 @@
 
 <style>
   /* Base header */
-  header {
+  .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #333;
     color: #fff;
     padding: 10px 20px;
-    position: relative;
-    z-index: 100;
+    position: sticky;
+    top: 0;
+    z-index: 50;
   }
 
   .logo {
@@ -39,9 +53,9 @@
   /* Nav default (desktop) */
   nav {
     display: flex;
-    gap: 15px;
+    gap: 20px;
+    align-items: center;
   }
-
   nav a {
     color: #fff;
     text-decoration: none;
@@ -50,6 +64,33 @@
   }
   nav a:hover {
     color: #f39c12;
+  }
+
+  /* Submenu */
+  .submenu-wrapper {
+    position: relative;
+  }
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #444;
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+    padding: 10px;
+    border-radius: 6px;
+  }
+  .submenu a {
+    padding: 8px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .submenu a:hover {
+    background: #555;
+  }
+  .hidden {
+    display: none;
   }
 
   /* Hamburger */
@@ -75,9 +116,9 @@
       right: 20px;
       background: #333;
       flex-direction: column;
-      width: 200px;
+      width: 220px;
       display: none;
-      padding: 10px;
+      padding: 12px;
       border-radius: 6px;
     }
     nav.show {
@@ -86,9 +127,14 @@
     .hamburger {
       display: flex;
     }
+    .submenu {
+      position: relative;
+      background: #444;
+      margin-top: 5px;
+    }
   }
 
-  /* Hamburger animation when active */
+  /* Hamburger animation */
   .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translateY(8px);
   }
@@ -99,13 +145,3 @@
     transform: rotate(-45deg) translateY(-8px);
   }
 </style>
-
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('nav');
-
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('show');        // toggle nav open/closed
-    hamburger.classList.toggle('active'); // animate hamburger
-  });
-</script>
