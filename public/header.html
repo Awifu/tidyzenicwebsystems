@@ -1,12 +1,11 @@
 <!-- header.html -->
 <header class="header">
   <!-- Logo -->
-<!-- Logo -->
-<div class="logo">
-  <a href="/">
-    <img src="/images/logo-light.svg" alt="TidyZenic" class="h-10 w-auto">
-  </a>
-</div>
+  <div class="logo">
+    <a href="/">
+      <img src="/images/logo-light.svg" alt="TidyZenic" class="logo-img">
+    </a>
+  </div>
 
   <!-- Navigation -->
   <nav id="nav">
@@ -39,7 +38,7 @@
 <style>
   /* Ensure page content clears fixed header */
   body {
-    padding-top: 60px; /* adjust if header height changes */
+    padding-top: 70px; /* adjust to header height */
   }
 
   /* Base header */
@@ -47,19 +46,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #101828; /* dark brand background */
+    background: #101828;
     color: #fff;
-    padding: 10px 20px;
-    position: fixed; /* ✅ stays always at top */
+    padding: 8px 20px;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000; /* above all content */
+    z-index: 1000;
+    height: 70px; /* lock consistent height */
   }
 
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+  /* Logo */
+  .logo a {
+    display: flex;
+    align-items: center;
+  }
+  .logo-img {
+    height: 40px; /* clean fixed size */
+    width: auto;
+    display: block;
   }
 
   /* Nav default (desktop) */
@@ -75,7 +81,7 @@
     transition: color 0.2s;
   }
   nav a:hover {
-    color: #3C52D9; /* 🔵 hover color */
+    color: #3C52D9;
   }
 
   /* Submenu */
@@ -101,7 +107,7 @@
     transition: background 0.2s, color 0.2s;
   }
   .submenu a:hover {
-    background: #3C52D9; /* 🔵 hover color */
+    background: #3C52D9;
     color: #fff;
   }
   .hidden {
@@ -127,7 +133,7 @@
   @media (max-width: 768px) {
     nav {
       position: absolute;
-      top: 60px;
+      top: 70px;
       right: 20px;
       background: #101828;
       flex-direction: column;
@@ -175,7 +181,7 @@
       hamburger.classList.toggle("active");
     });
 
-    // Toggle submenu on click (desktop + mobile)
+    // Toggle submenu on click
     submenuToggle.addEventListener("click", (e) => {
       e.preventDefault();
       submenu.classList.toggle("hidden");
