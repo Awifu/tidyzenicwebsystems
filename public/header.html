@@ -37,7 +37,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #101828; /* Updated background */
+    background: #101828; /* dark brand background */
     color: #fff;
     padding: 10px 20px;
     position: sticky;
@@ -74,12 +74,13 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background: #444;
+    background: #1c2333;
+    display: flex;
     flex-direction: column;
     min-width: 180px;
     padding: 10px;
     border-radius: 6px;
-    display: none; /* hidden by default */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
   }
   .submenu a {
     padding: 8px;
@@ -87,10 +88,10 @@
     text-decoration: none;
   }
   .submenu a:hover {
-    background: #555;
+    background: #333d55;
   }
-  .submenu.show {
-    display: flex;
+  .hidden {
+    display: none;
   }
 
   /* Hamburger */
@@ -129,8 +130,9 @@
     }
     .submenu {
       position: relative;
-      background: #444;
+      background: #1c2333;
       margin-top: 5px;
+      box-shadow: none;
     }
   }
 
@@ -145,29 +147,3 @@
     transform: rotate(-45deg) translateY(-8px);
   }
 </style>
-
-<script>
-  const hamburger = document.getElementById("hamburger");
-  const nav = document.getElementById("nav");
-  const submenuToggle = document.querySelector(".submenu-toggle");
-  const submenu = document.getElementById("features-submenu");
-
-  // Hamburger toggle
-  hamburger.addEventListener("click", () => {
-    nav.classList.toggle("show");
-    hamburger.classList.toggle("active");
-  });
-
-  // Submenu toggle (desktop + mobile)
-  submenuToggle.addEventListener("click", (e) => {
-    e.preventDefault();
-    submenu.classList.toggle("show");
-  });
-
-  // Close submenu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
-      submenu.classList.remove("show");
-    }
-  });
-</script>

@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (response.ok) {
         const html = await response.text();
         document.getElementById(placeholderId).innerHTML = html;
+
+        // after injection, wire up interactivity if header/footer
+        if (placeholderId === "header-placeholder") {
+          initHeader();
+        }
       } else {
         console.error(`Failed to load ${url}: ${response.statusText}`);
       }
@@ -22,33 +27,38 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadComponent("./footer.html", "footer-placeholder");
 
   /**
-   * Attach header interactions (after header is loaded)
+   * Header interactivity: hamburger + submenu click
    */
   function initHeader() {
     const hamburger = document.getElementById("hamburger");
     const nav = document.getElementById("nav");
+    const submenuToggle = document.querySelector(".submenu-toggle");
+    const submenu = document.getElementById("features-submenu");
 
     if (hamburger && nav) {
       hamburger.addEventListener("click", () => {
-        nav.classList.toggle("show");       // open/close menu
-        hamburger.classList.toggle("active"); // animate hamburger
+        nav.classList.toggle("show");
+        hamburger.classList.toggle("active");
       });
     }
 
-    const featuresToggle = document.querySelector(".submenu-toggle");
-    const featuresSubmenu = document.getElementById("features-submenu");
-    if (featuresToggle && featuresSubmenu) {
-      featuresToggle.addEventListener("click", (e) => {
-        if (window.innerWidth < 1024) {
-          e.preventDefault();
-          featuresSubmenu.classList.toggle("hidden");
+    if (submenuToggle && submenu) {
+      submenuToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        submenu.classList.toggle("hidden");
+      });
+
+      // click outside to close
+      document.addEventListener("click", (e) => {
+        if (
+          !submenu.contains(e.target) &&
+          !submenuToggle.contains(e.target)
+        ) {
+          submenu.classList.add("hidden");
         }
       });
     }
   }
-
-  // Ensure header is initialized after injection
-  initHeader();
 
   /**
    * Blog posts (placeholder data, replace with API later)
