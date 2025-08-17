@@ -14,6 +14,9 @@
       --brand-600: #4f46e5;
       --brand-400: #818cf8;
     }
+    details[open] summary svg {
+      transform: rotate(180deg);
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased font-sans">
@@ -26,79 +29,122 @@
     <!-- Hero -->
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-brand-700 via-brand-600 to-indigo-600"></div>
-      <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28 text-white text-center">
-        <h1 class="text-4xl sm:text-6xl font-extrabold">About TidyZenic</h1>
-        <p class="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-white/90">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_60%)]"></div>
+      <div class="relative max-w-5xl mx-auto px-6 py-24 sm:py-32 text-center text-white">
+        <h1 class="text-4xl sm:text-6xl font-extrabold drop-shadow-lg">About <span class="text-brand-400">TidyZenic</span></h1>
+        <p class="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-white/90 leading-relaxed">
           Founded in <strong>Greece</strong> by <strong>Awifu Muyomba</strong> — a cleaning professional and IT graduate — 
-          TidyZenic empowers service providers globally with AI-driven SaaS tools for growth, efficiency, and success.
+          TidyZenic empowers service providers globally with AI-driven SaaS tools for <span class="font-semibold text-white">growth, efficiency, and success.</span>
         </p>
       </div>
     </section>
 
     <!-- Founder Story -->
-    <section class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
+    <section class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 class="text-3xl font-bold mb-4">Our Story</h2>
-        <p class="mb-4">
-          After 5 years in the cleaning industry, Awifu Muyomba experienced firsthand the challenges service providers face — from scheduling conflicts to client communication.
+        <span class="text-brand-600 font-semibold uppercase tracking-wide text-sm">Our Story</span>
+        <h2 class="mt-3 text-3xl font-bold leading-tight">From Cleaning to Code</h2>
+        <p class="mt-5 text-gray-600 leading-relaxed">
+          With 5 years in the cleaning industry, <strong>Awifu Muyomba</strong> saw firsthand the challenges service providers face — from scheduling conflicts to staff management.
         </p>
-        <p class="mb-4">
-          As an <strong>Information Technology graduate</strong> from Uganda, with 14 years of international experience abroad, Awifu combined his expertise in tech with his passion for service to create <strong>TidyZenic</strong>.
+        <p class="mt-4 text-gray-600 leading-relaxed">
+          As an <strong>IT graduate</strong> from Uganda with 14 years of international experience abroad, Awifu merged his technical expertise and entrepreneurial drive to create <strong>TidyZenic</strong>.
         </p>
-        <p>
-          Built from scratch through research, coding, and continuous adaptation, TidyZenic is a platform that listens, evolves, and empowers businesses everywhere.
-        </p>
+        <blockquote class="mt-6 border-l-4 border-brand-600 pl-4 italic text-gray-700">
+          “TidyZenic was born out of necessity — created for service providers, by someone who has lived their challenges.”
+        </blockquote>
       </div>
       <div class="flex justify-center">
-        <div class="w-[360px] h-[420px] overflow-hidden rounded-[9999px] shadow-xl ring-4 ring-brand-600/20">
+        <div class="relative w-72 h-80 overflow-hidden rounded-3xl shadow-xl ring-4 ring-brand-600/20">
           <img src="https://placehold.co/400x500/4f46e5/ffffff?text=Awifu+Muyomba" 
                alt="Awifu Muyomba - Founder of TidyZenic" 
-               class="w-full h-full object-cover" />
+               class="w-full h-full object-cover">
         </div>
       </div>
     </section>
 
-    <!-- Values -->
-    <section class="bg-white">
-      <div class="max-w-7xl mx-auto px-6 py-16">
+    <!-- Mission & Values -->
+    <section class="bg-white py-20">
+      <div class="max-w-7xl mx-auto px-6">
         <h2 class="text-3xl font-bold text-center">Our Mission & Values</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-center text-gray-600">Empowering service providers with tools to succeed in the digital age.</p>
+        <p class="mt-3 max-w-2xl mx-auto text-center text-gray-600">
+          Empowering service providers to thrive in the digital era with <span class="font-semibold">intelligent, adaptable tools.</span>
+        </p>
+
         <div class="mt-12 grid md:grid-cols-3 gap-6">
-          <div class="p-8 bg-gray-50 rounded-3xl shadow hover:shadow-md transition text-center">
-            <h3 class="text-xl font-semibold mb-3">Innovation</h3>
-            <p>We harness AI and cutting-edge technology to solve real-world challenges.</p>
+          <div class="p-8 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-sm hover:shadow-md transition text-center">
+            <div class="mx-auto w-12 h-12 flex items-center justify-center bg-brand-600 text-white rounded-full mb-4">
+              <!-- lightbulb -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m6.364-14.364l-.707.707M5.343 18.657l-.707.707M21 12h1M2 12H1m16.657 6.364l-.707-.707M6.05 6.05l-.707-.707" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Innovation</h3>
+            <p class="text-gray-600">We harness AI and emerging technology to solve real-world challenges.</p>
           </div>
-          <div class="p-8 bg-gray-50 rounded-3xl shadow hover:shadow-md transition text-center">
-            <h3 class="text-xl font-semibold mb-3">Integrity</h3>
-            <p>Transparency and trust drive everything we build and deliver.</p>
+          <div class="p-8 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-sm hover:shadow-md transition text-center">
+            <div class="mx-auto w-12 h-12 flex items-center justify-center bg-brand-600 text-white rounded-full mb-4">
+              <!-- shield -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Integrity</h3>
+            <p class="text-gray-600">Trust and transparency are built into everything we deliver.</p>
           </div>
-          <div class="p-8 bg-gray-50 rounded-3xl shadow hover:shadow-md transition text-center">
-            <h3 class="text-xl font-semibold mb-3">Community</h3>
-            <p>We listen, adapt, and grow together with the global service provider community.</p>
+          <div class="p-8 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-sm hover:shadow-md transition text-center">
+            <div class="mx-auto w-12 h-12 flex items-center justify-center bg-brand-600 text-white rounded-full mb-4">
+              <!-- users -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M12 12a4 4 0 100-8 4 4 0 000 8zm6 8H6" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Community</h3>
+            <p class="text-gray-600">We grow alongside the global service provider community we serve.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FAQ Accordion -->
-    <section class="bg-gray-50">
-      <div class="max-w-4xl mx-auto px-6 py-16">
+    <section class="bg-gray-50 py-20">
+      <div class="max-w-4xl mx-auto px-6">
         <h2 class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
         <div class="space-y-4">
-          <details class="bg-white p-6 rounded-2xl shadow group">
-            <summary class="cursor-pointer font-semibold text-lg">Who founded TidyZenic?</summary>
+          <details class="bg-white p-6 rounded-2xl shadow group transition">
+            <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between">
+              Who founded TidyZenic?
+              <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
             <p class="mt-3 text-gray-600">TidyZenic was founded by Awifu Muyomba, an IT graduate and experienced cleaning professional.</p>
           </details>
-          <details class="bg-white p-6 rounded-2xl shadow group">
-            <summary class="cursor-pointer font-semibold text-lg">Where is TidyZenic based?</summary>
+          <details class="bg-white p-6 rounded-2xl shadow group transition">
+            <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between">
+              Where is TidyZenic based?
+              <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
             <p class="mt-3 text-gray-600">TidyZenic was founded in Greece and serves service providers worldwide.</p>
           </details>
-          <details class="bg-white p-6 rounded-2xl shadow group">
-            <summary class="cursor-pointer font-semibold text-lg">What does TidyZenic do?</summary>
+          <details class="bg-white p-6 rounded-2xl shadow group transition">
+            <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between">
+              What does TidyZenic do?
+              <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
             <p class="mt-3 text-gray-600">We provide AI-powered SaaS tools for scheduling, staff, inventory, and marketing.</p>
           </details>
-          <details class="bg-white p-6 rounded-2xl shadow group">
-            <summary class="cursor-pointer font-semibold text-lg">How does TidyZenic help providers?</summary>
+          <details class="bg-white p-6 rounded-2xl shadow group transition">
+            <summary class="cursor-pointer font-semibold text-lg flex items-center justify-between">
+              How does TidyZenic help providers?
+              <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
             <p class="mt-3 text-gray-600">By automating operations and enabling growth, we help providers save time and increase profits.</p>
           </details>
         </div>
@@ -106,19 +152,31 @@
     </section>
 
     <!-- Social Media -->
-    <section class="py-16 bg-white text-center">
-      <h2 class="text-2xl font-bold mb-6">Connect With Us</h2>
-      <div class="flex justify-center gap-8 text-gray-600">
-        <a href="https://twitter.com/tidyzenic_official" target="_blank" class="hover:text-brand-600">Twitter</a>
-        <a href="https://linkedin.com/company/tidyzenic_official" target="_blank" class="hover:text-brand-600">LinkedIn</a>
-        <a href="https://facebook.com/tidyzenic_official" target="_blank" class="hover:text-brand-600">Facebook</a>
-        <a href="https://instagram.com/tidyzenic_official" target="_blank" class="hover:text-brand-600">Instagram</a>
+    <section class="py-20 bg-white text-center">
+      <h2 class="text-2xl font-bold mb-8">Connect With Us</h2>
+      <div class="flex justify-center gap-6">
+        <a href="https://twitter.com/tidyzenic_official" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-brand-600 hover:text-white transition">
+          <!-- twitter -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.4.36a9.09 9.09 0 01-2.88 1.1A4.52 4.52 0 0016.11 0c-2.53 0-4.6 2.12-4.6 4.73 0 .37.04.72.11 1.06A12.94 12.94 0 013 1.67a4.83 4.83 0 00-.62 2.38c0 1.64.81 3.09 2.05 3.95a4.48 4.48 0 01-2.08-.6v.06c0 2.29 1.57 4.2 3.65 4.63a4.42 4.42 0 01-2.07.08c.58 1.85 2.27 3.19 4.28 3.23A9.06 9.06 0 012 19.54 12.94 12.94 0 008.29 21c7.55 0 11.68-6.46 11.68-12.06 0-.18 0-.35-.01-.53A8.65 8.65 0 0023 3z"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/tidyzenic_official" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-brand-600 hover:text-white transition">
+          <!-- linkedin -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zM8 19h-3v-11h3v11zM6.5 7.712c-.966 0-1.75-.79-1.75-1.765s.784-1.764 1.75-1.764 1.75.79 1.75 1.764c0 .975-.784 1.765-1.75 1.765zM20 19h-3v-5.604c0-1.337-.027-3.059-1.864-3.059-1.865 0-2.151 1.453-2.151 2.955v5.708h-3v-11h2.877v1.507h.041c.401-.759 1.379-1.559 2.84-1.559 3.04 0 3.6 2.003 3.6 4.609v6.443z"/></svg>
+        </a>
+        <a href="https://facebook.com/tidyzenic_official" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-brand-600 hover:text-white transition">
+          <!-- facebook -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .598 0 1.333v21.333C0 23.403.597 24 1.325 24h11.495v-9.294H9.691V11.41h3.129V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463.099 2.796.143v3.24l-1.918.001c-1.505 0-1.797.717-1.797 1.767v2.317h3.588l-.467 3.296h-3.121V24h6.116C23.403 24 24 23.403 24 22.667V1.333C24 .598 23.403 0 22.675 0z"/></svg>
+        </a>
+        <a href="https://instagram.com/tidyzenic_official" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-brand-600 hover:text-white transition">
+          <!-- instagram -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 2h9A5.507 5.507 0 0122 7.5v9a5.507 5.507 0 01-5.5 5.5h-9A5.507 5.507 0 012 16.5v-9A5.507 5.507 0 017.5 2zm0-2A7.5 7.5 0 000 7.5v9A7.5 7.5 0 007.5 24h9A7.5 7.5 0 0024 16.5v-9A7.5 7.5 0 0016.5 0h-9z"/><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-2a7 7 0 110 14 7 7 0 010-14zm8.5 2a1.5 1.5 0 11-3 .001 1.5 1.5 0 013-.001z"/></svg>
+        </a>
       </div>
     </section>
 
     <!-- CTA -->
     <section class="bg-brand-600 text-white">
-      <div class="max-w-5xl mx-auto px-6 py-20 text-center">
+      <div class="max-w-5xl mx-auto px-6 py-24 text-center">
         <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Join the TidyZenic Journey</h2>
         <p class="mt-4 text-lg text-white/80">Discover how AI-powered tools can transform your service business today.</p>
         <div class="mt-8">
