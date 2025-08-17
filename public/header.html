@@ -1,123 +1,86 @@
-<!-- HEADER -->
-<header class="main-header bg-white border-b border-gray-200 shadow-sm">
-  <div class="container mx-auto flex items-center justify-between px-4 py-3">
-
-    <!-- Logo -->
-    <div class="logo">
-      <a href="/">
-        <img src="/images/logo-light.svg" alt="TidyZenic Logo" class="h-12 w-auto">
-      </a>
-    </div>
-
-    <!-- Mobile Menu Button -->
-    <button id="menu-toggle" class="lg:hidden text-2xl" aria-label="Toggle menu">
-      ☰
-    </button>
-
-    <!-- Nav -->
-    <nav id="main-nav" class="hidden lg:flex">
-      <ul class="nav-menu flex gap-8 items-center font-medium text-gray-700">
-        
-        <!-- Features Dropdown -->
-        <li class="nav-item has-submenu relative group">
-          <button class="submenu-toggle flex items-center gap-1">
-            Features <span>▼</span>
-          </button>
-          <ul id="features-submenu" class="submenu hidden lg:group-hover:block absolute mt-3 bg-white shadow-xl rounded-lg w-56 border border-gray-100 opacity-0 group-hover:opacity-100 transition duration-200">
-            <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-50">Staff Management</a></li>
-            <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-50">Smart Scheduling</a></li>
-            <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-50">Price Estimate Tool</a></li>
-            <li><a href="/booking-form" class="block px-4 py-2 hover:bg-gray-50">Booking Form</a></li>
-            <li><a href="/advanced-marketing" class="block px-4 py-2 hover:bg-gray-50">Advanced Marketing</a></li>
-          </ul>
-        </li>
-
-        <!-- Other Nav Items -->
-        <li><a href="/pricing" class="hover:text-brand-600 relative after:block after:h-0.5 after:bg-brand-600 after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-200 after:origin-left">Pricing</a></li>
-        <li><a href="/blog" class="hover:text-brand-600 relative after:block after:h-0.5 after:bg-brand-600 after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-200 after:origin-left">Blog</a></li>
-
-        <!-- Account CTA -->
-        <li>
-          <a href="/login" class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold shadow hover:bg-brand-700 transition">
-            Account
-          </a>
-        </li>
-      </ul>
-    </nav>
+<!-- header.html -->
+<header>
+  <div class="logo">MySite</div>
+  <nav id="nav">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </header>
 
 <style>
-  /* Fixed Header */
-  .main-header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: #fff;
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
   }
-  body { padding-top: 4.5rem; }
 
-  /* Mobile Nav */
-  #main-nav {
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    overflow: hidden;
+  header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
   }
-  #main-nav.open {
-    display: block !important;
-    max-height: 500px;
-    opacity: 1;
+
+  nav {
+    display: flex;
+    gap: 15px;
   }
-  #main-nav ul {
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .hamburger {
+    display: none;
     flex-direction: column;
-    padding: 1rem 0;
-  }
-  #main-nav li {
-    padding: 0.5rem 0;
+    cursor: pointer;
+    gap: 5px;
   }
 
-  /* Desktop Nav */
-  @media (min-width: 1024px) {
-    #main-nav {
-      display: flex !important;
-      max-height: none !important;
-      opacity: 1 !important;
-      overflow: visible !important;
-    }
-    #main-nav ul {
-      flex-direction: row;
-      padding: 0;
-    }
-    #main-nav li {
-      padding: 0;
-    }
-    #menu-toggle { display: none !important; }
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
   }
 
-  /* Submenu */
-  .submenu {
-    pointer-events: none;
-  }
-  .group:hover .submenu {
-    pointer-events: auto;
+  @media (max-width: 768px) {
+    nav {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: #333;
+      flex-direction: column;
+      width: 200px;
+      display: none;
+      padding: 10px;
+    }
+
+    nav.show {
+      display: flex;
+    }
+
+    .hamburger {
+      display: flex;
+    }
   }
 </style>
 
 <script>
-  const toggleBtn = document.getElementById('menu-toggle');
-  const nav = document.getElementById('main-nav');
-  const featuresToggle = document.querySelector('.submenu-toggle');
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav");
 
-  // Mobile menu toggle
-  toggleBtn.addEventListener('click', () => {
-    nav.classList.toggle('open');
-  });
-
-  // Features submenu toggle (mobile only)
-  featuresToggle.addEventListener('click', (e) => {
-    if (window.innerWidth < 1024) {
-      e.preventDefault();
-      const submenu = featuresToggle.nextElementSibling;
-      submenu.classList.toggle('hidden');
-    }
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("show");
   });
 </script>
