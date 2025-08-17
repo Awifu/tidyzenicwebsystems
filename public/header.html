@@ -1,7 +1,11 @@
 <!-- header.html -->
 <header class="header">
   <!-- Logo -->
-  <div class="logo">TidyZenic</div>
+  <div class="logo">
+    <a href="/">
+      <img src="/images/logo-light.svg" alt="TidyZenic" class="h-10 w-auto">
+    </a>
+  </div>
 
   <!-- Navigation -->
   <nav id="nav">
@@ -52,9 +56,8 @@
     z-index: 1000; /* above all content */
   }
 
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+  .logo img {
+    display: block;
   }
 
   /* Nav default (desktop) */
