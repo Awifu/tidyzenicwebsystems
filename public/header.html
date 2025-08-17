@@ -10,15 +10,15 @@
     </div>
 
     <!-- Mobile Menu Button -->
-    <button id="menu-toggle" class="flex flex-col gap-1.5 lg:hidden z-50 relative" aria-label="Toggle menu">
+    <button id="menu-toggle" class="lg:hidden flex flex-col gap-1.5" aria-label="Toggle menu">
       <span class="hamburger-line w-6 h-0.5 bg-gray-800 transition-all"></span>
       <span class="hamburger-line w-6 h-0.5 bg-gray-800 transition-all"></span>
       <span class="hamburger-line w-6 h-0.5 bg-gray-800 transition-all"></span>
     </button>
 
     <!-- Nav -->
-    <nav id="main-nav" class="hidden lg:flex absolute lg:static top-full left-0 w-full lg:w-auto bg-white lg:bg-transparent shadow lg:shadow-none">
-      <ul class="nav-menu flex flex-col lg:flex-row gap-6 lg:gap-8 items-start lg:items-center font-medium text-gray-700 px-4 lg:px-0 py-4 lg:py-0">
+    <nav id="main-nav" class="hidden lg:flex">
+      <ul class="nav-menu flex flex-col lg:flex-row gap-6 lg:gap-8 items-start lg:items-center font-medium text-gray-700">
         
         <!-- Features Dropdown -->
         <li class="nav-item has-submenu relative group">
@@ -35,8 +35,8 @@
         </li>
 
         <!-- Other Nav Items -->
-        <li><a href="/pricing" class="hover:text-brand-600">Pricing</a></li>
-        <li><a href="/blog" class="hover:text-brand-600">Blog</a></li>
+        <li><a href="/pricing" class="hover:text-brand-600 relative after:block after:h-0.5 after:bg-brand-600 after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-200 after:origin-left">Pricing</a></li>
+        <li><a href="/blog" class="hover:text-brand-600 relative after:block after:h-0.5 after:bg-brand-600 after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-200 after:origin-left">Blog</a></li>
 
         <!-- Account CTA -->
         <li>
@@ -96,14 +96,12 @@
     #menu-toggle { display: none !important; }
   }
 
-  /* Submenu — only disable pointer-events on desktop */
-  @media (min-width: 1024px) {
-    .submenu {
-      pointer-events: none;
-    }
-    .group:hover .submenu {
-      pointer-events: auto;
-    }
+  /* Submenu */
+  .submenu {
+    pointer-events: none;
+  }
+  .group:hover .submenu {
+    pointer-events: auto;
   }
 </style>
 
