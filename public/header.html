@@ -10,22 +10,20 @@
     </div>
 
     <!-- Mobile Menu Button -->
-    <button id="menu-toggle" class="lg:hidden flex flex-col gap-1.5" aria-label="Toggle menu">
-      <span class="hamburger-line w-6 h-0.5 bg-gray-800 transition-all"></span>
-      <span class="hamburger-line w-6 h-0.5 bg-gray-800 transition-all"></span>
-      <span class="hamburger-line w-6 h-0.5 bg-gray-800 transition-all"></span>
+    <button id="menu-toggle" class="lg:hidden text-2xl" aria-label="Toggle menu">
+      ☰
     </button>
 
     <!-- Nav -->
     <nav id="main-nav" class="hidden lg:flex">
-      <ul class="nav-menu flex flex-col lg:flex-row gap-6 lg:gap-8 items-start lg:items-center font-medium text-gray-700">
+      <ul class="nav-menu flex gap-8 items-center font-medium text-gray-700">
         
         <!-- Features Dropdown -->
         <li class="nav-item has-submenu relative group">
-          <button class="submenu-toggle flex items-center gap-1 lg:cursor-default">
+          <button class="submenu-toggle flex items-center gap-1">
             Features <span>▼</span>
           </button>
-          <ul id="features-submenu" class="submenu hidden lg:group-hover:block lg:absolute lg:mt-3 bg-white shadow-xl rounded-lg w-56 border border-gray-100 opacity-0 lg:group-hover:opacity-100 transition duration-200">
+          <ul id="features-submenu" class="submenu hidden lg:group-hover:block absolute mt-3 bg-white shadow-xl rounded-lg w-56 border border-gray-100 opacity-0 group-hover:opacity-100 transition duration-200">
             <li><a href="/staff-management" class="block px-4 py-2 hover:bg-gray-50">Staff Management</a></li>
             <li><a href="/smart-scheduling" class="block px-4 py-2 hover:bg-gray-50">Smart Scheduling</a></li>
             <li><a href="/price-estimate-tool" class="block px-4 py-2 hover:bg-gray-50">Price Estimate Tool</a></li>
@@ -69,16 +67,12 @@
     max-height: 500px;
     opacity: 1;
   }
-
-  /* Hamburger Animation */
-  #menu-toggle.open .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translateY(7px);
+  #main-nav ul {
+    flex-direction: column;
+    padding: 1rem 0;
   }
-  #menu-toggle.open .hamburger-line:nth-child(2) {
-    opacity: 0;
-  }
-  #menu-toggle.open .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translateY(-7px);
+  #main-nav li {
+    padding: 0.5rem 0;
   }
 
   /* Desktop Nav */
@@ -91,6 +85,9 @@
     }
     #main-nav ul {
       flex-direction: row;
+      padding: 0;
+    }
+    #main-nav li {
       padding: 0;
     }
     #menu-toggle { display: none !important; }
@@ -109,19 +106,18 @@
   const toggleBtn = document.getElementById('menu-toggle');
   const nav = document.getElementById('main-nav');
   const featuresToggle = document.querySelector('.submenu-toggle');
-  const featuresSubmenu = document.getElementById('features-submenu');
 
   // Mobile menu toggle
   toggleBtn.addEventListener('click', () => {
     nav.classList.toggle('open');
-    toggleBtn.classList.toggle('open'); // animate hamburger to X
   });
 
   // Features submenu toggle (mobile only)
   featuresToggle.addEventListener('click', (e) => {
     if (window.innerWidth < 1024) {
       e.preventDefault();
-      featuresSubmenu.classList.toggle('hidden');
+      const submenu = featuresToggle.nextElementSibling;
+      submenu.classList.toggle('hidden');
     }
   });
 </script>
