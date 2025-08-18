@@ -1,5 +1,5 @@
 // app.js
-document.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener("load", async () => {
   /**
    * Load and inject external components (header, footer)
    */
@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       const response = await fetch(url);
       if (response.ok) {
         const html = await response.text();
-        placeholder.innerHTML = html;
+
+        // Instead of replacing innerHTML, just append
+        placeholder.insertAdjacentHTML("beforeend", html);
 
         // Initialize after injection
         if (placeholderId === "header-placeholder") {
