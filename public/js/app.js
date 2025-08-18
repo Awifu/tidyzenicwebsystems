@@ -4,27 +4,30 @@ document.addEventListener("DOMContentLoaded", async () => {
    * Load and inject external components (header, footer)
    */
   async function loadComponent(url, placeholderId) {
+    const placeholder = document.getElementById(placeholderId);
+    if (!placeholder) return; // don't try if placeholder is missing
+
     try {
       const response = await fetch(url);
       if (response.ok) {
         const html = await response.text();
-        document.getElementById(placeholderId).innerHTML = html;
+        placeholder.innerHTML = html;
 
-        // after injection, wire up interactivity if header/footer
+        // Initialize after injection
         if (placeholderId === "header-placeholder") {
           initHeader();
         }
       } else {
-        console.error(`Failed to load ${url}: ${response.statusText}`);
+        console.error(`❌ Failed to load ${url}: ${response.statusText}`);
       }
     } catch (err) {
-      console.error(`Error fetching ${url}:`, err);
+      console.error(`❌ Error fetching ${url}:`, err);
     }
   }
 
-  // Load header & footer
-  await loadComponent("./header.html", "header-placeholder");
-  await loadComponent("./footer.html", "footer-placeholder");
+  // Always load from root so works on /about, /pricing, etc.
+  await loadComponent("/header.html", "header-placeholder");
+  await loadComponent("/footer.html", "footer-placeholder");
 
   /**
    * Header interactivity: hamburger + submenu click
@@ -50,10 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // click outside to close
       document.addEventListener("click", (e) => {
-        if (
-          !submenu.contains(e.target) &&
-          !submenuToggle.contains(e.target)
-        ) {
+        if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
           submenu.classList.add("hidden");
         }
       });
@@ -90,7 +90,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       summary:
         "A deep dive into how TidyZenic helps you track supplies and automate re-ordering.",
       link: "/blog/inventory-management",
-      image: "https://placehold.co/400x200/4f46e5/ffffff?text=Inventory+Management",
+      image:
+        "https://placehold.co/400x200/4f46e5/ffffff?text=Inventory+Management",
     },
   ];
 
@@ -167,7 +168,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const ctx = canvas.getContext("2d");
     const data = [10, 25, 20, 35, 30, 50];
-    const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
 
     const width = canvas.offsetWidth;
     const height = canvas.offsetHeight;
