@@ -1,200 +1,191 @@
-<!-- header.html -->
+<!-- This is a reusable partial HTML file for a header component. -->
+<!-- It includes the header element, along with its necessary CSS and JavaScript. -->
+
 <header class="header">
-  <!-- Logo -->
-  <div class="logo">
-    <a href="/">
-      <!-- Note: You may need a dark version of your logo image for this light header -->
-      <img src="/images/logo-dark.svg" alt="TidyZenic" class="logo-img">
-    </a>
-  </div>
-
-  <!-- Navigation -->
-  <nav id="nav">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/pricing">Pricing</a>
-
-    <!-- Features with dropdown -->
-    <div class="submenu-wrapper">
-      <a href="#" class="submenu-toggle">Features ▾</a>
-      <div id="features-submenu" class="submenu hidden">
-        <a href="/smart-scheduling">Smart Scheduling</a>
-        <a href="/staff-management">Staff Management</a>
-        <a href="/inventory-management">Inventory</a>
-        <a href="/advanced-marketing">Marketing</a>
-      </div>
+    <!-- Logo -->
+    <div class="logo">
+        <a href="/">
+            <!-- Note: Use a placeholder image as the original URL is not available. -->
+            <img src="https://placehold.co/120x40/ffffff/4338ca?text=TidyZenic" alt="TidyZenic" class="logo-img">
+        </a>
     </div>
 
-    <a href="/contact">Contact</a>
-  </nav>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/pricing">Pricing</a>
 
-  <!-- Hamburger -->
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+        <!-- Features with dropdown -->
+        <div class="submenu-wrapper">
+            <a href="#" class="submenu-toggle">Features ▾</a>
+            <div id="features-submenu" class="submenu hidden">
+                <a href="/smart-scheduling">Smart Scheduling</a>
+                <a href="/staff-management">Staff Management</a>
+                <a href="/inventory-management">Inventory</a>
+                <a href="/advanced-marketing">Marketing</a>
+            </div>
+        </div>
+
+        <a href="/contact">Contact</a>
+    </nav>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </header>
 
 <style>
-  /* Ensure page content clears fixed header */
-  body {
-    padding-top: 70px; /* adjust to header height */
-  }
-
-  /* Base header */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #ffffff; /* Changed to white */
-    color: #1F2937; /* Changed to dark gray for visibility */
-    padding: 8px 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    height: 70px; /* lock consistent height */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Added subtle shadow */
-  }
-
-  /* Logo */
-  .logo a {
-    display: flex;
-    align-items: center;
-  }
-  .logo-img {
-    height: 40px; /* clean fixed size */
-    width: auto;
-    display: block;
-  }
-
-  /* Nav default (desktop) */
-  nav {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  nav a {
-    color: #1F2937; /* Changed to dark gray for visibility */
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.2s;
-  }
-  nav a:hover {
-    color: #3C52D9;
-  }
-
-  /* Submenu */
-  .submenu-wrapper {
-    position: relative;
-  }
-  .submenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #F3F4F6; /* Changed to a light gray */
-    display: flex;
-    flex-direction: column;
-    min-width: 180px;
-    padding: 10px;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Adjusted shadow */
-  }
-  .submenu a {
-    padding: 8px;
-    color: #1F2937; /* Changed to dark gray for visibility */
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-  }
-  .submenu a:hover {
-    background: #3C52D9;
-    color: #fff;
-  }
-  .hidden {
-    display: none;
-  }
-
-  /* Hamburger */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-  }
-  .hamburger span {
-    width: 25px;
-    height: 3px;
-    background: #1F2937; /* Changed to dark gray for visibility */
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-
-  /* Mobile styles */
-  @media (max-width: 768px) {
+    /* Base header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffffff;
+        color: #1F2937;
+        padding: 8px 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 70px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    /* Logo */
+    .logo a {
+        display: flex;
+        align-items: center;
+    }
+    .logo-img {
+        height: 40px;
+        width: auto;
+        display: block;
+    }
+    /* Nav default (desktop) */
     nav {
-      position: absolute;
-      top: 70px;
-      right: 20px;
-      background: #ffffff; /* Changed to white */
-      flex-direction: column;
-      width: 220px;
-      display: none;
-      padding: 12px;
-      border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: flex;
+        gap: 20px;
+        align-items: center;
     }
-    nav.show {
-      display: flex;
+    nav a {
+        color: #1F2937;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.2s;
     }
-    .hamburger {
-      display: flex;
+    nav a:hover {
+        color: #3C52D9;
+    }
+    /* Submenu */
+    .submenu-wrapper {
+        position: relative;
     }
     .submenu {
-      position: relative;
-      background: #E5E7EB; /* Lighter gray for mobile submenu */
-      margin-top: 5px;
-      box-shadow: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #F3F4F6;
+        display: flex;
+        flex-direction: column;
+        min-width: 180px;
+        padding: 10px;
+        border-radius: 6px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-  }
-
-  /* Hamburger animation */
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translateY(8px);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-8px);
-  }
+    .submenu a {
+        padding: 8px;
+        color: #1F2937;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+    }
+    .submenu a:hover {
+        background: #3C52D9;
+        color: #fff;
+    }
+    .hidden {
+        display: none;
+    }
+    /* Hamburger */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: #1F2937;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    /* Mobile styles */
+    @media (max-width: 768px) {
+        nav {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: #ffffff;
+            flex-direction: column;
+            width: 220px;
+            display: none;
+            padding: 12px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        nav.show {
+            display: flex;
+        }
+        .hamburger {
+            display: flex;
+        }
+        .submenu {
+            position: relative;
+            background: #E5E7EB;
+            margin-top: 5px;
+            box-shadow: none;
+        }
+    }
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translateY(8px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-8px);
+    }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.getElementById("hamburger");
-    const nav = document.getElementById("nav");
-    const submenuToggle = document.querySelector(".submenu-toggle");
-    const submenu = document.getElementById("features-submenu");
+    document.addEventListener("DOMContentLoaded", () => {
+        const hamburger = document.getElementById("hamburger");
+        const nav = document.getElementById("nav");
+        const submenuToggle = document.querySelector(".submenu-toggle");
+        const submenu = document.getElementById("features-submenu");
 
-    // Toggle mobile nav
-    hamburger.addEventListener("click", () => {
-      nav.classList.toggle("show");
-      hamburger.classList.toggle("active");
-    });
+        // Toggle mobile nav
+        hamburger.addEventListener("click", () => {
+            nav.classList.toggle("show");
+            hamburger.classList.toggle("active");
+        });
 
-    // Toggle submenu on click
-    submenuToggle.addEventListener("click", (e) => {
-      e.preventDefault();
-      submenu.classList.toggle("hidden");
-    });
+        // Toggle submenu on click
+        submenuToggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            submenu.classList.toggle("hidden");
+        });
 
-    // Close submenu if click outside
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".submenu-wrapper")) {
-        submenu.classList.add("hidden");
-      }
+        // Close submenu if click outside
+        document.addEventListener("click", (e) => {
+            if (!e.target.closest(".submenu-wrapper")) {
+                submenu.classList.add("hidden");
+            }
+        });
     });
-  });
 </script>
