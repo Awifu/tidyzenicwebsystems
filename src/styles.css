@@ -2,3 +2,20 @@
 
 /* Point to the root config */
 @config "../tailwind.config.js";
+/* Reset browser defaults */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove any unwanted gap between header and hero */
+#header-placeholder {
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent hero’s first child from pushing down */
+.hero-section h1:first-child,
+.hero-section p:first-child {
+  margin-top: 0;
+}
