@@ -96,8 +96,10 @@
           <div class="faq-item">
             <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
               <span class="font-semibold text-gray-900">Who is TidyZenic for?</span>
-              <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-300"
+                   xmlns="http://www.w3.org/2000/svg" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
             </button>
             <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 pb-6 text-gray-600">
@@ -109,8 +111,10 @@
           <div class="faq-item">
             <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
               <span class="font-semibold text-gray-900">Do I need technical skills to use TidyZenic?</span>
-              <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-300"
+                   xmlns="http://www.w3.org/2000/svg" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
             </button>
             <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 pb-6 text-gray-600">
@@ -122,8 +126,10 @@
           <div class="faq-item">
             <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
               <span class="font-semibold text-gray-900">Where is TidyZenic based?</span>
-              <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-300"
+                   xmlns="http://www.w3.org/2000/svg" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
             </button>
             <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 pb-6 text-gray-600">
@@ -135,8 +141,10 @@
           <div class="faq-item">
             <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none">
               <span class="font-semibold text-gray-900">Can I try TidyZenic before subscribing?</span>
-              <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-300"
+                   xmlns="http://www.w3.org/2000/svg" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
             </button>
             <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6 pb-6 text-gray-600">
@@ -181,14 +189,15 @@
 
         if (content.style.maxHeight && content.style.maxHeight !== '0px') {
           content.style.maxHeight = '0px';
-          icon.classList.remove('rotate-180');
+          icon.classList.remove('rotate-90');
         } else {
-          // close others
+          // Close all
           document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = '0px');
-          document.querySelectorAll('.faq-item svg').forEach(i => i.classList.remove('rotate-180'));
+          document.querySelectorAll('.faq-item svg').forEach(i => i.classList.remove('rotate-90'));
 
+          // Open this one
           content.style.maxHeight = content.scrollHeight + 'px';
-          icon.classList.add('rotate-180');
+          icon.classList.add('rotate-90');
         }
       });
     });
