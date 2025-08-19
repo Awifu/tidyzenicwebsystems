@@ -4,6 +4,7 @@ const path = require("path");
 const express = require("express");
 const pool = require("./db/pool");
 const newsletterRoute = require("./routes/newsletter");
+const express = require('express');
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -14,6 +15,7 @@ const BASE_DOMAIN = process.env.BASE_DOMAIN || "tidyzenic.com";
 app.set("trust proxy", 1);
 app.disable("x-powered-by");
 app.use(express.json());
+app.use('/api/contact', require('./routes/api/contact'));
 
 // --- Security headers
 app.use((req, res, next) => {
