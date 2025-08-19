@@ -4,29 +4,14 @@ function initNewsletterForm() {
   const form = document.querySelector(".newsletter-form");
   if (!form) return;
 
-  // Create feedback messages if missing
-  let successMsg = form.querySelector(".newsletter-success-message");
-  let errorMsg = form.querySelector(".newsletter-error-message");
-
-  if (!successMsg) {
-    successMsg = document.createElement("div");
-    successMsg.className = "newsletter-success-message text-green-600 text-sm mt-2 hidden";
-    successMsg.textContent = "🎉 You're subscribed successfully!";
-    form.appendChild(successMsg);
-  }
-
-  if (!errorMsg) {
-    errorMsg = document.createElement("div");
-    errorMsg.className = "newsletter-error-message text-red-600 text-sm mt-2 hidden";
-    errorMsg.textContent = "⚠️ Something went wrong or you're already subscribed.";
-    form.appendChild(errorMsg);
-  }
+  const successMsg = form.querySelector(".newsletter-success-message");
+  const errorMsg = form.querySelector(".newsletter-error-message");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = form.email.value.trim();
 
-    if (!email) {
+    if (!email || !email.includes("@")) {
       errorMsg.textContent = "⚠️ Please enter a valid email.";
       errorMsg.classList.remove("hidden");
       successMsg.classList.add("hidden");
@@ -41,6 +26,8 @@ function initNewsletterForm() {
         body: JSON.stringify({ email }),
       });
 
+      const data = await res.json().catch(() => ({}));
+
       if (res.ok) {
         form.reset();
         successMsg.textContent = "🎉 You're subscribed successfully!";
@@ -48,8 +35,7 @@ function initNewsletterForm() {
         errorMsg.classList.add("hidden");
         setTimeout(() => successMsg.classList.add("hidden"), 4000);
       } else {
-        const data = await res.json().catch(() => ({}));
-        errorMsg.textContent = data?.message || "⚠️ Something went wrong or you're already subscribed.";
+        errorMsg.textContent = data?.message || "⚠️ Something went wrong.";
         errorMsg.classList.remove("hidden");
         successMsg.classList.add("hidden");
         setTimeout(() => errorMsg.classList.add("hidden"), 4000);
@@ -100,7 +86,7 @@ async function loadComponent(url, placeholderId, callback) {
     if (res.ok) {
       const html = await res.text();
       placeholder.insertAdjacentHTML("beforeend", html);
-      if (typeof callback === "function") callback(); // Run the callback (e.g. initNewsletterForm)
+      if (typeof callback === "function") callback();
     } else {
       console.error(`❌ Failed to load ${url}: ${res.statusText}`);
     }
@@ -228,7 +214,6 @@ function drawRevenueChart() {
   lineGradient.addColorStop(0, "rgba(79, 70, 229, 1)");
   lineGradient.addColorStop(1, "rgba(129, 140, 248, 1)");
 
-  // Fill area
   ctx.beginPath();
   ctx.moveTo(coords[0].x, height - padding);
   coords.forEach(c => ctx.lineTo(c.x, c.y));
@@ -237,7 +222,6 @@ function drawRevenueChart() {
   ctx.fillStyle = areaGradient;
   ctx.fill();
 
-  // Line stroke
   ctx.beginPath();
   ctx.moveTo(coords[0].x, coords[0].y);
   coords.forEach(c => ctx.lineTo(c.x, c.y));
@@ -247,7 +231,6 @@ function drawRevenueChart() {
   ctx.lineJoin = "round";
   ctx.stroke();
 
-  // Dots
   coords.forEach(c => {
     ctx.beginPath();
     ctx.arc(c.x, c.y, 4, 0, 2 * Math.PI);
