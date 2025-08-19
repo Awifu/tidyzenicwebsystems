@@ -4,7 +4,7 @@ function initNewsletterForm() {
   const form = document.querySelector(".newsletter-form");
   if (!form) return;
 
-  // Create feedback elements if they don't exist
+  // Create feedback messages if missing
   let successMsg = form.querySelector(".newsletter-success-message");
   let errorMsg = form.querySelector(".newsletter-error-message");
 
@@ -48,8 +48,8 @@ function initNewsletterForm() {
         errorMsg.classList.add("hidden");
         setTimeout(() => successMsg.classList.add("hidden"), 4000);
       } else {
-        const errorData = await res.json().catch(() => ({}));
-        errorMsg.textContent = errorData?.message || "⚠️ Something went wrong or you're already subscribed.";
+        const data = await res.json().catch(() => ({}));
+        errorMsg.textContent = data?.message || "⚠️ Something went wrong or you're already subscribed.";
         errorMsg.classList.remove("hidden");
         successMsg.classList.add("hidden");
         setTimeout(() => errorMsg.classList.add("hidden"), 4000);
@@ -64,57 +64,61 @@ function initNewsletterForm() {
   });
 }
 
-window.addEventListener("load", async () => {
-  async function loadComponent(url, placeholderId) {
-    const placeholder = document.getElementById(placeholderId);
-    if (!placeholder) return;
+function initHeader() {
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav");
+  const submenuToggle = document.querySelector(".submenu-toggle");
+  const submenu = document.getElementById("features-submenu");
 
-    try {
-      const response = await fetch(url);
-      if (response.ok) {
-        const html = await response.text();
-        placeholder.insertAdjacentHTML("beforeend", html);
+  if (hamburger && nav) {
+    hamburger.addEventListener("click", () => {
+      nav.classList.toggle("show");
+      hamburger.classList.toggle("active");
+    });
+  }
 
-        if (placeholderId === "header-placeholder") initHeader();
-        else if (placeholderId === "footer-placeholder") initNewsletterForm();
-      } else {
-        console.error(`❌ Failed to load ${url}: ${response.statusText}`);
+  if (submenuToggle && submenu) {
+    submenuToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      submenu.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
+        submenu.classList.add("hidden");
       }
-    } catch (err) {
-      console.error(`❌ Error fetching ${url}:`, err);
-    }
+    });
   }
+}
 
-  await loadComponent("/header.html", "header-placeholder");
-  await loadComponent("/footer.html", "footer-placeholder");
+async function loadComponent(url, placeholderId, callback) {
+  const placeholder = document.getElementById(placeholderId);
+  if (!placeholder) return;
 
-  function initHeader() {
-    const hamburger = document.getElementById("hamburger");
-    const nav = document.getElementById("nav");
-    const submenuToggle = document.querySelector(".submenu-toggle");
-    const submenu = document.getElementById("features-submenu");
-
-    if (hamburger && nav) {
-      hamburger.addEventListener("click", () => {
-        nav.classList.toggle("show");
-        hamburger.classList.toggle("active");
-      });
+  try {
+    const res = await fetch(url);
+    if (res.ok) {
+      const html = await res.text();
+      placeholder.insertAdjacentHTML("beforeend", html);
+      if (typeof callback === "function") callback(); // Run the callback (e.g. initNewsletterForm)
+    } else {
+      console.error(`❌ Failed to load ${url}: ${res.statusText}`);
     }
-
-    if (submenuToggle && submenu) {
-      submenuToggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        submenu.classList.toggle("hidden");
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
-          submenu.classList.add("hidden");
-        }
-      });
-    }
+  } catch (err) {
+    console.error(`❌ Error loading ${url}:`, err);
   }
+}
 
+window.addEventListener("load", async () => {
+  await loadComponent("/header.html", "header-placeholder", initHeader);
+  await loadComponent("/footer.html", "footer-placeholder", initNewsletterForm);
+
+  renderBlogPosts();
+  renderReviews();
+  drawRevenueChart();
+});
+
+function renderBlogPosts() {
   const blogPosts = [
     {
       title: "Introducing Smart Scheduling",
@@ -142,26 +146,25 @@ window.addEventListener("load", async () => {
     },
   ];
 
-  function renderBlogPosts() {
-    const blogGrid = document.getElementById("blog-grid");
-    const blogSkeleton = document.getElementById("blog-skeleton");
-    if (!blogGrid) return;
+  const blogGrid = document.getElementById("blog-grid");
+  const blogSkeleton = document.getElementById("blog-skeleton");
 
-    blogGrid.innerHTML = blogPosts
-      .map((post) => `
-        <a href="${post.link}" class="block rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition bg-white group">
-          <img src="${post.image}" alt="${post.title}" class="w-full h-44 object-cover">
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-brand-700 transition">${post.title}</h3>
-            <p class="mt-2 text-sm text-gray-500">${post.summary}</p>
-          </div>
-        </a>
-      `)
-      .join("");
+  if (!blogGrid) return;
 
-    if (blogSkeleton) blogSkeleton.style.display = "none";
-  }
+  blogGrid.innerHTML = blogPosts.map(post => `
+    <a href="${post.link}" class="block rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition bg-white group">
+      <img src="${post.image}" alt="${post.title}" class="w-full h-44 object-cover">
+      <div class="p-6">
+        <h3 class="text-lg font-semibold text-gray-900 group-hover:text-brand-700 transition">${post.title}</h3>
+        <p class="mt-2 text-sm text-gray-500">${post.summary}</p>
+      </div>
+    </a>
+  `).join("");
 
+  if (blogSkeleton) blogSkeleton.style.display = "none";
+}
+
+function renderReviews() {
   const reviews = [
     {
       text: "TidyZenic has transformed my cleaning business. The AI scheduling is a game-changer and has saved me countless hours.",
@@ -180,91 +183,81 @@ window.addEventListener("load", async () => {
     },
   ];
 
-  function renderReviews() {
-    const reviewsGrid = document.getElementById("reviews-grid");
-    const reviewsSkeleton = document.getElementById("reviews-skeleton");
-    if (!reviewsGrid) return;
+  const reviewsGrid = document.getElementById("reviews-grid");
+  const reviewsSkeleton = document.getElementById("reviews-skeleton");
 
-    reviewsGrid.innerHTML = reviews
-      .map((review) => `
-        <div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
-          <p class="text-gray-600">"${review.text}"</p>
-          <div class="mt-4 text-sm font-semibold text-gray-900">
-            ${review.author}, <span class="text-gray-500 font-normal">${review.company}</span>
-          </div>
-        </div>
-      `)
-      .join("");
+  if (!reviewsGrid) return;
 
-    if (reviewsSkeleton) reviewsSkeleton.style.display = "none";
-  }
+  reviewsGrid.innerHTML = reviews.map(r => `
+    <div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
+      <p class="text-gray-600">"${r.text}"</p>
+      <div class="mt-4 text-sm font-semibold text-gray-900">
+        ${r.author}, <span class="text-gray-500 font-normal">${r.company}</span>
+      </div>
+    </div>
+  `).join("");
 
-  function drawChart() {
-    const canvas = document.getElementById("revenueChart");
-    if (!canvas) return;
+  if (reviewsSkeleton) reviewsSkeleton.style.display = "none";
+}
 
-    const ctx = canvas.getContext("2d");
-    const data = [10, 25, 20, 35, 30, 50];
+function drawRevenueChart() {
+  const canvas = document.getElementById("revenueChart");
+  if (!canvas) return;
 
-    const width = canvas.offsetWidth;
-    const height = canvas.offsetHeight;
-    canvas.width = width;
-    canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  const data = [10, 25, 20, 35, 30, 50];
+  const width = canvas.offsetWidth;
+  const height = canvas.offsetHeight;
+  canvas.width = width;
+  canvas.height = height;
 
-    const padding = 20;
-    const points = data.length;
-    const maxVal = Math.max(...data);
+  const padding = 20;
+  const maxVal = Math.max(...data);
+  const coords = data.map((d, i) => ({
+    x: padding + (i / (data.length - 1)) * (width - 2 * padding),
+    y: height - padding - (d / maxVal) * (height - 2 * padding),
+  }));
 
-    ctx.clearRect(0, 0, width, height);
+  ctx.clearRect(0, 0, width, height);
 
-    const areaGradient = ctx.createLinearGradient(0, 0, 0, height);
-    areaGradient.addColorStop(0, "rgba(79, 70, 229, 0.4)");
-    areaGradient.addColorStop(1, "rgba(79, 70, 229, 0)");
+  const areaGradient = ctx.createLinearGradient(0, 0, 0, height);
+  areaGradient.addColorStop(0, "rgba(79, 70, 229, 0.4)");
+  areaGradient.addColorStop(1, "rgba(79, 70, 229, 0)");
 
-    const lineGradient = ctx.createLinearGradient(0, 0, width, 0);
-    lineGradient.addColorStop(0, "rgba(79, 70, 229, 1)");
-    lineGradient.addColorStop(1, "rgba(129, 140, 248, 1)");
+  const lineGradient = ctx.createLinearGradient(0, 0, width, 0);
+  lineGradient.addColorStop(0, "rgba(79, 70, 229, 1)");
+  lineGradient.addColorStop(1, "rgba(129, 140, 248, 1)");
 
-    const coords = data.map((d, i) => ({
-      x: padding + (i / (points - 1)) * (width - 2 * padding),
-      y: height - padding - (d / maxVal) * (height - 2 * padding),
-    }));
+  // Fill area
+  ctx.beginPath();
+  ctx.moveTo(coords[0].x, height - padding);
+  coords.forEach(c => ctx.lineTo(c.x, c.y));
+  ctx.lineTo(coords[coords.length - 1].x, height - padding);
+  ctx.closePath();
+  ctx.fillStyle = areaGradient;
+  ctx.fill();
 
+  // Line stroke
+  ctx.beginPath();
+  ctx.moveTo(coords[0].x, coords[0].y);
+  coords.forEach(c => ctx.lineTo(c.x, c.y));
+  ctx.strokeStyle = lineGradient;
+  ctx.lineWidth = 3;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.stroke();
+
+  // Dots
+  coords.forEach(c => {
     ctx.beginPath();
-    ctx.moveTo(coords[0].x, height - padding);
-    coords.forEach((c) => ctx.lineTo(c.x, c.y));
-    ctx.lineTo(coords[coords.length - 1].x, height - padding);
-    ctx.closePath();
-    ctx.fillStyle = areaGradient;
+    ctx.arc(c.x, c.y, 4, 0, 2 * Math.PI);
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "#4f46e5";
+    ctx.lineWidth = 2;
     ctx.fill();
-
-    ctx.beginPath();
-    ctx.moveTo(coords[0].x, coords[0].y);
-    coords.forEach((c) => ctx.lineTo(c.x, c.y));
-    ctx.strokeStyle = lineGradient;
-    ctx.lineWidth = 3;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
     ctx.stroke();
+  });
 
-    coords.forEach((c) => {
-      ctx.beginPath();
-      ctx.arc(c.x, c.y, 4, 0, 2 * Math.PI);
-      ctx.fillStyle = "white";
-      ctx.strokeStyle = "#4f46e5";
-      ctx.lineWidth = 2;
-      ctx.fill();
-      ctx.stroke();
-    });
-  }
-
-  renderBlogPosts();
-  renderReviews();
-
-  const chartCanvas = document.getElementById("revenueChart");
-  if (chartCanvas) {
-    const resizeObserver = new ResizeObserver(() => drawChart());
-    resizeObserver.observe(chartCanvas);
-    drawChart();
-  }
-});
+  const resizeObserver = new ResizeObserver(drawRevenueChart);
+  resizeObserver.observe(canvas);
+}
