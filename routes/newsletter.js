@@ -1,28 +1,29 @@
 // routes/newsletter.js
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const pool = require("../db/pool");
+const db = require('../db'); // Assuming you have db connection setup
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   const { email } = req.body;
 
-  // Simple validation
-  if (!email || typeof email !== "string" || !email.includes("@")) {
-    return res.status(400).json({ error: "Invalid email address." });
+  if (!email || !email.includes('@')) {
+    return res.status(400).json({ error: 'Invalid email address.' });
   }
 
   try {
-    // Insert email into DB (ignore if duplicate)
-    await pool.query(
-      `INSERT IGNORE INTO newsletter_subscribers (email) VALUES (?)`,
-      [email.toLowerCase()]
-    );
+    // Check for duplicates
+    const existing = await db('newsletter_subscribers').where({ email }).first();
+    if (existing) {
+      return res.status(409).json({ error: 'You are already subscribed.' });
+    }
 
-    console.log("📬 New newsletter subscriber:", email);
-    return res.status(200).json({ message: "Subscribed successfully" });
+    // Insert the new email
+    await db('newsletter_subscribers').insert({ email });
+
+    return res.status(200).json({ message: 'Subscribed successfully!' });
   } catch (error) {
-    console.error("❌ Error saving subscriber:", error);
-    return res.status(500).json({ error: "Internal server error." });
+    console.error('❌ Error saving email:', error);
+    return res.status(500).json({ error: 'Internal server error.' });
   }
 });
 
