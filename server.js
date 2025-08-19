@@ -4,7 +4,6 @@ const path = require("path");
 const express = require("express");
 const pool = require("./db/pool");
 const newsletterRoute = require("./routes/newsletter");
-const express = require('express');
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -15,7 +14,7 @@ const BASE_DOMAIN = process.env.BASE_DOMAIN || "tidyzenic.com";
 app.set("trust proxy", 1);
 app.disable("x-powered-by");
 app.use(express.json());
-app.use('/api/contact', require('./routes/api/contact'));
+app.use("/api/contact", require("./routes/api/contact"));
 
 // --- Security headers
 app.use((req, res, next) => {
@@ -185,7 +184,7 @@ async function resolveTenant(req, res, next) {
   }
 }
 
-// --- Public APIs (static for now)
+// --- Public APIs
 app.get("/api/blog", (_req, res) => {
   res.json([
     { title: "AI Scheduling Arrives", excerpt: "Boost productivity with smart auto-assign.", url: "/blog/ai-scheduling" },
@@ -213,12 +212,12 @@ app.get("/tenant/info", resolveTenant, (req, res) => {
   });
 });
 
-// --- Root index.html
+// --- Root page
 app.get("/", (_req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// --- 404 + error handler
+// --- 404 & error handler
 app.use((req, res) => res.status(404).json({ error: "Not Found", path: req.path }));
 app.use((err, _req, res, _next) => {
   console.error("Unhandled error:", err);
