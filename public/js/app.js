@@ -4,23 +4,34 @@ function initNewsletterForm() {
   const form = document.querySelector(".newsletter-form");
   if (!form) return;
 
-  // Inject feedback messages if not present
+  // Inject feedback messages with animation if not present
   if (!form.querySelector(".newsletter-success-message")) {
     const success = document.createElement("div");
-    success.className = "newsletter-success-message text-green-600 text-sm mt-2 hidden";
+    success.className =
+      "newsletter-success-message text-green-600 text-sm mt-2 hidden opacity-0 transition-opacity duration-300";
     success.textContent = "🎉 You're subscribed successfully!";
     form.appendChild(success);
   }
 
   if (!form.querySelector(".newsletter-error-message")) {
     const error = document.createElement("div");
-    error.className = "newsletter-error-message text-red-600 text-sm mt-2 hidden";
+    error.className =
+      "newsletter-error-message text-red-600 text-sm mt-2 hidden opacity-0 transition-opacity duration-300";
     error.textContent = "⚠️ Something went wrong or you're already subscribed.";
     form.appendChild(error);
   }
 
   const successMsg = form.querySelector(".newsletter-success-message");
   const errorMsg = form.querySelector(".newsletter-error-message");
+
+  function showMessage(msgEl) {
+    msgEl.classList.remove("hidden", "opacity-0");
+    msgEl.classList.add("block", "opacity-100");
+    setTimeout(() => {
+      msgEl.classList.add("opacity-0");
+      setTimeout(() => msgEl.classList.add("hidden"), 300);
+    }, 4000);
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -35,16 +46,14 @@ function initNewsletterForm() {
 
       if (res.ok) {
         form.reset();
-        successMsg.classList.remove("hidden");
-        errorMsg.classList.add("hidden");
-        setTimeout(() => successMsg.classList.add("hidden"), 4000);
+        errorMsg.classList.add("hidden", "opacity-0");
+        showMessage(successMsg);
       } else {
         throw new Error();
       }
     } catch {
-      errorMsg.classList.remove("hidden");
-      successMsg.classList.add("hidden");
-      setTimeout(() => errorMsg.classList.add("hidden"), 4000);
+      successMsg.classList.add("hidden", "opacity-0");
+      showMessage(errorMsg);
     }
   });
 }
@@ -173,7 +182,7 @@ window.addEventListener("load", async () => {
     reviewsGrid.innerHTML = reviews
       .map((review) => `
         <div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
-          <p class="text-gray-600">"${review.text}"</p>
+          <p class="text-gray-600">\"${review.text}\"</p>
           <div class="mt-4 text-sm font-semibold text-gray-900">
             ${review.author}, <span class="text-gray-500 font-normal">${review.company}</span>
           </div>
