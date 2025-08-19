@@ -5,20 +5,19 @@ window.addEventListener("load", async () => {
    */
   async function loadComponent(url, placeholderId) {
     const placeholder = document.getElementById(placeholderId);
-    if (!placeholder) return;
+    if (!placeholder) return; // don't try if placeholder is missing
 
     try {
       const response = await fetch(url);
       if (response.ok) {
         const html = await response.text();
+
+        // Instead of replacing innerHTML, just append
         placeholder.insertAdjacentHTML("beforeend", html);
 
+        // Initialize after injection
         if (placeholderId === "header-placeholder") {
           initHeader();
-        }
-
-        if (placeholderId === "footer-placeholder") {
-          initNewsletter();
         }
       } else {
         console.error(`❌ Failed to load ${url}: ${response.statusText}`);
@@ -28,11 +27,12 @@ window.addEventListener("load", async () => {
     }
   }
 
+  // Always load from root so works on /about, /pricing, etc.
   await loadComponent("/header.html", "header-placeholder");
   await loadComponent("/footer.html", "footer-placeholder");
 
   /**
-   * Header interactivity: hamburger + submenu
+   * Header interactivity: hamburger + submenu click
    */
   function initHeader() {
     const hamburger = document.getElementById("hamburger");
@@ -53,6 +53,7 @@ window.addEventListener("load", async () => {
         submenu.classList.toggle("hidden");
       });
 
+      // click outside to close
       document.addEventListener("click", (e) => {
         if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
           submenu.classList.add("hidden");
@@ -62,89 +63,37 @@ window.addEventListener("load", async () => {
   }
 
   /**
-   * Newsletter functionality
-   */
-  function initNewsletter() {
-    const form = document.querySelector(".newsletter-form");
-    if (!form) return;
-
-    const input = form.querySelector("input[name='email']");
-    const button = form.querySelector("button");
-    const message = document.createElement("div");
-    message.className = "newsletter-message text-sm mt-3";
-    form.appendChild(message);
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = input.value.trim();
-      message.textContent = "";
-      message.style.color = "";
-
-      if (!email || !email.includes("@")) {
-        message.textContent = "Please enter a valid email.";
-        message.style.color = "red";
-        return;
-      }
-
-      button.disabled = true;
-      try {
-        const res = await fetch("/api/newsletter", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
-        });
-
-        const data = await res.json();
-
-        if (res.ok) {
-          message.textContent = data.message || "Subscribed!";
-          message.style.color = "green";
-          form.reset();
-
-          setTimeout(() => {
-            message.textContent = "";
-          }, 4000);
-        } else {
-          message.textContent = data.error || "Subscription failed.";
-          message.style.color = "red";
-        }
-      } catch (err) {
-        console.error("Newsletter error:", err);
-        message.textContent = "Something went wrong. Please try again.";
-        message.style.color = "red";
-      } finally {
-        button.disabled = false;
-      }
-    });
-  }
-
-  /**
-   * Blog posts
+   * Blog posts (placeholder data, replace with API later)
    */
   const blogPosts = [
     {
       title: "Introducing Smart Scheduling",
-      summary: "Our new AI-powered scheduling assistant helps you optimize bookings and staff assignments effortlessly.",
+      summary:
+        "Our new AI-powered scheduling assistant helps you optimize bookings and staff assignments effortlessly.",
       link: "/blog/smart-scheduling",
       image: "https://placehold.co/400x200/4f46e5/ffffff?text=AI+Scheduling",
     },
     {
       title: "TidyZenic now supports multi-tenant architecture",
-      summary: "Launch your own white-label platform with ease using our new multi-tenant features.",
+      summary:
+        "Launch your own white-label platform with ease using our new multi-tenant features.",
       link: "/blog/multi-tenant",
       image: "https://placehold.co/400x200/4f46e5/ffffff?text=Multi-tenant",
     },
     {
       title: "Boost your business with integrated CRM",
-      summary: "Learn how TidyZenic's powerful CRM tools can help you build stronger client relationships.",
+      summary:
+        "Learn how TidyZenic's powerful CRM tools can help you build stronger client relationships.",
       link: "/blog/integrated-crm",
       image: "https://placehold.co/400x200/4f46e5/ffffff?text=Integrated+CRM",
     },
     {
       title: "Maximize Efficiency with Inventory Management",
-      summary: "A deep dive into how TidyZenic helps you track supplies and automate re-ordering.",
+      summary:
+        "A deep dive into how TidyZenic helps you track supplies and automate re-ordering.",
       link: "/blog/inventory-management",
-      image: "https://placehold.co/400x200/4f46e5/ffffff?text=Inventory+Management",
+      image:
+        "https://placehold.co/400x200/4f46e5/ffffff?text=Inventory+Management",
     },
   ];
 
@@ -171,7 +120,7 @@ window.addEventListener("load", async () => {
   }
 
   /**
-   * Reviews
+   * Reviews (placeholder data)
    */
   const reviews = [
     {
@@ -213,7 +162,7 @@ window.addEventListener("load", async () => {
   }
 
   /**
-   * Revenue chart
+   * Draw simple revenue chart on canvas
    */
   function drawChart() {
     const canvas = document.getElementById("revenueChart");
@@ -228,20 +177,29 @@ window.addEventListener("load", async () => {
     canvas.height = height;
 
     const padding = 20;
+    const points = data.length;
     const maxVal = Math.max(...data);
-    const coords = data.map((d, i) => ({
-      x: padding + (i / (data.length - 1)) * (width - 2 * padding),
-      y: height - padding - (d / maxVal) * (height - 2 * padding),
-    }));
 
-    // Clear canvas
+    // Clear
     ctx.clearRect(0, 0, width, height);
 
-    // Area fill
+    // Gradient for area
     const areaGradient = ctx.createLinearGradient(0, 0, 0, height);
     areaGradient.addColorStop(0, "rgba(79, 70, 229, 0.4)");
     areaGradient.addColorStop(1, "rgba(79, 70, 229, 0)");
 
+    // Gradient for line
+    const lineGradient = ctx.createLinearGradient(0, 0, width, 0);
+    lineGradient.addColorStop(0, "rgba(79, 70, 229, 1)");
+    lineGradient.addColorStop(1, "rgba(129, 140, 248, 1)");
+
+    // Coordinates
+    const coords = data.map((d, i) => ({
+      x: padding + (i / (points - 1)) * (width - 2 * padding),
+      y: height - padding - (d / maxVal) * (height - 2 * padding),
+    }));
+
+    // Area
     ctx.beginPath();
     ctx.moveTo(coords[0].x, height - padding);
     coords.forEach((c) => ctx.lineTo(c.x, c.y));
@@ -250,22 +208,22 @@ window.addEventListener("load", async () => {
     ctx.fillStyle = areaGradient;
     ctx.fill();
 
-    // Line stroke
-    const lineGradient = ctx.createLinearGradient(0, 0, width, 0);
-    lineGradient.addColorStop(0, "rgba(79, 70, 229, 1)");
-    lineGradient.addColorStop(1, "rgba(129, 140, 248, 1)");
-
+    // Line
     ctx.beginPath();
     ctx.moveTo(coords[0].x, coords[0].y);
-    coords.forEach((c) => ctx.lineTo(c.x, c.y));
+    for (let i = 1; i < points; i++) {
+      ctx.lineTo(coords[i].x, coords[i].y);
+    }
     ctx.strokeStyle = lineGradient;
     ctx.lineWidth = 3;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
     ctx.stroke();
 
     // Circles
     coords.forEach((c) => {
       ctx.beginPath();
-      ctx.arc(c.x, c.y, 4, 0, Math.PI * 2);
+      ctx.arc(c.x, c.y, 4, 0, 2 * Math.PI);
       ctx.fillStyle = "white";
       ctx.strokeStyle = "#4f46e5";
       ctx.lineWidth = 2;
@@ -275,7 +233,7 @@ window.addEventListener("load", async () => {
   }
 
   /**
-   * Initialize all renderers
+   * Init
    */
   renderBlogPosts();
   renderReviews();
