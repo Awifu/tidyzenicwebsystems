@@ -1,11 +1,23 @@
 // app.js
 
-/**
- * Initialize the newsletter form logic
- */
 function initNewsletterForm() {
   const form = document.querySelector(".newsletter-form");
   if (!form) return;
+
+  // Inject feedback messages if not present
+  if (!form.querySelector(".newsletter-success-message")) {
+    const success = document.createElement("div");
+    success.className = "newsletter-success-message text-green-600 text-sm mt-2 hidden";
+    success.textContent = "🎉 You're subscribed successfully!";
+    form.appendChild(success);
+  }
+
+  if (!form.querySelector(".newsletter-error-message")) {
+    const error = document.createElement("div");
+    error.className = "newsletter-error-message text-red-600 text-sm mt-2 hidden";
+    error.textContent = "⚠️ Something went wrong or you're already subscribed.";
+    form.appendChild(error);
+  }
 
   const successMsg = form.querySelector(".newsletter-success-message");
   const errorMsg = form.querySelector(".newsletter-error-message");
@@ -23,28 +35,21 @@ function initNewsletterForm() {
 
       if (res.ok) {
         form.reset();
-        if (successMsg) successMsg.style.display = "block";
-        if (errorMsg) errorMsg.style.display = "none";
-        setTimeout(() => {
-          if (successMsg) successMsg.style.display = "none";
-        }, 4000);
+        successMsg.classList.remove("hidden");
+        errorMsg.classList.add("hidden");
+        setTimeout(() => successMsg.classList.add("hidden"), 4000);
       } else {
         throw new Error();
       }
     } catch {
-      if (errorMsg) errorMsg.style.display = "block";
-      if (successMsg) successMsg.style.display = "none";
-      setTimeout(() => {
-        if (errorMsg) errorMsg.style.display = "none";
-      }, 4000);
+      errorMsg.classList.remove("hidden");
+      successMsg.classList.add("hidden");
+      setTimeout(() => errorMsg.classList.add("hidden"), 4000);
     }
   });
 }
 
 window.addEventListener("load", async () => {
-  /**
-   * Load and inject external components (header, footer)
-   */
   async function loadComponent(url, placeholderId) {
     const placeholder = document.getElementById(placeholderId);
     if (!placeholder) return;
@@ -55,11 +60,8 @@ window.addEventListener("load", async () => {
         const html = await response.text();
         placeholder.insertAdjacentHTML("beforeend", html);
 
-        if (placeholderId === "header-placeholder") {
-          initHeader();
-        } else if (placeholderId === "footer-placeholder") {
-          initNewsletterForm(); // ✅ After footer loads
-        }
+        if (placeholderId === "header-placeholder") initHeader();
+        else if (placeholderId === "footer-placeholder") initNewsletterForm();
       } else {
         console.error(`❌ Failed to load ${url}: ${response.statusText}`);
       }
@@ -71,9 +73,6 @@ window.addEventListener("load", async () => {
   await loadComponent("/header.html", "header-placeholder");
   await loadComponent("/footer.html", "footer-placeholder");
 
-  /**
-   * Header interactivity: hamburger + submenu click
-   */
   function initHeader() {
     const hamburger = document.getElementById("hamburger");
     const nav = document.getElementById("nav");
@@ -101,38 +100,30 @@ window.addEventListener("load", async () => {
     }
   }
 
-  /**
-   * Blog posts
-   */
   const blogPosts = [
     {
       title: "Introducing Smart Scheduling",
-      summary:
-        "Our new AI-powered scheduling assistant helps you optimize bookings and staff assignments effortlessly.",
+      summary: "Our new AI-powered scheduling assistant helps you optimize bookings and staff assignments effortlessly.",
       link: "/blog/smart-scheduling",
       image: "https://placehold.co/400x200/4f46e5/ffffff?text=AI+Scheduling",
     },
     {
       title: "TidyZenic now supports multi-tenant architecture",
-      summary:
-        "Launch your own white-label platform with ease using our new multi-tenant features.",
+      summary: "Launch your own white-label platform with ease using our new multi-tenant features.",
       link: "/blog/multi-tenant",
       image: "https://placehold.co/400x200/4f46e5/ffffff?text=Multi-tenant",
     },
     {
       title: "Boost your business with integrated CRM",
-      summary:
-        "Learn how TidyZenic's powerful CRM tools can help you build stronger client relationships.",
+      summary: "Learn how TidyZenic's powerful CRM tools can help you build stronger client relationships.",
       link: "/blog/integrated-crm",
       image: "https://placehold.co/400x200/4f46e5/ffffff?text=Integrated+CRM",
     },
     {
       title: "Maximize Efficiency with Inventory Management",
-      summary:
-        "A deep dive into how TidyZenic helps you track supplies and automate re-ordering.",
+      summary: "A deep dive into how TidyZenic helps you track supplies and automate re-ordering.",
       link: "/blog/inventory-management",
-      image:
-        "https://placehold.co/400x200/4f46e5/ffffff?text=Inventory+Management",
+      image: "https://placehold.co/400x200/4f46e5/ffffff?text=Inventory+Management",
     },
   ];
 
@@ -142,8 +133,7 @@ window.addEventListener("load", async () => {
     if (!blogGrid) return;
 
     blogGrid.innerHTML = blogPosts
-      .map(
-        (post) => `
+      .map((post) => `
         <a href="${post.link}" class="block rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition bg-white group">
           <img src="${post.image}" alt="${post.title}" class="w-full h-44 object-cover">
           <div class="p-6">
@@ -151,16 +141,12 @@ window.addEventListener("load", async () => {
             <p class="mt-2 text-sm text-gray-500">${post.summary}</p>
           </div>
         </a>
-      `
-      )
+      `)
       .join("");
 
     if (blogSkeleton) blogSkeleton.style.display = "none";
   }
 
-  /**
-   * Reviews
-   */
   const reviews = [
     {
       text: "TidyZenic has transformed my cleaning business. The AI scheduling is a game-changer and has saved me countless hours.",
@@ -185,24 +171,19 @@ window.addEventListener("load", async () => {
     if (!reviewsGrid) return;
 
     reviewsGrid.innerHTML = reviews
-      .map(
-        (review) => `
+      .map((review) => `
         <div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
           <p class="text-gray-600">"${review.text}"</p>
           <div class="mt-4 text-sm font-semibold text-gray-900">
             ${review.author}, <span class="text-gray-500 font-normal">${review.company}</span>
           </div>
         </div>
-      `
-      )
+      `)
       .join("");
 
     if (reviewsSkeleton) reviewsSkeleton.style.display = "none";
   }
 
-  /**
-   * Revenue chart
-   */
   function drawChart() {
     const canvas = document.getElementById("revenueChart");
     if (!canvas) return;
@@ -244,9 +225,7 @@ window.addEventListener("load", async () => {
 
     ctx.beginPath();
     ctx.moveTo(coords[0].x, coords[0].y);
-    for (let i = 1; i < points; i++) {
-      ctx.lineTo(coords[i].x, coords[i].y);
-    }
+    coords.forEach((c) => ctx.lineTo(c.x, c.y));
     ctx.strokeStyle = lineGradient;
     ctx.lineWidth = 3;
     ctx.lineCap = "round";
@@ -264,7 +243,6 @@ window.addEventListener("load", async () => {
     });
   }
 
-  // Run render functions
   renderBlogPosts();
   renderReviews();
 
