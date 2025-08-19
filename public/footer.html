@@ -35,25 +35,39 @@
       </ul>
     </div>
 
-    <!-- Newsletter -->
+<!-- Newsletter -->
 <div class="footer-newsletter">
-  <h3>Newsletter</h3>
-  <p>Get the latest updates, tips, and insights straight to your inbox.</p>
-  <form action="#" method="POST" class="newsletter-form">
+  <h3 class="text-lg font-semibold mb-2">Newsletter</h3>
+  <p class="text-sm text-gray-600 mb-4">
+    Get the latest updates, tips, and insights straight to your inbox.
+  </p>
+  <form action="#" method="POST" class="newsletter-form space-y-2">
     <input 
       type="email" 
       name="email" 
       placeholder="Enter your email" 
-      required>
-    <button type="submit">Subscribe</button>
-    <div class="newsletter-success-message" style="display: none; color: green; margin-top: 0.5rem;">
-      ✅ Subscribed successfully!
+      required
+      class="w-full p-2 border border-gray-300 rounded"
+    >
+    <button 
+      type="submit" 
+      class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+    >
+      Subscribe
+    </button>
+
+    <!-- Success message -->
+    <div class="newsletter-success-message hidden text-green-600 text-sm">
+      ✅ You're subscribed successfully!
     </div>
-    <div class="newsletter-error-message" style="display: none; color: red; margin-top: 0.5rem;">
+
+    <!-- Error message -->
+    <div class="newsletter-error-message hidden text-red-600 text-sm">
       ⚠️ Something went wrong.
     </div>
   </form>
 </div>
+
 
 <!-- Bottom -->
 <div class="footer-bottom text-center mt-6">

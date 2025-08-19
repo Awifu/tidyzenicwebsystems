@@ -34,6 +34,11 @@ function initNewsletterForm() {
         successMsg.classList.remove("hidden");
         errorMsg.classList.add("hidden");
         setTimeout(() => successMsg.classList.add("hidden"), 4000);
+      } else if (res.status === 409) {
+        errorMsg.textContent = "⚠️ This email is already subscribed.";
+        errorMsg.classList.remove("hidden");
+        successMsg.classList.add("hidden");
+        setTimeout(() => errorMsg.classList.add("hidden"), 4000);
       } else {
         errorMsg.textContent = data?.message || "⚠️ Something went wrong.";
         errorMsg.classList.remove("hidden");
