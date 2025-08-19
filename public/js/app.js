@@ -245,3 +245,46 @@ window.addEventListener("load", async () => {
     drawChart();
   }
 });
+
+  function initNewsletterForm() {
+    const form = document.querySelector(".newsletter-form");
+    if (!form) return;
+
+    const successMsg = form.querySelector(".newsletter-success-message");
+    const errorMsg = form.querySelector(".newsletter-error-message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = form.email.value;
+
+      try {
+        const res = await fetch("/api/newsletter", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        if (res.ok) {
+          form.reset();
+          successMsg.style.display = "block";
+          errorMsg.style.display = "none";
+          setTimeout(() => {
+            successMsg.style.display = "none";
+          }, 4000);
+        } else {
+          throw new Error();
+        }
+      } catch {
+        errorMsg.style.display = "block";
+        successMsg.style.display = "none";
+        setTimeout(() => {
+          errorMsg.style.display = "none";
+        }, 4000);
+      }
+    });
+  }
+
+  // ✅ Call after load + after footer injected
+  initNewsletterForm();
+});
+
