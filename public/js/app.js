@@ -4,18 +4,30 @@ function initNewsletterForm() {
   const form = document.querySelector(".newsletter-form");
   if (!form) return;
 
-  const successMsg = form.querySelector(".newsletter-success-message");
-  const errorMsg = form.querySelector(".newsletter-error-message");
+  const statusMsg = form.querySelector(".newsletter-status-message");
+
+  // Helper function to show dynamic message
+  const showMessage = (message, type) => {
+    statusMsg.textContent = message;
+    statusMsg.classList.remove("hidden", "text-green-600", "text-red-600");
+
+    if (type === "success") {
+      statusMsg.classList.add("text-green-600");
+    } else {
+      statusMsg.classList.add("text-red-600");
+    }
+
+    setTimeout(() => {
+      statusMsg.classList.add("hidden");
+    }, 4000);
+  };
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = form.email.value.trim();
 
     if (!email || !email.includes("@")) {
-      errorMsg.textContent = "⚠️ Please enter a valid email.";
-      errorMsg.classList.remove("hidden");
-      successMsg.classList.add("hidden");
-      setTimeout(() => errorMsg.classList.add("hidden"), 4000);
+      showMessage("⚠️ Please enter a valid email.", "error");
       return;
     }
 
@@ -30,30 +42,19 @@ function initNewsletterForm() {
 
       if (res.ok) {
         form.reset();
-        successMsg.textContent = "🎉 You're subscribed successfully!";
-        successMsg.classList.remove("hidden");
-        errorMsg.classList.add("hidden");
-        setTimeout(() => successMsg.classList.add("hidden"), 4000);
+        showMessage("🎉 You're subscribed successfully!", "success");
       } else if (res.status === 409) {
-        errorMsg.textContent = "⚠️ This email is already subscribed.";
-        errorMsg.classList.remove("hidden");
-        successMsg.classList.add("hidden");
-        setTimeout(() => errorMsg.classList.add("hidden"), 4000);
+        showMessage("⚠️ This email is already subscribed.", "error");
       } else {
-        errorMsg.textContent = data?.message || "⚠️ Something went wrong.";
-        errorMsg.classList.remove("hidden");
-        successMsg.classList.add("hidden");
-        setTimeout(() => errorMsg.classList.add("hidden"), 4000);
+        showMessage(data?.message || "⚠️ Something went wrong.", "error");
       }
     } catch (err) {
       console.error("Newsletter error:", err);
-      errorMsg.textContent = "⚠️ Network error. Please try again later.";
-      errorMsg.classList.remove("hidden");
-      successMsg.classList.add("hidden");
-      setTimeout(() => errorMsg.classList.add("hidden"), 4000);
+      showMessage("⚠️ Network error. Please try again later.", "error");
     }
   });
 }
+
 
 function initHeader() {
   const hamburger = document.getElementById("hamburger");
