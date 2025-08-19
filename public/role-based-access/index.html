@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Role‑Based Access — TidyZenic</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Manage permissions easily—set roles like Admin, Manager, and Viewer for your team to control access across dashboards securely." />
+  <meta name="keywords" content="role based access, RBAC, user roles, permissions, team management" />
+  <meta name="author" content="TidyZenic" />
+  <meta property="og:title" content="TidyZenic Role‑Based Access – Secure Roles & Permissions" />
+  <meta property="og:description" content="Define and manage team roles with precise permissions—ensuring the right access for Admins, Managers, and Viewers." />
+  <meta property="og:image" content="https://tidyzenic.com/images/role-based-access-social-share.jpg" />
+  <meta property="og:url" content="https://tidyzenic.com/role-based-access" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    :root {
+      --brand-color-500: #2979ff;
+      --brand-color-600: #1e62d9;
+    }
+    .text-brand { color: var(--brand-color-500); }
+    .hover\:text-brand-600:hover { color: var(--brand-color-600); }
+    body { font-family: 'Poppins', sans-serif; }
+    h1, h2 { font-family: 'Merriweather', serif; }
+    .fade-in { animation: fadeIn 0.9s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    figure { margin: 0; }
+    figcaption { font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem; text-align: center; }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 leading-relaxed tracking-normal">
+  <div id="header-placeholder"></div>
+
+  <main class="py-16 md:py-24 px-4 fade-in">
+    <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-3xl p-8 md:p-12 lg:p-16">
+
+      <!-- Header -->
+      <header class="mb-16 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+          Role‑Based Access Control to Secure Your Team
+        </h1>
+        <p class="text-sm text-gray-500 mt-2">
+          Assign roles like Admin, Manager, or Viewer—and fine-tune their permissions for safe, efficient team management.
+        </p>
+
+        <figure class="mt-8">
+          <img src="/images/role-based-access-ui.jpg" alt="Role-based access control interface" class="rounded-xl shadow-sm w-full" />
+          <figcaption class="text-center mt-4 mb-10">Manage team roles and toggle permissions through a clean interface.</figcaption>
+        </figure>
+      </header>
+
+      <section class="space-y-16 text-base sm:text-lg text-gray-700">
+
+        <!-- How It Works -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">How Role‑Based Access Works</h2>
+          <ul class="list-disc pl-6 space-y-4">
+            <li>Define roles (e.g., Admin, Manager, Viewer) and assign permissions like booking control, billing access, or analytics viewing.</li>
+            <li>Group users under roles instead of assigning permissions individually—streamlining your team's access rights. :contentReference[oaicite:2]{index=2}</li>
+            <li>Roles enforce the principle of least privilege—only granting access needed for each role. :contentReference[oaicite:3]{index=3}</li>
+          </ul>
+        </div>
+
+        <!-- Benefits -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">Why This Matters</h2>
+          <ul class="list-disc pl-6 space-y-4">
+            <li>Enhanced security and minimized risk of unauthorized access. :contentReference[oaicite:4]{index=4}</li>
+            <li>Faster management with consistent permissions—ideal during onboarding and offboarding. :contentReference[oaicite:5]{index=5}</li>
+            <li>Improved auditability and regulatory compliance thanks to clear access logs. :contentReference[oaicite:6]{index=6}</li>
+            <li>Scalable as your team grows—easily adjust roles and permissions over time. :contentReference[oaicite:7]{index=7}</li>
+          </ul>
+        </div>
+
+        <!-- Implementation & Best Practices -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">Implementing It Effectively</h2>
+          <ul class="list-disc pl-6 space-y-4">
+            <li>Start by modeling core roles and defining permission sets for each. :contentReference[oaicite:8]{index=8}</li>
+            <li>Create hierarchical roles that inherit permissions—e.g., a Manager inherits Viewer access plus additional tools. :contentReference[oaicite:9]{index=9}</li>
+            <li>Regularly review role assignments to match evolving team structure or responsibilities. :contentReference[oaicite:10]{index=10}</li>
+          </ul>
+        </div>
+
+        <!-- Learn More -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">Learn More About RBAC</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li><a href="https://www.dataversity.net/4-benefits-of-role-based-access-control-rbac-and-how-to-implement-it/" class="text-brand hover:text-brand-600 underline" target="_blank">Understanding RBAC benefits & implementation</a> :contentReference[oaicite:11]{index=11}</li>
+            <li><a href="https://www.ibm.com/think/topics/rbac" class="text-brand hover:text-brand-600 underline" target="_blank">Using RBAC with external users</a> :contentReference[oaicite:12]{index=12}</li>
+          </ul>
+        </div>
+
+        <!-- Call to Action -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">Get Started with Safe Team Access</h2>
+          <p>Enable role-based access in your settings, create roles, assign team members, and manage permissions—all securely and centrally.</p>
+          <p class="mt-6">
+            <a href="/pricing" class="text-brand hover:text-brand-600 underline font-semibold">Explore plans with advanced role controls</a>
+          </p>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="/js/app.js"></script>
+</body>
+</html>
