@@ -11,24 +11,26 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const conn = await pool.getConnection();
+    // Check for existing subscriber
+    const [existing] = await pool.query(
+      'SELECT id FROM newsletter_subscribers WHERE email = ?',
+      [email]
+    );
 
-    // Check for duplicates
-    const [rows] = await conn.query('SELECT id FROM newsletter_subscribers WHERE email = ?', [email]);
-
-    if (rows.length > 0) {
-      conn.release();
+    if (existing.length > 0) {
       return res.status(409).json({ message: 'You are already subscribed.' });
     }
 
-    // Insert new email
-    await conn.query('INSERT INTO newsletter_subscribers (email) VALUES (?)', [email]);
-    conn.release();
+    // Insert new subscriber
+    await pool.query(
+      'INSERT INTO newsletter_subscribers (email) VALUES (?)',
+      [email]
+    );
 
-    return res.status(200).json({ message: 'Subscribed successfully!' });
+    res.status(200).json({ message: 'Subscribed successfully!' });
   } catch (err) {
-    console.error('❌ Newsletter DB error:', err);
-    return res.status(500).json({ message: 'Server error. Please try again later.' });
+    console.error('❌ Newsletter subscription error:', err);
+    res.status(500).json({ message: 'Server error. Please try again later.' });
   }
 });
 
