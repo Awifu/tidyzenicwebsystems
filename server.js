@@ -2,18 +2,20 @@
 require("dotenv").config();
 const path = require("path");
 const express = require("express");
-const pool = require("./db/pool"); // shared MySQL pool (multipleStatements=true)
+const pool = require("./db/pool");
+const newsletterRoute = require("./routes/newsletter");
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
 const MIGRATE_TOKEN = process.env.MIGRATE_TOKEN || "";
-const BASE_DOMAIN  = process.env.BASE_DOMAIN || "tidyzenic.com";
+const BASE_DOMAIN = process.env.BASE_DOMAIN || "tidyzenic.com";
 
+// Basic config
 app.set("trust proxy", 1);
 app.disable("x-powered-by");
 app.use(express.json());
 
-// security headers
+// --- Security headers
 app.use((req, res, next) => {
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
   res.setHeader("X-Content-Type-Options", "nosniff");
@@ -22,19 +24,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// single static with cache headers
+// --- Static assets with cache control
 app.use(
   express.static(path.join(__dirname, "public"), {
     setHeaders: (res, filePath) => {
-      const isImmutable =
-        filePath.endsWith(".css") ||
-        filePath.endsWith(".js") ||
-        filePath.endsWith(".png") ||
-        filePath.endsWith(".jpg") ||
-        filePath.endsWith(".jpeg") ||
-        filePath.endsWith(".webp") ||
-        filePath.endsWith(".svg") ||
-        filePath.endsWith(".ico");
+      const isImmutable = /\.(css|js|png|jpe?g|webp|svg|ico)$/.test(filePath);
       res.setHeader(
         "Cache-Control",
         isImmutable ? "public, max-age=31536000, immutable" : "public, max-age=300"
@@ -43,8 +37,7 @@ app.use(
   })
 );
 
-
-// --- Health
+// --- Health Checks
 app.get("/healthz", (_req, res) => res.send("ok"));
 app.get("/db-health", async (_req, res) => {
   try {
@@ -56,8 +49,12 @@ app.get("/db-health", async (_req, res) => {
   }
 });
 
-// --- Migration schema (same as before)
+// --- Newsletter API
+app.use("/api/newsletter", newsletterRoute);
+
+// --- Migration schema
 const schemaSQL = `
+
 CREATE TABLE IF NOT EXISTS tenants (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(191) NOT NULL,
@@ -97,19 +94,27 @@ CREATE TABLE IF NOT EXISTS users (
   INDEX (role)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(191) NOT NULL UNIQUE,
+  subscribed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
 CREATE TABLE IF NOT EXISTS _schema_lock (
   id TINYINT PRIMARY KEY,
   migrated_at DATETIME
 ) ENGINE=InnoDB;
+
 `;
 
-// --- Dry-run migration (no changes)
+// --- Dry-run migration
 app.post("/migrate-dryrun", async (req, res) => {
   try {
-    if (!MIGRATE_TOKEN || req.get("x-migrate-token") !== MIGRATE_TOKEN)
+    if (req.get("x-migrate-token") !== MIGRATE_TOKEN)
       return res.status(401).json({ error: "unauthorized" });
 
-    await pool.query("SELECT 1");
     const conn = await pool.getConnection();
     try {
       await conn.beginTransaction();
@@ -119,6 +124,7 @@ app.post("/migrate-dryrun", async (req, res) => {
     } finally {
       conn.release();
     }
+
     res.json({ status: "dry-run ok", message: "Schema executed and rolled back" });
   } catch (e) {
     console.error("Dry-run migration error:", e);
@@ -126,10 +132,10 @@ app.post("/migrate-dryrun", async (req, res) => {
   }
 });
 
-// --- One-time migration (idempotent)
+// --- Idempotent one-time migration
 app.post("/migrate-once", async (req, res) => {
   try {
-    if (!MIGRATE_TOKEN || req.get("x-migrate-token") !== MIGRATE_TOKEN)
+    if (req.get("x-migrate-token") !== MIGRATE_TOKEN)
       return res.status(401).json({ error: "unauthorized" });
 
     await pool.query(`
@@ -151,7 +157,7 @@ app.post("/migrate-once", async (req, res) => {
   }
 });
 
-// --- Tenant resolution (kept)
+// --- Tenant resolution middleware
 async function resolveTenant(req, res, next) {
   try {
     const host = (req.headers.host || "").toLowerCase().split(":")[0];
@@ -160,9 +166,9 @@ async function resolveTenant(req, res, next) {
     let tenant = null;
 
     if (host.endsWith("." + BASE_DOMAIN)) {
-      const sub = host.slice(0, -1 * ("." + BASE_DOMAIN).length);
-      if (sub && sub !== "www") {
-        const [t] = await pool.query("SELECT * FROM tenants WHERE slug = ? LIMIT 1", [sub]);
+      const subdomain = host.replace("." + BASE_DOMAIN, "");
+      if (subdomain && subdomain !== "www") {
+        const [t] = await pool.query("SELECT * FROM tenants WHERE slug = ? LIMIT 1", [subdomain]);
         tenant = t[0] || null;
       }
     }
@@ -185,8 +191,8 @@ async function resolveTenant(req, res, next) {
   }
 }
 
-// --- Public APIs for homepage dynamic sections (DB wiring later)
-app.get("/api/blog", async (_req, res) => {
+// --- Public APIs (static for now)
+app.get("/api/blog", (_req, res) => {
   res.json([
     { title: "AI Scheduling Arrives", excerpt: "Boost productivity with smart auto-assign.", url: "/blog/ai-scheduling" },
     { title: "Inventory Best Practices", excerpt: "Avoid stockouts & overstock.", url: "/blog/inventory-best-practices" },
@@ -194,7 +200,7 @@ app.get("/api/blog", async (_req, res) => {
   ]);
 });
 
-app.get("/api/reviews", async (_req, res) => {
+app.get("/api/reviews", (_req, res) => {
   res.json([
     { author: "Jane D.", text: "TidyZenic streamlined our entire operation.", rating: 5 },
     { author: "Mark R.", text: "Easy to set up custom domains & branding.", rating: 4 },
@@ -213,21 +219,27 @@ app.get("/tenant/info", resolveTenant, (req, res) => {
   });
 });
 
-// --- Serve index.html for root (and allow simple static site behavior)
+// --- Root index.html
 app.get("/", (_req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// --- 404 + error handlers
+// --- 404 + error handler
 app.use((req, res) => res.status(404).json({ error: "Not Found", path: req.path }));
 app.use((err, _req, res, _next) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ error: "Internal Server Error" });
 });
 
-// --- Shutdown
-const shutdown = async () => { try { await pool.end(); } catch {} process.exit(0); };
+// --- Graceful shutdown
+const shutdown = async () => {
+  try { await pool.end(); } catch {}
+  process.exit(0);
+};
 process.on("SIGTERM", shutdown);
 process.on("SIGINT", shutdown);
 
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+// --- Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server listening on port ${PORT}`);
+});
