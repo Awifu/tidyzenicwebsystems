@@ -1,162 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us - Premium</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f7f7f7;
-      color: #222;
-    }
-    .hero {
-      background: url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-      height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-    }
-    .hero h1 {
-      position: relative;
-      font-size: 3em;
-      margin: 0;
-    }
-    .hero p {
-      position: relative;
-      font-size: 1.2em;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-    .info-cards {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 3rem;
-    }
-    .card {
-      background: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      flex: 1 1 250px;
-    }
-    .card h3 {
-      margin-top: 0;
-      color: #444;
-    }
-    form {
-      background: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: #c8aa6e;
-      outline: none;
-    }
-    button {
-      background: #222;
-      color: #fff;
-      border: none;
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #c8aa6e;
-      color: #000;
-    }
-    .map {
-      margin-top: 3rem;
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-    .footer-cta {
-      text-align: center;
-      margin-top: 4rem;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us – TidyZenic</title>
+
+    <meta name="description" content="Have questions or need support? Reach out to TidyZenic’s team and we’ll respond promptly to assist your service business." />
+    <meta name="keywords" content="TidyZenic contact, customer support, contact form, service business software help, get in touch" />
+    <meta name="author" content="TidyZenic" />
+    <meta property="og:title" content="Contact TidyZenic – We're Here to Help" />
+    <meta property="og:description" content="Contact our support or sales team for questions, demos, or technical help. We respond quickly!" />
+    <meta property="og:image" content="https://tidyzenic.com/images/contact-support.jpg" />
+    <meta property="og:url" content="https://tidyzenic.com/contact" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <style>
+        :root {
+            --brand-color-500: #2979ff;
+            --brand-color-600: #1e62d9;
+        }
+        .text-brand { color: var(--brand-color-500); }
+        .hover\:text-brand-600:hover { color: var(--brand-color-600); }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            padding: 4rem 1rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .shadow-xl {
+            box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+        }
+
+        .info-cards {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1 1 250px;
+            max-width: 300px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #444;
+        }
+
+        #contactForm input,
+        #contactForm textarea {
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.75rem;
+        }
+
+        #contactForm .form-group {
+            max-width: 480px;
+            margin: 0 auto 1.5rem;
+        }
+    </style>
 </head>
-<body>
-  <section class="hero">
-    <div>
-      <h1>Let’s Connect</h1>
-      <p>We're here to help. Reach out and we'll respond within 24 hours.</p>
-    </div>
-  </section>
 
-  <div class="container">
-    <div class="info-cards">
-      <div class="card">
-        <h3>📍 Our Address</h3>
-        <p>100 Luxury Drive, Suite 500<br>New York, NY 10001</p>
-      </div>
-      <div class="card">
-        <h3>📞 Phone</h3>
-        <p>+1 (800) 555-0199<br>Mon–Fri: 9am – 6pm EST</p>
-      </div>
-      <div class="card">
-        <h3>✉️ Email</h3>
-        <p>support@luxbrand.com<br>Press, Partnership, Careers</p>
-      </div>
-    </div>
+<body class="text-gray-800 leading-relaxed tracking-normal">
+    <div id="header-placeholder"></div>
 
-    <form>
-      <h2>Send Us a Message</h2>
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <select name="subject">
-        <option>Support</option>
-        <option>Partnership</option>
-        <option>Media</option>
-        <option>Other</option>
-      </select>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <label><input type="checkbox" required> I agree to the privacy policy</label><br><br>
-      <button type="submit">Send Message</button>
-    </form>
+    <main class="fade-in">
+        <div class="container mx-auto px-4">
+            <header class="mb-16 text-center">
+                <h1 class="text-4xl font-bold text-gray-900">Get In Touch</h1>
+                <p class="text-gray-600 mt-3 text-lg">We're here to help. Whether you're a customer, partner, or just curious.</p>
+            </header>
 
-    <div class="map">
-      <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen></iframe>
-    </div>
+            <!-- Info Cards -->
+            <div class="info-cards">
+                <div class="card">
+                    <h3>📍 Address</h3>
+                    <p>123 Clean Street<br>Suite 456<br>San Francisco, CA</p>
+                </div>
+                <div class="card">
+                    <h3>📞 Phone</h3>
+                    <p>+1 (555) 123-4567<br>Mon–Fri: 9am–5pm PST</p>
+                </div>
+                <div class="card">
+                    <h3>✉️ Email</h3>
+                    <p><a href="mailto:support@tidyzenic.com" class="text-brand hover:underline">support@tidyzenic.com</a></p>
+                </div>
+            </div>
 
-    <div class="footer-cta">
-      <p>Want to visit us in person?</p>
-      <button>Book a Visit</button>
-    </div>
-  </div>
+            <!-- Contact Form -->
+            <form id="contactForm" class="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-xl mx-auto">
+                <div class="form-group">
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                    <input type="text" name="name" id="name" required placeholder="Jane Doe"
+                        class="w-full border border-gray-300 focus:ring-2 focus:ring-brand-500 transition" />
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+                    <input type="email" name="email" id="email" required placeholder="you@example.com"
+                        class="w-full border border-gray-300 focus:ring-2 focus:ring-brand-500 transition" />
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                    <textarea name="message" id="message" rows="5" required placeholder="Tell us how we can help you."
+                        class="w-full border border-gray-300 focus:ring-2 focus:ring-brand-500 transition resize-none"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit"
+                        class="w-full bg-brand-600 text-white font-semibold py-3 px-6 rounded-xl shadow-md hover:bg-brand-700 transition duration-200">
+                        Send Message
+                    </button>
+                    <p id="formStatus" class="text-center text-sm mt-4 hidden"></p>
+                </div>
+            </form>
+
+            <div class="mt-12 pt-8 border-t border-gray-100 text-center">
+                <h3 class="text-xl font-bold text-gray-900">Need Immediate Help?</h3>
+                <p class="mt-2 text-gray-600">You can email us directly:</p>
+                <p class="mt-2 text-lg font-semibold text-brand">
+                    <a href="mailto:support@tidyzenic.com" class="hover:underline">support@tidyzenic.com</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/js/app.js"></script>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('formStatus');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = {
+                name: form.name.value.trim(),
+                email: form.email.value.trim(),
+                message: form.message.value.trim(),
+            };
+
+            status.classList.remove('hidden');
+            status.textContent = '⏳ Sending your message...';
+            status.className = 'text-sm text-gray-500 text-center mt-4';
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await res.json();
+
+                if (res.ok) {
+                    status.textContent = '✅ Thank you! Your message has been delivered successfully.';
+                    status.className = 'text-green-600 text-sm text-center mt-4';
+                    form.reset();
+                } else {
+                    throw new Error(result.message || 'Submission failed.');
+                }
+            } catch (err) {
+                status.textContent = `❌ ${err.message || 'Something went wrong. Please try again.'}`;
+                status.className = 'text-red-600 text-sm text-center mt-4';
+            }
+
+            setTimeout(() => {
+                status.classList.add('hidden');
+            }, 6000);
+        });
+    </script>
 </body>
 </html>
