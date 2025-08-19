@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — TidyZenic</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Get in touch with TidyZenic. Whether you have questions, need support, or want to learn more—our team is here to help." />
+  <meta name="keywords" content="contact TidyZenic, SaaS support, customer service, get in touch" />
+  <meta name="author" content="TidyZenic" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 0.9s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    button {
+      background-color: #2979ff;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e62d9;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div id="header-placeholder"></div>
+
+  <main class="py-16 px-4 fade-in">
+    <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-3xl p-8 md:p-12">
+
+      <header class="text-center mb-10">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900">Contact TidyZenic</h1>
+        <p class="text-gray-600 mt-2">Have questions? Need help? Want to collaborate? We're here for you.</p>
+      </header>
+
+      <form action="/api/contact" method="POST">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div class="mt-10 text-sm text-gray-500 text-center">
+        You can also reach us directly at <a href="mailto:hello@tidyzenic.com" class="text-brand hover:text-brand-600 underline">hello@tidyzenic.com</a>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="/js/app.js"></script>
+</body>
+</html>
