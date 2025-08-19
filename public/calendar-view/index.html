@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar View — TidyZenic</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Manage your bookings visually with TidyZenic’s Calendar View—see daily, weekly, or monthly layouts, filter by staff or service, and book directly from the calendar." />
+  <meta name="keywords" content="calendar view, booking calendar, booking management calendar, availability calendar, service booking calendar" />
+  <meta name="author" content="TidyZenic" />
+  <meta property="og:title" content="TidyZenic Calendar View – Visual Booking Management" />
+  <meta property="og:description" content="A powerful calendar interface that allows you to view, filter, and manage bookings at a glance—daily, weekly, or monthly." />
+  <meta property="og:image" content="https://tidyzenic.com/images/calendar-view-social-share.jpg" />
+  <meta property="og:url" content="https://tidyzenic.com/calendar-view" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    :root {
+      --brand-color-500: #2979ff;
+      --brand-color-600: #1e62d9;
+    }
+    .text-brand { color: var(--brand-color-500); }
+    .hover\:text-brand-600:hover { color: var(--brand-color-600); }
+    body { font-family: 'Poppins', sans-serif; }
+    h1, h2 { font-family: 'Merriweather', serif; }
+    .fade-in { animation: fadeIn 0.9s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    figure { margin: 0; }
+    figcaption {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 leading-relaxed tracking-normal">
+  <div id="header-placeholder"></div>
+
+  <main class="py-16 md:py-24 px-4 fade-in">
+    <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-3xl p-8 md:p-12 lg:p-16">
+
+      <!-- Header -->
+      <header class="mb-16 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+          Visual Booking Control with Calendar View
+        </h1>
+        <p class="text-sm text-gray-500 mt-2">
+          Seamlessly manage your reservations with a clean, customizable calendar—switch between daily, weekly, or monthly views and handle bookings right from the screen.
+        </p>
+
+        <figure class="mt-8">
+          <img src="/images/calendar-view-ui.jpg" alt="Booking calendar user interface showing daily and monthly views" class="rounded-xl shadow-sm w-full" />
+          <figcaption class="text-center mt-4 mb-10">Calendar interface with color-coded bookings, filters, and quick navigation.</figcaption>
+        </figure>
+      </header>
+
+      <section class="space-y-16 text-base sm:text-lg text-gray-700">
+
+        <!-- At-a-Glance Overview -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">See Everything at a Glance</h2>
+          <ul class="list-disc pl-6 space-y-4">
+            <li>Toggle between day, week, and month views for flexible planning.</li>
+            <li>Color-coded bookings for at-a-glance status (confirmed, pending, blocked).</li>
+            <li>Ideal for service businesses to monitor availability and capacity together. :contentReference[oaicite:2]{index=2}</li>
+          </ul>
+        </div>
+
+        <!-- Filters & Booking Controls -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">Streamlined Filtering & Management</h2>
+          <ul class="list-disc pl-6 space-y-4">
+            <li>Filter by staff, services, or booking status to declutter your view.</li>
+            <li>Easily add bookings or block off times directly from the calendar.</li>
+            <li>Support for blackout periods and complex availability scenarios. :contentReference[oaicite:3]{index=3}</li>
+          </ul>
+        </div>
+
+        <!-- Why It Matters -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">Why Calendar View Boosts Efficiency</h2>
+          <ul class="list-disc pl-6 space-y-4">
+            <li>Automates reminders and confirmations for better client relationships. :contentReference[oaicite:4]{index=4}</li>
+            <li>Prevents overbookings and helps plan ahead—perfect for busy days. :contentReference[oaicite:5]{index=5}</li>
+            <li>Allows quick, informed decisions with a visual schedule. :contentReference[oaicite:6]{index=6}</li>
+          </ul>
+        </div>
+
+        <!-- Digital Calendar Standards -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">Smart, Connected Scheduling</h2>
+          <p>
+            Built on modern digital calendar standards—subscribe, sync, set visibility, and ensure conflict-free bookings with iCalendar compatibility. :contentReference[oaicite:7]{index=7}
+          </p>
+        </div>
+
+        <!-- Next Steps -->
+        <div>
+          <h2 class="text-2xl font-semibold text-brand mb-4">Get Started with Calendar View</h2>
+          <p>Activate the calendar view in settings and customize it for your workflow—navigate with ease, manage bookings live, and stay organized like never before.</p>
+          <p class="mt-6">
+            <a href="/pricing" class="text-brand hover:text-brand-600 underline font-semibold">Enable calendar view—see which plans include this feature</a>
+          </p>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="/js/app.js"></script>
+</body>
+</html>
