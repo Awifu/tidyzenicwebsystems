@@ -12,32 +12,40 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    // Save to MySQL
-    const sql = `INSERT INTO contact_messages (name, email, message) VALUES (?, ?, ?)`;
-    await pool.execute(sql, [name, email, message]);
+    // Save message to the database
+    const query = `INSERT INTO contact_messages (name, email, message) VALUES (?, ?, ?)`;
+    await pool.execute(query, [name.trim(), email.trim(), message.trim()]);
 
-    // Send email to super admin
+    // Create Nodemailer transporter
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT || 465),
+      secure: true,
       auth: {
-        user: process.env.SUPER_ADMIN_EMAIL,
-        pass: process.env.SUPER_ADMIN_PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
+    // Verify transporter (optional but useful during debugging)
+    await transporter.verify();
+
+    // Send notification to admin
     await transporter.sendMail({
-      from: `"TidyZenic Contact" <${process.env.SUPER_ADMIN_EMAIL}>`,
-      to: process.env.SUPER_ADMIN_EMAIL,
-      subject: '📥 New Contact Submission',
+      from: `"TidyZenic Contact Form" <${process.env.SMTP_USER}>`,
+      to: process.env.ADMIN_EMAIL,
+      subject: '📩 New Contact Form Submission',
       html: `
-        <h2>New Contact Form Submission</h2>
+        <h2 style="margin-bottom: 10px;">You have a new message</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong><br>${message}</p>
+        <p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>
+        <hr />
+        <p style="font-size: 12px; color: #888;">TidyZenic Contact API</p>
       `,
     });
 
-    res.json({ message: 'Your message has been sent successfully!' });
+    res.status(200).json({ message: 'Your message has been successfully sent.' });
   } catch (err) {
     console.error('[CONTACT ERROR]', err);
     res.status(500).json({ message: 'Something went wrong. Please try again later.' });
