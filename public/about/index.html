@@ -25,109 +25,156 @@
 
   <style>
     :root {
-      --brand-color-500: #2979ff;
+      --brand-700: #4338ca;
+      --brand-600: #4f46e5;
+      --brand-400: #818cf8;
+      /* Adjusted to match the color used in your legal pages */
+      --brand-color-500: #2979ff; 
       --brand-color-600: #1e62d9;
     }
+    /* Added to match the styling of your legal pages */
     .text-brand { color: var(--brand-color-500); }
     .bg-brand { background-color: var(--brand-color-500); }
     .border-brand { border-color: var(--brand-color-500); }
     .hover\:text-brand-600:hover { color: var(--brand-color-600); }
-    
+
     body {
-        font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
     h1, h2, h3 {
-        font-family: 'Merriweather', serif;
+      font-family: 'Merriweather', serif;
     }
   </style>
-
 </head>
-<body class="bg-gray-50 text-gray-800 leading-relaxed tracking-normal antialiased font-sans">
+<body class="bg-gray-50 text-gray-900 antialiased font-sans">
 
   <div id="header-placeholder"></div>
 
   <main>
 
-    <section class="bg-white py-16 md:py-24 px-4 fade-in">
-        <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-3xl p-8 md:p-12 lg:p-16">
-            <header class="mb-16 text-center">
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">Our Story & Mission</h1>
-                <p class="text-sm text-gray-500 mt-2 italic">Building the future of service businesses.</p>
-            </header>
-            
-            <section class="space-y-12 md:space-y-16 text-base sm:text-lg text-gray-700">
-                <div>
-                    <h2 class="text-2xl font-semibold text-brand mb-4">The Tidyzenic Story</h2>
-                    <p>
-                      <strong>Tidyzenic</strong> was born from a simple idea in Greece: that running a service business shouldn’t be a constant struggle. I saw firsthand the challenges of manual scheduling, team coordination, and client management. So, I set out to build the solution myself—a single, powerful platform that automates the mundane and gives you time back to grow your business.
-                    </p>
-                    <p class="mt-4">
-                      What started as a personal project has grown into a comprehensive suite designed to streamline your operations, from your first booking to your last invoice. Every feature is crafted with you in mind, so you can focus on delivering great service, not wrestling with software.
-                    </p>
-                </div>
-                
-                <div>
-                    <h2 class="text-2xl font-semibold text-brand mb-4">Our Core Values</h2>
-                    <ul class="list-disc pl-8 mt-4 space-y-4">
-                        <li>
-                            <strong>Simplicity & Usability:</strong> Intuitive design ensures you can get started quickly without a steep learning curve.
-                        </li>
-                        <li>
-                            <strong>Continuous Innovation:</strong> We continuously evolve, integrating the latest AI to keep you ahead of the competition.
-                        </li>
-                        <li>
-                            <strong>True Partnership:</strong> Your success is our success. We provide exceptional support and listen to your needs.
-                        </li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h2 class="text-2xl font-semibold text-brand mb-4">Meet the Founder</h2>
-                    <p>
-                        Meet **Awifu Muyomba**, the founder of Tidyzenic. His vision is to empower service providers with the tools they need to not just survive, but truly thrive in a competitive market.
-                    </p>
-                    <div class="mt-8 flex justify-center">
-                        <img src="https://tidyzenic.com/images/smiling-man.png" 
-                             alt="Awifu Muyomba, founder of Tidyzenic" 
-                             class="w-48 h-64 sm:w-64 sm:h-80 rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-105" />
-                    </div>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-semibold text-brand mb-4">Connect with Tidyzenic</h2>
-                    <p>Follow us on our social media to stay updated on new features, tips, and company news.</p>
-                    <div class="mt-8 flex justify-center gap-16 text-brand-600 text-4xl">
-                      <a href="#" aria-label="TikTok" class="hover:text-brand-400 transition transform hover:-translate-y-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 448 512" fill="currentColor">
-                          <path d="M448,209.9c-17.6,0-34.5-2.6-50.6-7.4V332c0,99.7-81,180.7-180.7,180.7S36,431.7,36,332
-                          c0-99.7,81-180.7,180.7-180.7c7.1,0,14.2,0.4,21.1,1.3v88.4c-6.8-2.2-14-3.4-21.1-3.4c-39.6,0-71.8,32.2-71.8,71.8
-                          s32.2,71.8,71.8,71.8c39.6,0,71.8-32.2,71.8-71.8V0h88.9c0,17.9,3.5,35,9.7,50.6c10.8,27.4,29.2,50.7,53,67.4
-                          C421.9,198.2,435.4,204.6,448,209.9z"/>
-                        </svg>
-                      </a>
-                      <a href="#" aria-label="Facebook" class="hover:text-brand-400 transition transform hover:-translate-y-1">
-                        <i class="fa fa-facebook-square"></i>
-                      </a>
-                      <a href="#" aria-label="YouTube" class="hover:text-brand-400 transition transform hover:-translate-y-1">
-                        <i class="fa fa-youtube-play"></i>
-                      </a>
-                      <a href="#" aria-label="Instagram" class="hover:text-brand-400 transition transform hover:-translate-y-1">
-                        <i class="fa fa-instagram"></i>
-                      </a>
-                    </div>
-                </div>
-            </section>
-        </div>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-brand-700 via-brand-600 to-indigo-600"></div>
+      <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28 text-white text-center">
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
+          Building the Future of Service Businesses
+        </h1>
+        <p class="mt-5 text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
+          From a solo developer's passion to a powerful AI-driven platform, **Tidyzenic**
+          is built to help your business not just survive, but thrive.
+        </p>
+      </div>
     </section>
 
-    <section id="cta" class="bg-brand-500 text-white">
+    <section class="bg-white">
+      <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid lg:grid-cols-2 items-center gap-8">
+          
+          <div class="text-center lg:text-left">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Meet Awifu Muyomba
+            </h2>
+            <h3 class="mt-2 text-lg sm:text-xl font-semibold text-brand-600 tracking-wide">
+              Founder of **Tidyzenic**
+            </h3>
+
+            <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+              **Tidyzenic** was born from a simple idea in Greece: that running a service business shouldn’t be a constant struggle. 
+              I saw firsthand the challenges of manual scheduling, team coordination, and client management. 
+              So, I set out to build the solution myself—a single, powerful platform that automates the mundane and gives you time back to grow your business.
+            </p>
+
+            <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+              What started as a personal project has grown into a comprehensive suite designed to streamline your operations, 
+              from your first booking to your last invoice. Every feature is crafted with you in mind, 
+              so you can focus on delivering great service, not wrestling with software.
+            </p>
+          </div>
+
+          <div class="flex justify-center lg:justify-end relative">
+            <div class="absolute w-56 h-56 sm:w-72 sm:h-72 bg-gradient-to-tr from-brand-400/30 to-indigo-600/30 rounded-full blur-3xl"></div>
+            
+            <div class="relative w-48 h-64 sm:w-64 sm:h-80 lg:w-72 lg:h-96 rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-105">
+              <img src="https://tidyzenic.com/images/smiling-man.png" 
+                   alt="Awifu Muyomba, founder of Tidyzenic" 
+                   class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6 py-16 text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold">Our Core Values</h2>
+        <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+          We are committed to building a product that is not just powerful, but also reliable,
+          user-friendly, and a true partner in your business’s success.
+        </p>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 text-center flex flex-col items-center">
+            <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+              <i class="fa fa-check text-xl"></i>
+            </div>
+            <div class="mt-4 font-bold text-lg">Simplicity & Usability</div>
+            <div class="mt-2 text-sm text-gray-500">Intuitive design ensures you can get started quickly without a steep learning curve.</div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 text-center flex flex-col items-center">
+            <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+              <i class="fa fa-lightbulb-o text-xl"></i>
+            </div>
+            <div class="mt-4 font-bold text-lg">Continuous Innovation</div>
+            <div class="mt-2 text-sm text-gray-500">We continuously evolve, integrating the latest AI to keep you ahead of the competition.</div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 text-center flex flex-col items-center">
+            <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center">
+              <i class="fa fa-handshake-o text-xl"></i>
+            </div>
+            <div class="mt-4 font-bold text-lg">True Partnership</div>
+            <div class="mt-2 text-sm text-gray-500">Your success is our success. We provide exceptional support and listen to your needs.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white">
+      <div class="max-w-7xl mx-auto px-6 py-12 text-center">
+        <h3 class="text-xl sm:text-2xl font-bold">Connect with Tidyzenic</h3>
+        <p class="mt-2 text-gray-600">Follow us on our social media to stay updated.</p>
+
+        <div class="mt-8 flex justify-center gap-16 text-brand-600 text-4xl">
+          <a href="#" aria-label="TikTok" class="hover:text-brand-400 transition transform hover:-translate-y-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 448 512" fill="currentColor">
+              <path d="M448,209.9c-17.6,0-34.5-2.6-50.6-7.4V332c0,99.7-81,180.7-180.7,180.7S36,431.7,36,332
+              c0-99.7,81-180.7,180.7-180.7c7.1,0,14.2,0.4,21.1,1.3v88.4c-6.8-2.2-14-3.4-21.1-3.4c-39.6,0-71.8,32.2-71.8,71.8
+              s32.2,71.8,71.8,71.8c39.6,0,71.8-32.2,71.8-71.8V0h88.9c0,17.9,3.5,35,9.7,50.6c10.8,27.4,29.2,50.7,53,67.4
+              C421.9,198.2,435.4,204.6,448,209.9z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="hover:text-brand-400 transition transform hover:-translate-y-1">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+          <a href="#" aria-label="YouTube" class="hover:text-brand-400 transition transform hover:-translate-y-1">
+            <i class="fa fa-youtube-play"></i>
+          </a>
+          <a href="#" aria-label="Instagram" class="hover:text-brand-400 transition transform hover:-translate-y-1">
+            <i class="fa fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="bg-brand-600 text-white">
       <div class="max-w-7xl mx-auto px-6 py-20 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold leading-tight">Ready to boost your business?</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Ready to boost your business?</h2>
         <p class="mt-4 text-lg text-white/80">
           Start your 7-day free trial and experience the power of AI-assisted management today.
         </p>
         <div class="mt-8">
-          <a href="/pricing" class="inline-flex items-center px-8 py-4 rounded-xl bg-white text-brand-600 font-semibold shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+          <a href="/pricing" class="inline-flex items-center px-8 py-4 rounded-xl bg-white text-brand-700 font-semibold shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
             Start Free Trial
           </a>
         </div>
