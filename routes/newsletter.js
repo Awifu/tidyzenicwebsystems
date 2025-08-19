@@ -1,7 +1,6 @@
-// routes/newsletter.js
 const express = require('express');
 const router = express.Router();
-const db = require('../db'); // Assuming you have db connection setup
+const db = require('../db/pool'); // ✅ Correct path to your DB
 
 router.post('/', async (req, res) => {
   const { email } = req.body;
@@ -11,13 +10,13 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    // Check for duplicates
+    // Check if email already exists
     const existing = await db('newsletter_subscribers').where({ email }).first();
     if (existing) {
       return res.status(409).json({ error: 'You are already subscribed.' });
     }
 
-    // Insert the new email
+    // Save new subscriber
     await db('newsletter_subscribers').insert({ email });
 
     return res.status(200).json({ message: 'Subscribed successfully!' });
