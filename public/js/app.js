@@ -1,23 +1,64 @@
 // app.js
+
+/**
+ * Initialize the newsletter form logic
+ */
+function initNewsletterForm() {
+  const form = document.querySelector(".newsletter-form");
+  if (!form) return;
+
+  const successMsg = form.querySelector(".newsletter-success-message");
+  const errorMsg = form.querySelector(".newsletter-error-message");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = form.email.value;
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        form.reset();
+        if (successMsg) successMsg.style.display = "block";
+        if (errorMsg) errorMsg.style.display = "none";
+        setTimeout(() => {
+          if (successMsg) successMsg.style.display = "none";
+        }, 4000);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      if (errorMsg) errorMsg.style.display = "block";
+      if (successMsg) successMsg.style.display = "none";
+      setTimeout(() => {
+        if (errorMsg) errorMsg.style.display = "none";
+      }, 4000);
+    }
+  });
+}
+
 window.addEventListener("load", async () => {
   /**
    * Load and inject external components (header, footer)
    */
   async function loadComponent(url, placeholderId) {
     const placeholder = document.getElementById(placeholderId);
-    if (!placeholder) return; // don't try if placeholder is missing
+    if (!placeholder) return;
 
     try {
       const response = await fetch(url);
       if (response.ok) {
         const html = await response.text();
-
-        // Instead of replacing innerHTML, just append
         placeholder.insertAdjacentHTML("beforeend", html);
 
-        // Initialize after injection
         if (placeholderId === "header-placeholder") {
           initHeader();
+        } else if (placeholderId === "footer-placeholder") {
+          initNewsletterForm(); // ✅ After footer loads
         }
       } else {
         console.error(`❌ Failed to load ${url}: ${response.statusText}`);
@@ -27,7 +68,6 @@ window.addEventListener("load", async () => {
     }
   }
 
-  // Always load from root so works on /about, /pricing, etc.
   await loadComponent("/header.html", "header-placeholder");
   await loadComponent("/footer.html", "footer-placeholder");
 
@@ -53,7 +93,6 @@ window.addEventListener("load", async () => {
         submenu.classList.toggle("hidden");
       });
 
-      // click outside to close
       document.addEventListener("click", (e) => {
         if (!submenu.contains(e.target) && !submenuToggle.contains(e.target)) {
           submenu.classList.add("hidden");
@@ -63,7 +102,7 @@ window.addEventListener("load", async () => {
   }
 
   /**
-   * Blog posts (placeholder data, replace with API later)
+   * Blog posts
    */
   const blogPosts = [
     {
@@ -105,14 +144,14 @@ window.addEventListener("load", async () => {
     blogGrid.innerHTML = blogPosts
       .map(
         (post) => `
-      <a href="${post.link}" class="block rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition bg-white group">
-        <img src="${post.image}" alt="${post.title}" class="w-full h-44 object-cover">
-        <div class="p-6">
-          <h3 class="text-lg font-semibold text-gray-900 group-hover:text-brand-700 transition">${post.title}</h3>
-          <p class="mt-2 text-sm text-gray-500">${post.summary}</p>
-        </div>
-      </a>
-    `
+        <a href="${post.link}" class="block rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition bg-white group">
+          <img src="${post.image}" alt="${post.title}" class="w-full h-44 object-cover">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-brand-700 transition">${post.title}</h3>
+            <p class="mt-2 text-sm text-gray-500">${post.summary}</p>
+          </div>
+        </a>
+      `
       )
       .join("");
 
@@ -120,7 +159,7 @@ window.addEventListener("load", async () => {
   }
 
   /**
-   * Reviews (placeholder data)
+   * Reviews
    */
   const reviews = [
     {
@@ -148,13 +187,13 @@ window.addEventListener("load", async () => {
     reviewsGrid.innerHTML = reviews
       .map(
         (review) => `
-      <div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
-        <p class="text-gray-600">"${review.text}"</p>
-        <div class="mt-4 text-sm font-semibold text-gray-900">
-          ${review.author}, <span class="text-gray-500 font-normal">${review.company}</span>
+        <div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
+          <p class="text-gray-600">"${review.text}"</p>
+          <div class="mt-4 text-sm font-semibold text-gray-900">
+            ${review.author}, <span class="text-gray-500 font-normal">${review.company}</span>
+          </div>
         </div>
-      </div>
-    `
+      `
       )
       .join("");
 
@@ -162,7 +201,7 @@ window.addEventListener("load", async () => {
   }
 
   /**
-   * Draw simple revenue chart on canvas
+   * Revenue chart
    */
   function drawChart() {
     const canvas = document.getElementById("revenueChart");
@@ -180,26 +219,21 @@ window.addEventListener("load", async () => {
     const points = data.length;
     const maxVal = Math.max(...data);
 
-    // Clear
     ctx.clearRect(0, 0, width, height);
 
-    // Gradient for area
     const areaGradient = ctx.createLinearGradient(0, 0, 0, height);
     areaGradient.addColorStop(0, "rgba(79, 70, 229, 0.4)");
     areaGradient.addColorStop(1, "rgba(79, 70, 229, 0)");
 
-    // Gradient for line
     const lineGradient = ctx.createLinearGradient(0, 0, width, 0);
     lineGradient.addColorStop(0, "rgba(79, 70, 229, 1)");
     lineGradient.addColorStop(1, "rgba(129, 140, 248, 1)");
 
-    // Coordinates
     const coords = data.map((d, i) => ({
       x: padding + (i / (points - 1)) * (width - 2 * padding),
       y: height - padding - (d / maxVal) * (height - 2 * padding),
     }));
 
-    // Area
     ctx.beginPath();
     ctx.moveTo(coords[0].x, height - padding);
     coords.forEach((c) => ctx.lineTo(c.x, c.y));
@@ -208,7 +242,6 @@ window.addEventListener("load", async () => {
     ctx.fillStyle = areaGradient;
     ctx.fill();
 
-    // Line
     ctx.beginPath();
     ctx.moveTo(coords[0].x, coords[0].y);
     for (let i = 1; i < points; i++) {
@@ -220,7 +253,6 @@ window.addEventListener("load", async () => {
     ctx.lineJoin = "round";
     ctx.stroke();
 
-    // Circles
     coords.forEach((c) => {
       ctx.beginPath();
       ctx.arc(c.x, c.y, 4, 0, 2 * Math.PI);
@@ -232,9 +264,7 @@ window.addEventListener("load", async () => {
     });
   }
 
-  /**
-   * Init
-   */
+  // Run render functions
   renderBlogPosts();
   renderReviews();
 
@@ -245,46 +275,3 @@ window.addEventListener("load", async () => {
     drawChart();
   }
 });
-
-  function initNewsletterForm() {
-    const form = document.querySelector(".newsletter-form");
-    if (!form) return;
-
-    const successMsg = form.querySelector(".newsletter-success-message");
-    const errorMsg = form.querySelector(".newsletter-error-message");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = form.email.value;
-
-      try {
-        const res = await fetch("/api/newsletter", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
-        });
-
-        if (res.ok) {
-          form.reset();
-          successMsg.style.display = "block";
-          errorMsg.style.display = "none";
-          setTimeout(() => {
-            successMsg.style.display = "none";
-          }, 4000);
-        } else {
-          throw new Error();
-        }
-      } catch {
-        errorMsg.style.display = "block";
-        successMsg.style.display = "none";
-        setTimeout(() => {
-          errorMsg.style.display = "none";
-        }, 4000);
-      }
-    });
-  }
-
-  // ✅ Call after load + after footer injected
-  initNewsletterForm();
-});
-
