@@ -28,14 +28,38 @@
     }
     .text-brand { color: var(--brand-color-500); }
     .hover\:text-brand-600:hover { color: var(--brand-color-600); }
-    body { font-family: 'Poppins', sans-serif; background-color: #f9fafb; }
-    h1, h2, h3 { font-family: 'Merriweather', serif; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1rem;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Merriweather', serif;
+    }
+
     .fade-in {
       animation: fadeIn 0.8s ease-in-out;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    .shadow-xl {
+      box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     }
   </style>
 </head>
@@ -43,8 +67,8 @@
 <body class="text-gray-800 leading-relaxed tracking-normal">
   <div id="header-placeholder"></div>
 
-  <main class="py-20 px-4 fade-in">
-    <div class="max-w-2xl mx-auto bg-white shadow-xl border border-gray-100 rounded-3xl p-8 md:p-12">
+  <main class="fade-in">
+    <div class="w-full max-w-2xl bg-white shadow-xl border border-gray-100 rounded-3xl p-8 md:p-12">
 
       <!-- Page Title -->
       <header class="mb-10 text-center">
@@ -74,12 +98,13 @@
 
         <div>
           <button type="submit"
-            class="w-full bg-brand-600 text-white font-semibold py-3 px-6 rounded-xl shadow hover:bg-brand-700 transition">
+            class="w-full bg-brand-600 text-white font-semibold py-3 px-6 rounded-xl shadow hover:bg-brand-700 transition duration-200">
             Send Message
           </button>
           <p id="formStatus" class="text-center text-sm mt-4 hidden"></p>
         </div>
       </form>
+
     </div>
   </main>
 
@@ -100,7 +125,7 @@
       };
 
       status.classList.remove('hidden');
-      status.textContent = 'Sending...';
+      status.textContent = '⏳ Sending your message...';
       status.className = 'text-sm text-gray-500 text-center mt-4';
 
       try {
@@ -113,20 +138,20 @@
         const result = await res.json();
 
         if (res.ok) {
-          status.textContent = result.message || 'Message sent successfully!';
+          status.textContent = '✅ Thank you! Your message has been delivered successfully.';
           status.className = 'text-green-600 text-sm text-center mt-4';
           form.reset();
         } else {
           throw new Error(result.message || 'Submission failed.');
         }
       } catch (err) {
-        status.textContent = err.message || 'Something went wrong. Please try again.';
+        status.textContent = `❌ ${err.message || 'Something went wrong. Please try again.'}`;
         status.className = 'text-red-600 text-sm text-center mt-4';
       }
 
       setTimeout(() => {
         status.classList.add('hidden');
-      }, 5000);
+      }, 6000);
     });
   </script>
 </body>
