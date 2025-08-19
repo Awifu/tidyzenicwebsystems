@@ -11,7 +11,7 @@
 
     <meta property="og:title" content="Tidyzenic Smart Scheduling - Automate Your Business with AI" />
     <meta property="og:description" content="Our AI-powered scheduling tool helps you manage staff, optimize routes, and eliminate double-bookings. Get started with the best software for service companies." />
-    <meta property="og:image" content="https://tidyzenic.com/images/smart-scheduling-social-share.jpg" />
+    <meta property="og:image" content="https://tidyzenic.com/images/smart-scheduling/social-share.jpg" />
     <meta property="og:url" content="https://tidyzenic.com/smart-scheduling" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -36,6 +36,10 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Optional subtle figure styling */
+        figure { margin: 0; }
+        figcaption { font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem; text-align: center; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 leading-relaxed tracking-normal">
@@ -45,11 +49,29 @@
     <main class="py-16 md:py-24 px-4 fade-in">
         <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-3xl p-8 md:p-12 lg:p-16">
 
-            <header class="mb-16 text-center">
+            <header class="mb-10 text-center">
                 <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
                     Tidyzenic Smart Scheduling: The AI That Handles Your Calendar
                 </h1>
                 <p class="text-sm text-gray-500 mt-2">Automate your bookings, optimize your team, and focus on growth.</p>
+
+                <!-- HERO IMAGE -->
+                <figure class="mt-8">
+                    <picture>
+                        <!-- Optional: webp first for better compression -->
+                        <source srcset="/images/smart-scheduling/hero-illustration@2x.webp 2x, /images/smart-scheduling/hero-illustration.webp 1x" type="image/webp" />
+                        <source srcset="/images/smart-scheduling/hero-illustration@2x.jpg 2x, /images/smart-scheduling/hero-illustration.jpg 1x" type="image/jpeg" />
+                        <img
+                            src="/images/smart-scheduling/hero-illustration.jpg"
+                            alt="Illustration showing AI-assisted calendar automation with team and route optimization"
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full h-auto rounded-2xl shadow-md"
+                            sizes="(max-width: 768px) 100vw, 800px"
+                        />
+                    </picture>
+                    <figcaption>AI that plans, assigns, and optimizes—so you don’t have to.</figcaption>
+                </figure>
             </header>
 
             <section class="space-y-12 md:space-y-16 text-base sm:text-lg text-gray-700">
@@ -58,33 +80,101 @@
                         What is Tidyzenic's Smart Scheduling?
                     </h2>
                     <p>
-                        **Tidyzenic's Smart Scheduling** is an AI-powered engine designed to bring automation and efficiency to your service business. Instead of spending hours juggling appointments, coordinating staff, and planning routes, our software does the work for you. It's a complete booking and management system that works in the background, ensuring everything runs smoothly.
+                        <strong>Tidyzenic's Smart Scheduling</strong> is an AI-powered engine designed to bring automation and efficiency to your service business. Instead of spending hours juggling appointments, coordinating staff, and planning routes, our software does the work for you. It's a complete booking and management system that works in the background, ensuring everything runs smoothly.
                     </p>
                     <p class="mt-4">
                         We know that as a business owner, your time is your most valuable asset. Our smart scheduling feature is built to give you that time back, so you can focus on things that matter, like growing your customer base and improving your service quality.
                     </p>
-                    
+
+                    <!-- UI PREVIEW IMAGE -->
+                    <figure class="mt-6">
+                        <picture>
+                            <source srcset="/images/smart-scheduling/ui-scheduler@2x.webp 2x, /images/smart-scheduling/ui-scheduler.webp 1x" type="image/webp" />
+                            <source srcset="/images/smart-scheduling/ui-scheduler@2x.jpg 2x, /images/smart-scheduling/ui-scheduler.jpg 1x" type="image/jpeg" />
+                            <img
+                                src="/images/smart-scheduling/ui-scheduler.jpg"
+                                alt="Tidyzenic scheduling dashboard with drag-and-drop calendar and optimized assignments"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-auto rounded-xl border border-gray-100 shadow-sm"
+                                sizes="(max-width: 768px) 100vw, 800px"
+                            />
+                        </picture>
+                        <figcaption>Intuitive calendar dashboard with real-time conflict detection.</figcaption>
+                    </figure>
                 </div>
                 
                 <div>
                     <h2 class="text-2xl font-semibold text-brand mb-4">
                         How Tidyzenic Boosts Your Business
                     </h2>
-                    <ul class="list-disc pl-8 mt-4 space-y-4">
+
+                    <!-- FEATURE CARDS WITH ICONIC IMAGES -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+                        <figure class="p-5 rounded-2xl border border-gray-100 shadow-sm">
+                            <img
+                                src="/images/smart-scheduling/feature-accuracy.png"
+                                alt="AI accuracy badge"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-12 h-12 mb-3"
+                                width="48"
+                                height="48"
+                            />
+                            <figcaption class="text-sm text-gray-600">AI accuracy prevents double-bookings and errors.</figcaption>
+                        </figure>
+                        <figure class="p-5 rounded-2xl border border-gray-100 shadow-sm">
+                            <img
+                                src="/images/smart-scheduling/feature-automation.png"
+                                alt="Automation gear icon"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-12 h-12 mb-3"
+                                width="48"
+                                height="48"
+                            />
+                            <figcaption class="text-sm text-gray-600">Automated reminders, confirmations, and payments.</figcaption>
+                        </figure>
+                        <figure class="p-5 rounded-2xl border border-gray-100 shadow-sm">
+                            <img
+                                src="/images/smart-scheduling/feature-profit.png"
+                                alt="Profit growth arrow"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-12 h-12 mb-3"
+                                width="48"
+                                height="48"
+                            />
+                            <figcaption class="text-sm text-gray-600">Optimized routes = more jobs per day.</figcaption>
+                        </figure>
+                        <figure class="p-5 rounded-2xl border border-gray-100 shadow-sm">
+                            <img
+                                src="/images/smart-scheduling/feature-happiness.png"
+                                alt="Happy customer and staff icon"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-12 h-12 mb-3"
+                                width="48"
+                                height="48"
+                            />
+                            <figcaption class="text-sm text-gray-600">Staff clarity and client reliability.</figcaption>
+                        </figure>
+                    </div>
+
+                    <ul class="list-disc pl-8 mt-8 space-y-4">
                         <li>
-                            **Unmatched Accuracy:** Our AI analyzes booking requests, staff availability, and travel times in real-time to create the most efficient and accurate schedule possible. This eliminates costly human errors like double-bookings and scheduling conflicts.
+                            <strong>Unmatched Accuracy:</strong> Our AI analyzes booking requests, staff availability, and travel times in real-time to create the most efficient and accurate schedule possible. This eliminates costly human errors like double-bookings and scheduling conflicts.
                         </li>
                         <li>
-                            **Automated Efficiency:** The system automates client communication, sends appointment reminders, and even processes payments, reducing administrative overhead and freeing up your staff.
+                            <strong>Automated Efficiency:</strong> The system automates client communication, sends appointment reminders, and even processes payments, reducing administrative overhead and freeing up your staff.
                         </li>
                         <li>
-                            **Maximize Profitability:** By optimizing staff routes and minimizing travel time, you can fit more jobs into each day, which directly increases your revenue. Our smart scheduling isn't just about convenience; it's about making your business more profitable.
+                            <strong>Maximize Profitability:</strong> By optimizing staff routes and minimizing travel time, you can fit more jobs into each day, which directly increases your revenue. Our smart scheduling isn't just about convenience; it's about making your business more profitable.
                         </li>
                         <li>
-                            **Happier Clients and Staff:** Clients enjoy a seamless booking experience and timely service, while your team benefits from clear, optimized schedules and reduced stress.
+                            <strong>Happier Clients and Staff:</strong> Clients enjoy a seamless booking experience and timely service, while your team benefits from clear, optimized schedules and reduced stress.
                         </li>
                     </ul>
-                    
                 </div>
 
                 <div>
@@ -92,8 +182,26 @@
                         Why We're the Best Alternative to Other Solutions
                     </h2>
                     <p>
-                        While many platforms offer basic scheduling, **Tidyzenic**'s AI engine provides a level of sophistication and automation that sets it apart. Our focus is on providing a comprehensive, all-in-one solution that grows with your business, from a single user to a large-scale operation. We offer the best user experience and the most powerful tools on the market.
+                        While many platforms offer basic scheduling, <strong>Tidyzenic</strong>'s AI engine provides a level of sophistication and automation that sets it apart. Our focus is on providing a comprehensive, all-in-one solution that grows with your business, from a single user to a large-scale operation. We offer the best user experience and the most powerful tools on the market.
                     </p>
+
+                    <!-- SIDE-BY-SIDE COMPARISON IMAGE (optional) -->
+                    <figure class="mt-6">
+                        <picture>
+                            <source srcset="/images/smart-scheduling/compare@2x.webp 2x, /images/smart-scheduling/compare.webp 1x" type="image/webp" />
+                            <source srcset="/images/smart-scheduling/compare@2x.jpg 2x, /images/smart-scheduling/compare.jpg 1x" type="image/jpeg" />
+                            <img
+                                src="/images/smart-scheduling/compare.jpg"
+                                alt="Comparison graphic highlighting Tidyzenic advantages over generic scheduling tools"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-auto rounded-xl shadow-sm"
+                                sizes="(max-width: 768px) 100vw, 800px"
+                            />
+                        </picture>
+                        <figcaption>All-in-one AI scheduling vs. basic calendar tools.</figcaption>
+                    </figure>
+
                     <p class="mt-4">
                         <a href="https://tidyzenic.com/pricing" class="text-brand hover:text-brand-600 underline font-semibold">Ready to see the difference?</a> Start your free trial today and experience what an AI-powered business looks like.
                     </p>
@@ -125,6 +233,23 @@
                             <a href="https://tidyzenic.com/payment-processing" class="text-brand hover:text-brand-600 underline">Integrated Payment Processing</a>
                         </li>
                     </ul>
+
+                    <!-- ROUTE OPTIMIZATION MAP / WORKFLOW IMAGE -->
+                    <figure class="mt-8">
+                        <picture>
+                            <source srcset="/images/smart-scheduling/route-optimization@2x.webp 2x, /images/smart-scheduling/route-optimization.webp 1x" type="image/webp" />
+                            <source srcset="/images/smart-scheduling/route-optimization@2x.jpg 2x, /images/smart-scheduling/route-optimization.jpg 1x" type="image/jpeg" />
+                            <img
+                                src="/images/smart-scheduling/route-optimization.jpg"
+                                alt="Map-based route optimization visualization for field teams"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-auto rounded-xl border border-gray-100 shadow-sm"
+                                sizes="(max-width: 768px) 100vw, 800px"
+                            />
+                        </picture>
+                        <figcaption>Cut travel time with AI-powered route planning.</figcaption>
+                    </figure>
                 </div>
             </section>
         </div>
